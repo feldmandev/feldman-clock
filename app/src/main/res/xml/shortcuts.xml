@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Long-press shortcuts on the launcher icon. Each targets MainActivity and relies on the
+        action routing already in ClockApp, so no new intent handling is needed. targetPackage is
+        deliberately omitted: the debug build has an applicationId suffix, and leaving it out makes
+        the component resolve against whichever variant is installed.
+    -->
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/shortcut_new_alarm"
+        android:shortcutId="new_alarm"
+        android:shortcutLongLabel="@string/shortcut_new_alarm_long"
+        android:shortcutShortLabel="@string/shortcut_new_alarm_short">
+        <intent
+            android:action="android.intent.action.SET_ALARM"
+            android:targetClass="com.feldman.clock.app.MainActivity">
+            <extra
+                android:name="deskclock.create.new"
+                android:value="true" />
+        </intent>
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/shortcut_new_timer"
+        android:shortcutId="new_timer"
+        android:shortcutLongLabel="@string/shortcut_new_timer_long"
+        android:shortcutShortLabel="@string/shortcut_new_timer_short">
+        <intent
+            android:action="android.intent.action.SET_TIMER"
+            android:targetClass="com.feldman.clock.app.MainActivity" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/shortcut_stopwatch"
+        android:shortcutId="start_stopwatch"
+        android:shortcutLongLabel="@string/shortcut_start_stopwatch_long"
+        android:shortcutShortLabel="@string/shortcut_start_stopwatch_short">
+        <intent
+            android:action="com.feldman.clock.action.SHOW_STOPWATCH"
+            android:targetClass="com.feldman.clock.app.MainActivity" />
+    </shortcut>
+
+    <capability android:name="actions.intent.CREATE_ALARM">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.feldman.clock"
+            android:targetClass="com.feldman.clock.app.integration.HandleApiCalls">
+
+            <url-template android:value="feldmanclock://alarm/create{?time,message}" />
+
+            <parameter
+                android:name="alarm.schedule.startTime"
+                android:key="time" />
+
+            <parameter
+                android:name="alarm.name"
+                android:key="name" />
+
+        </intent>
+    </capability>
+</shortcuts>

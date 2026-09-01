@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-License-Identifier: Apache-2.0
+-->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:height="380dp"
+    android:width="380dp"
+    android:viewportWidth="380"
+    android:viewportHeight="380"
+    tools:ignore="VectorRaster">
+    <path
+        android:fillColor="@color/md_theme_tertiary"
+        android:pathData="M 190 32 C 199.941 32 208 40.059 208 50 C 208 59.941 199.941 68 190 68 C 180.059 68 172 59.941 172 50 C 172 40.059 180.059 32 190 32 Z" />
+</vector>

@@ -1,0 +1,45 @@
+/*
+ * Copyright (C) 2016 The Android Open Source Project
+ * modified
+ * SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
+ */
+
+package com.feldman.clock.core.data;
+
+import android.text.TextUtils;
+
+/**
+ * A read-only domain object representing the timezones from which to choose a "home" timezone.
+ */
+public record TimeZones(CharSequence[] mTimeZoneIds, CharSequence[] mTimeZoneNames) {
+
+    public CharSequence[] getTimeZoneIds() {
+        return mTimeZoneIds;
+    }
+
+    public CharSequence[] getTimeZoneNames() {
+        return mTimeZoneNames;
+    }
+
+    /**
+     * @param timeZoneId identifies the timezone to locate
+     * @return the timezone name with the {@code timeZoneId}; {@code null} if it does not exist
+     */
+    public CharSequence getTimeZoneName(CharSequence timeZoneId) {
+        for (int i = 0; i < mTimeZoneIds.length; i++) {
+            if (TextUtils.equals(timeZoneId, mTimeZoneIds[i])) {
+                return mTimeZoneNames[i];
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param timeZoneId identifies the timezone to locate
+     * @return {@code true} iff the timezone with the given id is present
+     */
+    public boolean contains(String timeZoneId) {
+        return getTimeZoneName(timeZoneId) != null;
+    }
+}

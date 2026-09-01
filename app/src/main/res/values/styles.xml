@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-License-Identifier: GPL-3.0-only
+-->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Clock" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+
+        <item name="alertDialogTheme">@style/AppAlertDialogTheme</item>
+        <item name="materialAlertDialogTheme">@style/AppAlertDialogTheme</item>
+
+        <item name="switchPreferenceCompatStyle">@style/AppSwitchPreference</item>
+
+        <item name="snackbarStyle">@style/SnackBarStyle</item>
+
+        <item name="elevationOverlayEnabled">false</item>
+
+        <item name="materialTimePickerTheme">@style/AppMaterialTimePickerTheme</item>
+
+        <item name="materialCalendarTheme">@style/AppMaterialCalendarTheme</item>
+    </style>
+
+    <style name="Theme.Clock.Translucent" parent="Theme.Clock">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppSwitchPreference" parent="@style/Preference.SwitchPreferenceCompat.Material">
+        <item name="widgetLayout">@layout/settings_switch_material</item>
+    </style>
+
+    <style name="TimerSetupDigit" parent="@style/Widget.MaterialComponents.Button">
+        <item name="shapeAppearance">@style/ShapeAppearanceOverlay.MaterialComponents.FloatingActionButton</item>
+        <item name="backgroundTint">?attr/colorSurface</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMaxTextSize">36sp</item>
+        <item name="autoSizeStepGranularity">1sp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="CollapsingToolbarTitle.Collapsed" parent="@style/TextAppearance.Material3.ActionBar.Title">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="CollapsingToolbarTitle.Expanded" parent="CollapsingToolbarTitle.Collapsed">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="FloatingActionButton" parent="@style/Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">?attr/colorAccent</item>
+        <!-- Remove animation when floating action button is pressed -->
+        <item name="pressedTranslationZ">0dp</item>
+        <!-- Color used by the icon -->
+        <!-- Remove shadow -->
+        <item name="elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="SnackBarStyle" parent="@style/Widget.MaterialComponents.Snackbar">
+        <item name="android:background">@drawable/bg_snackbar</item>
+    </style>
+
+    <!-- ========== -->
+    <!--   DIALOG   -->
+    <!-- ========== -->
+    <style name="AppAlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="dialogCornerRadius">28dp</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/AppMaterialAlertDialogTitleTextStyle</item>
+    </style>
+
+    <style name="AppMaterialAlertDialogTitleTextStyle" parent="@style/MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- ======================= -->
+    <!--   SPINNER TIME PICKER   -->
+    <!-- ======================= -->
+    <style name="SpinnerDialogTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/AppMaterialTimePickerTitleStyle</item>
+    </style>
+
+    <style name="NumberPickerStyle">
+        <item name="android:textSize">28sp</item>
+        <item name="android:colorControlNormal">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AmPmStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:colorControlNormal">?attr/colorPrimary</item>
+    </style>
+
+    <!-- ================= -->
+    <!--    TIME PICKER    -->
+    <!-- ================= -->
+    <style name="AppMaterialTimePickerTheme" parent="ThemeOverlay.Material3.MaterialTimePicker">
+        <!-- Dialog background -->
+        <item name="colorSurfaceContainerHigh">?attr/colorSurface</item>
+        <!-- Selected hour/minute text color -->
+        <item name="colorOnPrimaryContainer">?attr/colorPrimary</item>
+        <!-- AM/PM selected background -->
+        <item name="colorTertiaryContainer">?attr/colorPrimaryContainer</item>
+        <!-- Selected AM/PM text color -->
+        <item name="colorOnTertiaryContainer">?attr/colorPrimary</item>
+        <!-- Dialog title -->
+        <item name="materialTimePickerTitleStyle">@style/AppMaterialTimePickerTitleStyle</item>
+    </style>
+
+    <style name="AppMaterialTimePickerTitleStyle" parent="@style/TextAppearance.Material3.MaterialTimePicker.Title">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- ======================= -->
+    <!--   SPINNER DATE PICKER   -->
+    <!-- ======================= -->
+    <style name="SpinnerDateTheme">
+        <item name="android:editTextStyle">@style/DatePickerEditText</item>
+        <item name="colorControlNormal">?attr/colorPrimary</item>
+    </style>
+
+    <style name="DatePickerEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <!-- ================= -->
+    <!--    DATE PICKER    -->
+    <!-- ================= -->
+    <style name="AppMaterialCalendarTheme" parent="ThemeOverlay.Material3.MaterialCalendar">
+        <!-- Dialog background -->
+        <item name="colorSurfaceContainerHigh">?attr/colorSurface</item>
+    </style>
+
+    <!-- ============ -->
+    <!--    THEMES    -->
+    <!-- ============ -->
+
+    <style name="Theme.Clock.Wallpaper">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowShowWallpaper">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+    </style>
+
+</resources>

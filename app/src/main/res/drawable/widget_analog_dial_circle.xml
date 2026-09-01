@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Plain round dial, sized to the same 380x380 viewport as the Material You hands.
+    SPDX-License-Identifier: GPL-3.0-only
+-->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:width="380dp"
+    android:height="380dp"
+    android:viewportWidth="380"
+    android:viewportHeight="380"
+    tools:ignore="VectorRaster">
+    <path
+        android:fillColor="@color/widget_background_color"
+        android:pathData="M190,1A189,189 0,1 1,189.99 1z" />
+</vector>

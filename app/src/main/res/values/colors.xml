@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2016 The Android Open Source Project
+    modified
+    SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
+-->
+
+<resources>
+    <!-- MATERIAL COLORS -->
+    <!--
+    Source: https://github.com/material-components/material-components-android/blob/master/docs/theming/Color.md
+    Converted to hex value
+    -->
+    <color name="md_theme_primary">#475D92</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#D9E2FF</color>
+    <color name="md_theme_onPrimaryContainer">#001945</color>
+    <color name="md_theme_inversePrimary">#B0C6FF</color>
+    <color name="md_theme_primaryFixed">#D9E2FF</color>
+    <color name="md_theme_primaryFixedDim">#B0C6FF</color>
+    <color name="md_theme_onPrimaryFixed">#001945</color>
+    <color name="md_theme_onPrimaryFixedVariant">#2F4578</color>
+
+    <color name="md_theme_secondary">#575E71</color>
+    <color name="md_theme_onSecondary">#FFFFFF</color>
+    <color name="md_theme_secondaryContainer">#DCE2F9</color>
+    <color name="md_theme_onSecondaryContainer">#151B2C</color>
+    <color name="md_theme_secondaryFixed">#DCE2F9</color>
+    <color name="md_theme_secondaryFixedDim">#C0C6DC</color>
+    <color name="md_theme_onSecondaryFixed">#151B2C</color>
+    <color name="md_theme_onSecondaryFixedVariant">#404659</color>
+
+    <color name="md_theme_tertiary">#725572</color>
+    <color name="md_theme_onTertiary">#FFFFFF</color>
+    <color name="md_theme_tertiaryContainer">#FDD7FA</color>
+    <color name="md_theme_onTertiaryContainer">#2A122C</color>
+    <color name="md_theme_tertiaryFixed">#FDD7FA</color>
+    <color name="md_theme_tertiaryFixedDim">#E0BBDD</color>
+    <color name="md_theme_onTertiaryFixed">#2A122C</color>
+    <color name="md_theme_onTertiaryFixedVariant">#593D59</color>
+
+    <color name="md_theme_error">#B3261E</color>
+    <color name="md_theme_onError">#FFFFFF</color>
+    <color name="md_theme_errorContainer">#F9DEDC</color>
+    <color name="md_theme_onErrorContainer">#410E0B</color>
+    <color name="md_theme_outline">#757780</color>
+    <color name="md_theme_outlineVariant">#C5C6D0</color>
+    <color name="md_theme_background">#FEFBFF</color>
+    <color name="md_theme_onBackground">#1A1B20</color>
+    <color name="md_theme_surface">#F0F0FA</color>
+    <color name="md_theme_onSurface">#1A1B20</color>
+    <color name="md_theme_surfaceVariant">#E1E2EC</color>
+    <color name="md_theme_onSurfaceVariant">#44464F</color>
+    <color name="md_theme_inverseSurface">#2F3036</color>
+    <color name="md_theme_inverseOnSurface">#F1F0F7</color>
+    <color name="md_theme_surfaceContainerLowest">#FFFFFF</color>
+    <color name="md_theme_surfaceContainerHighest">#E1E2EC</color>
+
+    <!-- WIDGET COLORS -->
+    <color name="widget_background_color">#EEF0FF</color>
+    <color name="md_theme_analogWidgetPrimary">#6076AC</color>
+    <color name="md_theme_analogWidgetSecondary">#404659</color>
+    <color name="digital_widget_time_color">#475D92</color>
+    <color name="widget_text_color">#1D1B20</color>
+    <color name="vertical_digital_widget_hour_color">#575E71</color>
+    <color name="vertical_digital_widget_minute_color">#475D92</color>
+    <color name="next_alarm_widget_title_color">#575E71</color>
+    <color name="next_alarm_widget_alarm_color">#475D92</color>
+
+    <!--
+    TO FIND ACCENT COLORS (except for Black colors):
+
+    • xxxColorAccent: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors : n°600
+    • xxxColorPrimary: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors : n°600
+    • xxxPrimaryInverse: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors : n°200
+    • xxxPrimaryContainer: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors : n°100
+    • xxxOnPrimary: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors : #FFFFFF
+    • xxxSecondaryContainer: https://mdigi.tools/lighten-color/ : Lighten the color n°200 by 40%.
+    • xxxColorSurface: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors : n°50
+    • xxxColorSurfaceHighest: https://colorffy.com/color-scheme-generator
+        - Color: xxxColorSurface
+        - Mixing colors: Move the cursor to the end which makes 20 tones appear
+        - Select the 4th tone
+    • xxxColorBackground: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors : #FEFBFF
+    • xxxColorSecondary: https://colorffy.com/dark-theme-generator :
+        - Primary color: xxxColorAccent
+        - Dark color: #000000
+        - Mix Intensity: Move the cursor one notch
+        - Select the color where it is written: "Tonal - a30"
+    • xxxColorTertiary: https://colordesigner.io/color-mixer
+        - Choose only 2 colors
+        - 1st color = xxxColorPrimary ==> Quantity 1
+        - 2nd color = xxxColorSecondary ==> Quantity 1
+        - Select mixed color
+    • xxxAnalogWidgetPrimary: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors : n°500
+    • xxxAnalogWidgetSecondary: https://colordesigner.io/color-mixer
+        - Choose only 2 colors
+        - 1st color = xxxColorPrimary ==> Quantity 1
+        - 2nd color = #000000 ==> Quantity 1
+        - Select mixed color
+    -->
+
+    <!-- BLACK COLORS -->
+    <color name="blackColorAccent">@android:color/black</color>
+    <color name="blackColorPrimary">@android:color/black</color>
+    <color name="blackColorSecondary">#777777</color>
+    <color name="blackColorTertiary">#3C3C3C</color>
+    <color name="blackColorBackground">@android:color/white</color>
+    <color name="blackColorGray1">#D9D9D9</color>
+    <color name="blackColorGray2">#EEEEEE</color>
+    <color name="blackColorGray3">#BDBDBD</color>
+    <color name="blackAnalogWidgetPrimary">#777777</color>
+    <color name="blackAnalogWidgetSecondary">#222222</color>
+
+    <!-- BLUE COLORS -->
+    <color name="blueColorAccent">#1E88E5</color>
+    <color name="blueColorPrimary">#1E88E5</color>
+    <color name="bluePrimaryInverse">#90CAF9</color>
+    <color name="bluePrimaryContainer">#BBDEFB</color>
+    <color name="blueOnPrimary">#FFFFFF</color>
+    <color name="blueSecondaryContainer">#BCDFFB</color>
+    <color name="blueColorSurface">#E3F2FD</color>
+    <color name="blueSurfaceContainerHighest">#D3DFE7</color>
+    <color name="blueColorBackground">#FEFBFF</color>
+    <color name="blueColorSecondary">#5B606C</color>
+    <color name="blueColorTertiary">#3C74A9</color>
+    <color name="blueAnalogWidgetPrimary">#2196F3</color>
+    <color name="blueAnalogWidgetSecondary">#0F4473</color>
+
+    <!-- BLUE GRAY COLORS -->
+    <color name="blueGrayColorAccent">#546E7A</color>
+    <color name="blueGrayColorPrimary">#546E7A</color>
+    <color name="blueGrayPrimaryInverse">#B0BEC5</color>
+    <color name="blueGrayPrimaryContainer">#CFD8DC</color>
+    <color name="blueGrayOnPrimary">#FFFFFF</color>
+    <color name="blueGraySecondaryContainer">#D0D8DC</color>
+    <color name="blueGrayColorSurface">#ECEFF1</color>
+    <color name="blueGraySurfaceContainerHighest">#DBDDDF</color>
+    <color name="blueGrayColorBackground">#FEFBFF</color>
+    <color name="blueGrayColorSecondary">#5A5D5F</color>
+    <color name="blueGrayColorTertiary">#57656C</color>
+    <color name="blueGrayAnalogWidgetPrimary">#607D8B</color>
+    <color name="blueGrayAnalogWidgetSecondary">#2A373D</color>
+
+    <!-- BROWN COLORS -->
+    <color name="brownColorAccent">#6D4C41</color>
+    <color name="brownColorPrimary">#FF6D4C41</color>
+    <color name="brownPrimaryInverse">#BCAAA4</color>
+    <color name="brownPrimaryContainer">#BCAAA4</color>
+    <color name="brownOnPrimary">#FFFFFF</color>
+    <color name="brownSecondaryContainer">#D7CCC8</color>
+    <color name="brownColorSurface">#EFEBE9</color>
+    <color name="brownSurfaceContainerHighest">#DDD9D8</color>
+    <color name="brownColorBackground">#FEFBFF</color>
+    <color name="brownColorSecondary">#5D5857</color>
+    <color name="brownColorTertiary">#64524C</color>
+    <color name="brownAnalogWidgetPrimary">#795548</color>
+    <color name="brownAnalogWidgetSecondary">#372621</color>
+
+    <!-- GREEN COLORS -->
+    <color name="greenColorAccent">#43A047</color>
+    <color name="greenColorPrimary">#43A047</color>
+    <color name="greenPrimaryInverse">#A5D6A7</color>
+    <color name="greenPrimaryContainer">#C8E6C9</color>
+    <color name="greenOnPrimary">#FFFFFF</color>
+    <color name="greenSecondaryContainer">#C9E6CA</color>
+    <color name="greenColorSurface">#E8F5E9</color>
+    <color name="greenSurfaceContainerHighest">#D8E2D9</color>
+    <color name="greenColorBackground">#FEFBFF</color>
+    <color name="greenColorSecondary">#5A6458</color>
+    <color name="greenColorTertiary">#508351</color>
+    <color name="greenAnalogWidgetPrimary">#4CAF50</color>
+    <color name="greenAnalogWidgetSecondary">#225024</color>
+
+    <!-- INDIGO COLORS -->
+    <color name="indigoColorAccent">#3949AB</color>
+    <color name="indigoColorPrimary">#3949AB</color>
+    <color name="indigoPrimaryInverse">#9FA8DA</color>
+    <color name="indigoPrimaryContainer">#C5CAE9</color>
+    <color name="indigoOnPrimary">#FFFFFF</color>
+    <color name="indigoSecondaryContainer">#C5CBE9</color>
+    <color name="indigoColorSurface">#E8EAF6</color>
+    <color name="indigoSurfaceContainerHighest">#D5D7E2</color>
+    <color name="indigoColorBackground">#FEFBFF</color>
+    <color name="indigoColorSecondary">#595865</color>
+    <color name="indigoColorTertiary">#495188</color>
+    <color name="indigoAnalogWidgetPrimary">#3F51B5</color>
+    <color name="indigoAnalogWidgetSecondary">#1D2556</color>
+
+    <!-- ORANGE COLORS -->
+    <color name="orangeColorAccent">#FB8C00</color>
+    <color name="orangeColorPrimary">#FB8C00</color>
+    <color name="orangePrimaryInverse">#FFCC80</color>
+    <color name="orangePrimaryContainer">#FFE0B2</color>
+    <color name="orangeOnPrimary">#FFFFFF</color>
+    <color name="orangeSecondaryContainer">#FFE0B3</color>
+    <color name="orangeColorSurface">#FFF3E0</color>
+    <color name="orangeSurfaceContainerHighest">#EAE0D0</color>
+    <color name="orangeColorBackground">#FEFBFF</color>
+    <color name="orangeColorSecondary">#726154</color>
+    <color name="orangeColorTertiary">#B6752B</color>
+    <color name="orangeAnalogWidgetPrimary">#FF9800</color>
+    <color name="orangeAnalogWidgetSecondary">#7E4600</color>
+
+    <!-- PINK COLORS -->
+    <color name="pinkColorAccent">#D81B60</color>
+    <color name="pinkColorPrimary">#D81B60</color>
+    <color name="pinkPrimaryInverse">#F48FB1</color>
+    <color name="pinkPrimaryContainer">#F8BBD0</color>
+    <color name="pinkOnPrimary">#FFFFFF</color>
+    <color name="pinkSecondaryContainer">#F8BCD0</color>
+    <color name="pinkColorSurface">#FCE4EC</color>
+    <color name="pinkSurfaceContainerHighest">#E7D3DA</color>
+    <color name="pinkColorBackground">#FEFBFF</color>
+    <color name="pinkColorSecondary">#6D585B</color>
+    <color name="pinkColorTertiary">#A43A5F</color>
+    <color name="pinkAnalogWidgetPrimary">#E91E63</color>
+    <color name="pinkAnalogWidgetSecondary">#6C0E30</color>
+
+    <!-- PURPLE COLORS -->
+    <color name="purpleColorAccent">#8E24AA</color>
+    <color name="purpleColorPrimary">#8E24AA</color>
+    <color name="purplePrimaryInverse">#CE93D8</color>
+    <color name="purplePrimaryContainer">#E1BEE7</color>
+    <color name="purpleOnPrimary">#FFFFFF</color>
+    <color name="purpleSecondaryContainer">#E2BEE8</color>
+    <color name="purpleColorSurface">#F3E5F5</color>
+    <color name="purpleSurfaceContainerHighest">#E0D4E2</color>
+    <color name="purpleColorBackground">#FEFBFF</color>
+    <color name="purpleColorSecondary">#635665</color>
+    <color name="purpleColorTertiary">#783E87</color>
+    <color name="purpleAnalogWidgetPrimary">#9C27B0</color>
+    <color name="purpleAnalogWidgetSecondary">#471255</color>
+
+    <!-- RED COLORS -->
+    <color name="redColorAccent">#E53935</color>
+    <color name="redColorPrimary">#E53935</color>
+    <color name="redPrimaryInverse">#EF9A9A</color>
+    <color name="redPrimaryContainer">#FFCDD2</color>
+    <color name="redOnPrimary">#FFFFFF</color>
+    <color name="redSecondaryContainer">#F5C2C2</color>
+    <color name="redColorSurface">#FFEBEE</color>
+    <color name="redSurfaceContainerHighest">#EAD9DC</color>
+    <color name="redColorBackground">#FEFBFF</color>
+    <color name="redColorSecondary">#705A56</color>
+    <color name="redColorTertiary">#AB4946</color>
+    <color name="redAnalogWidgetPrimary">#F44336</color>
+    <color name="redAnalogWidgetSecondary">#731D1B</color>
+
+    <!-- YELLOW COLORS -->
+    <color name="yellowColorAccent">#FDD835</color>
+    <color name="yellowColorPrimary">#FDD835</color>
+    <color name="yellowPrimaryInverse">#FFF59D</color>
+    <color name="yellowPrimaryContainer">#FFF9C4</color>
+    <color name="yellowOnPrimary">#FFFFFF</color>
+    <color name="yellowSecondaryContainer">#FFF9C4</color>
+    <color name="yellowColorSurface">#FFFDE7</color>
+    <color name="yellowSurfaceContainerHighest">#EAE8D7</color>
+    <color name="yellowColorBackground">#FEFBFF</color>
+    <color name="yellowColorSecondary">#706A59</color>
+    <color name="yellowColorTertiary">#B6A147</color>
+    <color name="yellowAnalogWidgetPrimary">#FFEB3B</color>
+    <color name="yellowAnalogWidgetSecondary">#7F6C1B</color>
+
+    <!-- MISCELLANEOUS -->
+    <!-- https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors : n°400 -->
+    <color name="colorGranted">#66BB6A</color>
+    <!-- https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors : n°400 -->
+    <color name="colorAlert">#EF5350</color>
+    <!-- Used e.g. for SeekBar buttons -->
+    <color name="colorDisabled">#611D1B20</color>
+</resources>

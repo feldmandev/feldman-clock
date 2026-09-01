@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#d7e3ff">
+  <title>Feldman Clock Privacy Policy</title>
+  <style>
+    @font-face {
+      font-family: "Feldman Font";
+      src: url("fonts/FeldmanFont-Rond100.woff2") format("woff2-variations");
+      font-style: normal;
+      font-weight: 1 1000;
+      font-display: swap;
+    }
+
+    :root {
+      --md-sys-color-primary: #315da8;
+      --md-sys-color-on-primary: #ffffff;
+      --md-sys-color-primary-container: #d7e3ff;
+      --md-sys-color-on-primary-container: #001b3f;
+      --md-sys-color-secondary-container: #dce2f1;
+      --md-sys-color-on-secondary-container: #151b29;
+      --md-sys-color-surface: #f9f9ff;
+      --md-sys-color-surface-container: #ededf5;
+      --md-sys-color-surface-container-high: #e7e7ef;
+      --md-sys-color-on-surface: #1a1b20;
+      --md-sys-color-on-surface-variant: #44474f;
+      --md-sys-color-outline: #74777f;
+      --md-sys-color-inverse-surface: #2f3036;
+      --md-sys-color-inverse-on-surface: #f1f0f7;
+      --md-sys-shape-small: 12px;
+      --md-sys-shape-medium: 20px;
+      --md-sys-shape-large: 32px;
+      --md-sys-shape-extra-large: 48px;
+      --content-width: 920px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --md-sys-color-primary: #aac7ff;
+        --md-sys-color-on-primary: #002f67;
+        --md-sys-color-primary-container: #174683;
+        --md-sys-color-on-primary-container: #d7e3ff;
+        --md-sys-color-secondary-container: #414753;
+        --md-sys-color-on-secondary-container: #dce2f1;
+        --md-sys-color-surface: #121318;
+        --md-sys-color-surface-container: #1e1f25;
+        --md-sys-color-surface-container-high: #292a30;
+        --md-sys-color-on-surface: #e3e2e9;
+        --md-sys-color-on-surface-variant: #c4c6d0;
+        --md-sys-color-outline: #8e9099;
+        --md-sys-color-inverse-surface: #e3e2e9;
+        --md-sys-color-inverse-on-surface: #2f3036;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--md-sys-color-surface);
+      color: var(--md-sys-color-on-surface);
+      font-family: "Feldman Font", system-ui, sans-serif;
+      font-optical-sizing: auto;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+    a { color: var(--md-sys-color-primary); font-weight: 650; }
+    a:focus-visible, .skip-link:focus-visible {
+      outline: 3px solid var(--md-sys-color-primary);
+      outline-offset: 4px;
+      border-radius: var(--md-sys-shape-small);
+    }
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 16px;
+      z-index: 2;
+      padding: 12px 18px;
+      color: var(--md-sys-color-inverse-on-surface);
+      background: var(--md-sys-color-inverse-surface);
+      border-radius: var(--md-sys-shape-medium);
+    }
+    .skip-link:focus { top: 16px; }
+    header, main, footer {
+      width: min(calc(100% - 32px), var(--content-width));
+      margin-inline: auto;
+    }
+    header { padding-block: clamp(48px, 10vw, 108px) 32px; }
+    .eyebrow {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      padding-inline: 18px;
+      background: var(--md-sys-color-primary-container);
+      color: var(--md-sys-color-on-primary-container);
+      border-radius: var(--md-sys-shape-large);
+      font-size: .8rem;
+      font-weight: 750;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 780px;
+      margin: 24px 0 12px;
+      font-size: clamp(2.75rem, 9vw, 6.4rem);
+      font-weight: 600;
+      line-height: .95;
+      letter-spacing: -.02em;
+    }
+    .lede {
+      max-width: 700px;
+      margin: 0;
+      color: var(--md-sys-color-on-surface-variant);
+      font-size: clamp(1.08rem, 2.5vw, 1.35rem);
+    }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-block: 24px 48px;
+    }
+    .summary div {
+      padding: 22px;
+      background: var(--md-sys-color-secondary-container);
+      color: var(--md-sys-color-on-secondary-container);
+      border-radius: var(--md-sys-shape-large);
+    }
+    .summary strong { display: block; font-size: 1.05rem; }
+    .summary span { color: var(--md-sys-color-on-surface-variant); }
+    article {
+      margin-bottom: 16px;
+      padding: clamp(24px, 5vw, 44px);
+      background: var(--md-sys-color-surface-container);
+      border-radius: var(--md-sys-shape-extra-large);
+    }
+    article:nth-of-type(even) { background: var(--md-sys-color-surface-container-high); }
+    h2 { margin: 0 0 10px; font-size: clamp(1.55rem, 4vw, 2.2rem); line-height: 1.15; }
+    h3 { margin: 24px 0 6px; font-size: 1.1rem; }
+    p, ul { margin-block: 8px 0; }
+    ul { padding-left: 1.3rem; }
+    .table-scroll { overflow-x: auto; margin-top: 16px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .95rem;
+    }
+    th, td {
+      padding: 10px 14px 10px 0;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--md-sys-color-outline);
+    }
+    th { font-weight: 750; }
+    td code {
+      font-family: ui-monospace, "Cascadia Code", Menlo, monospace;
+      font-size: .88em;
+    }
+    footer {
+      padding-block: 32px 56px;
+      color: var(--md-sys-color-on-surface-variant);
+      text-align: center;
+    }
+    @media (max-width: 680px) {
+      .summary { grid-template-columns: 1fr; }
+      article { border-radius: var(--md-sys-shape-large); }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#policy">Skip to privacy policy</a>
+  <header>
+    <span class="eyebrow">Privacy policy</span>
+    <h1>On time.<br>Off the record.</h1>
+    <p class="lede">Feldman Clock keeps your alarms, timers and settings on your device. It has no account, no ads, and no analytics, and it sends nothing to Feldman.</p>
+  </header>
+
+  <main id="policy">
+    <section class="summary" aria-label="Privacy summary">
+      <div><strong>No personal data collected</strong><span>No account, analytics, advertising, or tracking.</span></div>
+      <div><strong>Two optional requests</strong><span>Weather and the world-clock city list. Nothing else leaves your device.</span></div>
+      <div><strong>Local storage only</strong><span>Alarms and settings remain until you clear app data or uninstall.</span></div>
+    </section>
+
+    <article aria-labelledby="scope-heading">
+      <h2 id="scope-heading">Who this policy covers</h2>
+      <p>This policy applies to Feldman Clock (<code>com.feldman.clock</code>), published by Feldman. It explains what the app stores, the two optional network requests it can make, and the choices available to you. Effective September 1, 2026.</p>
+    </article>
+
+    <article aria-labelledby="collection-heading">
+      <h2 id="collection-heading">Data collection and sharing</h2>
+      <p>Feldman Clock does not collect, transmit, sell, or share personal or sensitive user data. The app contains no advertising SDK, no analytics SDK, no crash-reporting SDK, no user accounts, and no behavioral tracking.</p>
+      <p>Because the app does not collect personal data, Feldman does not retain personal data on a server and has no personal server-side profile to delete.</p>
+    </article>
+
+    <article aria-labelledby="device-heading">
+      <h2 id="device-heading">What stays on your device</h2>
+      <p>All of the following is stored only in the app's private storage and is never transmitted to Feldman:</p>
+      <ul>
+        <li>Alarms, including labels, times, repeat schedules and chosen ringtones</li>
+        <li>Timers and stopwatch state, including lap times</li>
+        <li>Your saved world-clock cities</li>
+        <li>All settings, themes, standby configuration and widget configuration</li>
+      </ul>
+      <p>This data is included in Android's system backup if you have backup enabled in your device settings. That backup goes to your own Google account under Google's terms — Feldman has no access to it. You can disable it in <strong>Settings → Google → Backup</strong>.</p>
+    </article>
+
+    <article aria-labelledby="network-heading">
+      <h2 id="network-heading">What leaves your device</h2>
+      <p>Feldman Clock makes network requests for exactly two optional features. Both work only if you choose to use them, and the app is fully functional without either.</p>
+
+      <h3>1. Weather (optional)</h3>
+      <p>If you grant the location permission, the clock screen shows current conditions. An approximate latitude and longitude is sent to <a href="https://open-meteo.com">Open-Meteo</a> (<code>api.open-meteo.com</code>). The app requests <strong>coarse</strong> location only — roughly city-level — and never requests fine or GPS location. For cities you add yourself, the city name is sent to <code>geocoding-api.open-meteo.com</code> to resolve its coordinates. Open-Meteo states that it requires no API key and does not track users; see their <a href="https://open-meteo.com/en/terms">terms</a>.</p>
+      <p>If you deny the location permission, the app works normally and simply does not show local weather. You can revoke it at any time in <strong>Android Settings → Apps → Clock → Permissions</strong>.</p>
+
+      <h3>2. World-clock city list (optional)</h3>
+      <p>When you search for a city to add, the app downloads a public, static city and timezone list from <code>raw.githubusercontent.com</code>. This is an ordinary HTTPS request for a public file. <strong>Your search text is never sent</strong> — filtering happens on your device after the list is downloaded. GitHub will see your IP address, as it would for any web request.</p>
+
+      <p>No other network requests are made. All traffic uses HTTPS, and the app's network security configuration rejects plain-text connections outright.</p>
+    </article>
+
+    <article aria-labelledby="companion-heading">
+      <h2 id="companion-heading">Sharing with other Feldman apps</h2>
+      <p>Feldman Clock can expose some of its data to other Feldman apps installed on the same device, so that Feldman Launcher can show running timers and Feldman Home can manage your alarms.</p>
+      <ul>
+        <li><strong>Running and paused timers</strong> — label, state and remaining time — can be read by Feldman Launcher.</li>
+        <li><strong>Alarms</strong> — time, label, repeat schedule and enabled state — can be read and changed by Feldman Home.</li>
+      </ul>
+      <p>These interfaces are protected at the <em>signature</em> level, meaning only apps signed with the same key as Feldman Clock can use them. No other app on your device can read this data, and none of it travels over a network or reaches Feldman.</p>
+    </article>
+
+    <article aria-labelledby="permissions-heading">
+      <h2 id="permissions-heading">Permissions and why they are requested</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th scope="col">Permission</th><th scope="col">Why</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>SCHEDULE_EXACT_ALARM</code> / <code>USE_EXACT_ALARM</code></td><td>Alarms must fire at the exact minute you set</td></tr>
+            <tr><td><code>POST_NOTIFICATIONS</code></td><td>Alarm, timer and stopwatch notifications</td></tr>
+            <tr><td><code>USE_FULL_SCREEN_INTENT</code></td><td>Show the alarm screen when your phone is locked</td></tr>
+            <tr><td><code>FOREGROUND_SERVICE</code> (+ media playback, special use)</td><td>Keep alarms ringing and timers and the stopwatch counting while the app is in the background</td></tr>
+            <tr><td><code>WAKE_LOCK</code>, <code>TURN_SCREEN_ON</code></td><td>Wake the screen for a firing alarm</td></tr>
+            <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>Re-schedule your alarms after a reboot</td></tr>
+            <tr><td><code>VIBRATE</code></td><td>Alarm and timer vibration</td></tr>
+            <tr><td><code>MODIFY_AUDIO_SETTINGS</code>, <code>ACCESS_NOTIFICATION_POLICY</code></td><td>Raise alarm volume and ring through Do Not Disturb</td></tr>
+            <tr><td><code>ACCESS_COARSE_LOCATION</code></td><td><strong>Optional.</strong> Local weather only</td></tr>
+            <tr><td><code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code></td><td><strong>Optional.</strong> Weather and the city list only</td></tr>
+            <tr><td><code>SYSTEM_ALERT_WINDOW</code></td><td><strong>Optional.</strong> Helps the alarm screen appear reliably over other apps</td></tr>
+            <tr><td>Camera flash (via <code>CameraManager</code>)</td><td><strong>Optional.</strong> Flashlight pulse when an alarm fires. No camera images are ever captured or accessed</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article aria-labelledby="retention-heading">
+      <h2 id="retention-heading">Retention and deletion</h2>
+      <p>Everything the app stores lives in Android app storage on your device. It remains until you delete it in the app, clear Feldman Clock's storage, or uninstall the app. You can also export your alarms and settings to a file of your own from <strong>Settings → Backup &amp; Restore</strong>; that file goes wherever you choose to save it and is never uploaded.</p>
+    </article>
+
+    <article aria-labelledby="security-heading">
+      <h2 id="security-heading">Security and third-party code</h2>
+      <p>The app relies on Android platform services and open-source libraries, and uses no third-party advertising or analytics SDKs. Local data is protected by Android's app sandbox. Network traffic is HTTPS-only, enforced by the app's network security configuration.</p>
+    </article>
+
+    <article aria-labelledby="children-heading">
+      <h2 id="children-heading">Children's privacy</h2>
+      <p>Feldman Clock is a general-audience utility. It is not directed at children and does not knowingly collect personal information from children or anyone else.</p>
+    </article>
+
+    <article aria-labelledby="changes-heading">
+      <h2 id="changes-heading">Changes and contact</h2>
+      <p>If the app's data practices change, this policy will be updated before those practices take effect, and the effective date will be revised.</p>
+      <p>Questions or privacy requests can be submitted through the project's <a href="https://github.com/feldmandev/feldman-clock/issues">GitHub issue tracker</a>. The app source is available in the <a href="https://github.com/feldmandev/feldman-clock">Feldman Clock repository</a>.</p>
+    </article>
+  </main>
+
+  <footer>Feldman Clock · Effective September 1, 2026</footer>
+</body>
+</html>

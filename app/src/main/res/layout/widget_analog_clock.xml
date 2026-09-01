@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-License-Identifier: GPL-3.0-only
+-->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/analog_widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Self-ticking, so the hands stay live without the provider waking up every minute. -->
+    <AnalogClock
+        android:id="@+id/analog_widget_clock"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dial="@drawable/material_you_analog_clock_dial_flower"
+        android:hand_hour="@drawable/material_you_analog_clock_hour"
+        android:hand_minute="@drawable/material_you_analog_clock_minute"
+        android:hand_second="@drawable/material_you_analog_clock_second"
+        tools:ignore="Deprecated" />
+
+    <!--
+        The date, drawn by the provider onto a dial-sized bitmap so it can sit anywhere on the
+        face. Centred on the clock so the bitmap's coordinates line up with the dial's.
+    -->
+    <ImageView
+        android:id="@+id/analog_widget_date_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="@null"
+        android:visibility="gone" />
+
+    <!--
+        Only here so the widget picker's generated preview has a date to show; the provider hides
+        it in favour of the bitmap above.
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- FrameLayout rather than Space: RemoteViews only inflates @RemoteView classes. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="17" />
+
+        <TextClock
+            android:id="@+id/analog_widget_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/feldman_rounded"
+            android:format12Hour="EEE d"
+            android:format24Hour="EEE d"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:textColor="@color/widget_text_color"
+            android:textSize="14sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="79" />
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2011 The Android Open Source Project
+    modified
+    SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
+-->
+
+<resources>
+    <dimen name="main_clock_font_size">125sp</dimen>
+    <item name="city_list_end_guide_percent" type="fraction">0.65</item>
+    <dimen name="max_dimension_empty_view">450dp</dimen>
+</resources>

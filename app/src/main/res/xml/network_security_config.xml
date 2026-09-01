@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Release network policy: HTTPS only, system CAs only.
+
+    Cleartext is rejected outright so a downgrade to http:// fails loudly at the call site
+    instead of silently sending traffic in the clear. User-installed CAs are NOT trusted, so
+    a device with a proxy CA installed cannot intercept this app's requests.
+
+    The debug variant overrides this file (app/src/debug/res/xml/network_security_config.xml)
+    to allow user CAs for local traffic inspection. That override never ships.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

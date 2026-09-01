@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Debug-only override. Trusts user-installed CAs so tools like Charles or mitmproxy can
+    inspect traffic on a development device.
+
+    This file lives in the debug source set and replaces the main one at merge time, so it
+    is never part of a release build. Do not move it to src/main.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

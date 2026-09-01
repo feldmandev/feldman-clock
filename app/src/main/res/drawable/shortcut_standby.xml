@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2016 The Android Open Source Project
+    modified
+    SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
+-->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <path
+        android:fillColor="@color/md_theme_primary"
+        android:pathData="M24,24m-22,0a22,22 0,1 1,44 0a22,22 0,1 1,-44 0" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M19 33V15 33Zm8-11q-.425 0-.7125-.2875T26 21t.2875-.7125T27 20t.7125.2875T28 21t-.2875.7125T27 22Zm.5 5h-7q-.15 0-.225-.1375T20.3 26.6l1.625-2.175q.075-.1.2-.1t.2.1L23.5 26l1.675-2.225q.075-.1.2-.1t.2.1L27.7 26.6q.1.125.025.2625T27.5 27ZM19 33V15H29V33H19Zm0 2H29q.825 0 1.4125-.5875T31 33V22.9q.45-.175.725-.55T32 21.5v-2q0-.475-.275-.85T31 18.1V15q0-.825-.5875-1.4125T29 13H19q-.825 0-1.4125.5875T17 15V33q0 .825.5875 1.4125T19 35Z" />
+</vector>

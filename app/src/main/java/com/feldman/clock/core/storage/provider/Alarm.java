@@ -1,0 +1,890 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ * modified
+ * SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
+ */
+
+package com.feldman.clock.core.storage.provider;
+
+import com.feldman.clock.app.ClockApplication;
+
+import static com.feldman.clock.app.ClockApplication.getDefaultSharedPreferences;
+import static com.feldman.clock.settings.PreferencesDefaultValues.DEFAULT_ALARM_SNOOZE_DURATION;
+import static com.feldman.clock.settings.PreferencesDefaultValues.DEFAULT_ALARM_VOLUME;
+import static com.feldman.clock.settings.PreferencesDefaultValues.DEFAULT_AUTO_SILENCE_DURATION;
+import static com.feldman.clock.settings.PreferencesDefaultValues.DEFAULT_MISSED_ALARM_REPEAT_LIMIT;
+import static com.feldman.clock.settings.PreferencesDefaultValues.DEFAULT_SORT_BY_ALARM_TIME;
+import static com.feldman.clock.settings.PreferencesDefaultValues.DEFAULT_VOLUME_CRESCENDO_DURATION;
+import static com.feldman.clock.settings.PreferencesDefaultValues.SORT_ALARM_BY_ASCENDING_CREATION_ORDER;
+import static com.feldman.clock.settings.PreferencesDefaultValues.SORT_ALARM_BY_DESCENDING_CREATION_ORDER;
+import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable;
+import androidx.annotation.NonNull;
+import androidx.loader.content.CursorLoader;
+import com.feldman.clock.R;
+import com.feldman.clock.core.data.DataModel;
+import com.feldman.clock.settings.SettingsDAO;
+import com.feldman.clock.core.data.Weekdays;
+import com.feldman.clock.core.util.RingtoneUtils;
+import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
+
+public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
+    /**
+     * Alarms start with an invalid id when it hasn't been saved to the database.
+     */
+    public static final long INVALID_ID = -1;
+
+    /**
+     * SharedPreferences key used to indicate whether the styled repeat day display is enabled
+     * for a specific alarm. Used to customize how repeat days are shown in the UI.
+     */
+    private static final String KEY_SHOW_STYLED_REPEAT_DAY = "show_styled_repeat_day_";
+
+    public static final Parcelable.Creator<Alarm> CREATOR = new Parcelable.Creator<>() {
+        public Alarm createFromParcel(Parcel p) {
+            return new Alarm(p);
+        }
+
+        public Alarm[] newArray(int size) {
+            return new Alarm[size];
+        }
+    };
+
+    /**
+     * The default sort order for this table
+     */
+    private static final String DEFAULT_SORT_ORDER =
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + HOUR + " ASC, " +
+                    ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + MINUTES + " ASC, " +
+                    ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + ClockContract.AlarmsColumns._ID + " DESC";
+
+    /**
+     * The default sort order for this table with enabled alarms first
+     */
+    private static final String DEFAULT_SORT_ORDER_WITH_ENABLED_FIRST =
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + ENABLED + " DESC, " +
+                    ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + HOUR + " ASC, " +
+                    ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + MINUTES + " ASC, " +
+                    ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + ClockContract.AlarmsColumns._ID + " DESC";
+
+    /**
+     * The sort order by descending ID to display oldest alarms last.
+     */
+    private static final String SORT_ORDER_BY_DESCENDING_CREATION =
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + _ID + " DESC";
+
+    /**
+     * The sort order that places enabled alarms first, then sorts alarms by descending ID
+     * with the oldest last.
+     */
+    private static final String SORT_ORDER_BY_DESCENDING_CREATION_WITH_ENABLED_FIRST =
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + ENABLED + " DESC, " +
+                    ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + _ID + " DESC";
+
+    /**
+     * The sort order by ascending ID to display oldest alarms first.
+     */
+    private static final String SORT_ORDER_BY_ASCENDING_CREATION =
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + _ID + " ASC";
+
+    /**
+     * The sort order that places enabled alarms first, then sorts alarms by ascending ID
+     * with the oldest first.
+     */
+    private static final String SORT_ORDER_BY_ASCENDING_CREATION_WITH_ENABLED_FIRST =
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + ENABLED + " DESC, " +
+                    ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + _ID + " ASC";
+
+    private static final String[] QUERY_COLUMNS = {
+            _ID,
+            YEAR,
+            MONTH,
+            DAY,
+            HOUR,
+            MINUTES,
+            DAYS_OF_WEEK,
+            ENABLED,
+            VIBRATE,
+            FLASH,
+            LABEL,
+            RINGTONE,
+            DELETE_AFTER_USE,
+            AUTO_SILENCE_DURATION,
+            SNOOZE_DURATION,
+            MISSED_ALARM_REPEAT_LIMIT,
+            CRESCENDO_DURATION,
+            ALARM_VOLUME,
+            PAUSE_START_TIME,
+            PAUSE_END_TIME
+    };
+    private static final String[] QUERY_ALARMS_WITH_INSTANCES_COLUMNS = {
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + _ID,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + YEAR,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + MONTH,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + DAY,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + HOUR,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + MINUTES,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + DAYS_OF_WEEK,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + ENABLED,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + VIBRATE,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + FLASH,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + LABEL,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + RINGTONE,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + DELETE_AFTER_USE,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + AUTO_SILENCE_DURATION,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + SNOOZE_DURATION,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + MISSED_ALARM_REPEAT_LIMIT,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + CRESCENDO_DURATION,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + ALARM_VOLUME,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + ClockContract.AlarmsColumns.PAUSE_START_TIME,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + ClockContract.AlarmsColumns.PAUSE_END_TIME,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.ALARM_STATE,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns._ID,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.YEAR,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.MONTH,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.DAY,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.HOUR,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.MINUTES,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.LABEL,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.VIBRATE,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.FLASH,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.AUTO_SILENCE_DURATION,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.SNOOZE_DURATION,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.MISSED_ALARM_REPEAT_COUNT,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.MISSED_ALARM_REPEAT_LIMIT,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.CRESCENDO_DURATION,
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.ALARM_VOLUME
+    };
+    /**
+     * These save calls to cursor.getColumnIndexOrThrow()
+     * THEY MUST BE KEPT IN SYNC WITH ABOVE QUERY COLUMNS
+     */
+    private static final int ID_INDEX = 0;
+    private static final int YEAR_INDEX = 1;
+    private static final int MONTH_INDEX = 2;
+    private static final int DAY_INDEX = 3;
+    private static final int HOUR_INDEX = 4;
+    private static final int MINUTES_INDEX = 5;
+    private static final int DAYS_OF_WEEK_INDEX = 6;
+    private static final int ENABLED_INDEX = 7;
+    private static final int VIBRATE_INDEX = 8;
+    private static final int FLASH_INDEX = 9;
+    private static final int LABEL_INDEX = 10;
+    private static final int RINGTONE_INDEX = 11;
+    private static final int DELETE_AFTER_USE_INDEX = 12;
+    private static final int AUTO_SILENCE_DURATION_INDEX = 13;
+    private static final int SNOOZE_DURATION_INDEX = 14;
+    private static final int MISSED_ALARM_REPEAT_LIMIT_INDEX = 15;
+    private static final int CRESCENDO_DURATION_INDEX = 16;
+    private static final int ALARM_VOLUME_INDEX = 17;
+    private static final int PAUSE_START_TIME_INDEX = 18;
+    private static final int PAUSE_END_TIME_INDEX = 19;
+
+    private static final int INSTANCE_STATE_INDEX = 20;
+    public static final int INSTANCE_ID_INDEX = 21;
+    public static final int INSTANCE_YEAR_INDEX = 22;
+    public static final int INSTANCE_MONTH_INDEX = 23;
+    public static final int INSTANCE_DAY_INDEX = 24;
+    public static final int INSTANCE_HOUR_INDEX = 25;
+    public static final int INSTANCE_MINUTE_INDEX = 26;
+    public static final int INSTANCE_LABEL_INDEX = 27;
+    public static final int INSTANCE_VIBRATE_INDEX = 28;
+    public static final int INSTANCE_FLASH_INDEX = 29;
+    public static final int INSTANCE_AUTO_SILENCE_DURATION_INDEX = 30;
+    public static final int INSTANCE_SNOOZE_DURATION_INDEX = 31;
+    public static final int INSTANCE_MISSED_ALARM_REPEAT_COUNT_INDEX = 32;
+    public static final int INSTANCE_MISSED_ALARM_REPEAT_LIMIT_INDEX = 33;
+    public static final int INSTANCE_CRESCENDO_DURATION_INDEX = 34;
+    public static final int INSTANCE_ALARM_VOLUME_INDEX = 35;
+
+    private static final int COLUMN_COUNT = PAUSE_END_TIME_INDEX + 1;
+    private static final int ALARM_JOIN_INSTANCE_COLUMN_COUNT = INSTANCE_ALARM_VOLUME_INDEX + 1;
+    // Public fields
+    public long id;
+    public boolean enabled;
+    public int year;
+    public int month;
+    public int day;
+    public int hour;
+    public int minutes;
+    public Weekdays daysOfWeek;
+    public boolean vibrate;
+    public boolean flash;
+    public String label;
+    public Uri alert;
+    public boolean deleteAfterUse;
+    public int autoSilenceDuration;
+    public int snoozeDuration;
+    public int missedAlarmRepeatLimit;
+    public int crescendoDuration;
+    // Alarm volume level in steps; not a percentage
+    public int alarmVolume;
+    public long pauseStartTime;
+    public long pauseEndTime;
+    public int instanceState;
+
+    // Creates a default alarm at the current time.
+    public Alarm() {
+        this(0,
+                0,
+                0,
+                0,
+                0);
+    }
+
+    public Alarm(int year, int month, int day, int hour, int minutes) {
+        this.id = INVALID_ID;
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.hour = hour;
+        this.minutes = minutes;
+        this.vibrate = true;
+        this.flash = true;
+        this.daysOfWeek = Weekdays.NONE;
+        this.label = "";
+        this.alert = DataModel.getDataModel().getAlarmRingtoneUriFromSettings();
+        this.deleteAfterUse = false;
+        this.autoSilenceDuration = DEFAULT_AUTO_SILENCE_DURATION;
+        this.snoozeDuration = DEFAULT_ALARM_SNOOZE_DURATION;
+        this.missedAlarmRepeatLimit = Integer.parseInt(DEFAULT_MISSED_ALARM_REPEAT_LIMIT);
+        this.crescendoDuration = DEFAULT_VOLUME_CRESCENDO_DURATION;
+        this.alarmVolume = DEFAULT_ALARM_VOLUME;
+    }
+
+    // Used to backup/restore the alarm
+    public Alarm(long id, boolean enabled, int year, int month, int day, int hour, int minutes,
+                 boolean vibrate, boolean flash, Weekdays daysOfWeek, String label, String alert,
+                 boolean deleteAfterUse, int autoSilenceDuration, int snoozeDuration,
+                 int missedAlarmRepeatLimit, int crescendoDuration, int alarmVolume) {
+
+        this.id = id;
+        this.enabled = enabled;
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.hour = hour;
+        this.minutes = minutes;
+        this.vibrate = vibrate;
+        this.flash = flash;
+        this.daysOfWeek = daysOfWeek;
+        this.label = label;
+        this.alert = Uri.parse(alert);
+        this.deleteAfterUse = deleteAfterUse;
+        this.autoSilenceDuration = autoSilenceDuration;
+        this.snoozeDuration = snoozeDuration;
+        this.missedAlarmRepeatLimit = missedAlarmRepeatLimit;
+        this.crescendoDuration = crescendoDuration;
+        this.alarmVolume = alarmVolume;
+    }
+
+    public Alarm(Cursor c) {
+        id = c.getLong(ID_INDEX);
+        enabled = c.getInt(ENABLED_INDEX) == 1;
+        year = c.getInt(YEAR_INDEX);
+        month = c.getInt(MONTH_INDEX);
+        day = c.getInt(DAY_INDEX);
+        hour = c.getInt(HOUR_INDEX);
+        minutes = c.getInt(MINUTES_INDEX);
+        daysOfWeek = Weekdays.fromBits(c.getInt(DAYS_OF_WEEK_INDEX));
+        vibrate = c.getInt(VIBRATE_INDEX) == 1;
+        flash = c.getInt(FLASH_INDEX) == 1;
+        label = c.getString(LABEL_INDEX);
+        deleteAfterUse = c.getInt(DELETE_AFTER_USE_INDEX) == 1;
+        autoSilenceDuration = c.getInt(AUTO_SILENCE_DURATION_INDEX);
+        snoozeDuration = c.getInt(SNOOZE_DURATION_INDEX);
+        missedAlarmRepeatLimit = c.getInt(MISSED_ALARM_REPEAT_LIMIT_INDEX);
+        crescendoDuration = c.getInt(CRESCENDO_DURATION_INDEX);
+        alarmVolume = c.getInt(ALARM_VOLUME_INDEX);
+        pauseStartTime = c.getLong(PAUSE_START_TIME_INDEX);
+        pauseEndTime = c.getLong(PAUSE_END_TIME_INDEX);
+
+        if (c.getColumnCount() == ALARM_JOIN_INSTANCE_COLUMN_COUNT) {
+            instanceState = c.getInt(INSTANCE_STATE_INDEX);
+        }
+
+        if (c.isNull(RINGTONE_INDEX)) {
+            // Should we be saving this with the current ringtone or leave it null
+            // so it changes when user changes default ringtone?
+            alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        } else {
+            alert = Uri.parse(c.getString(RINGTONE_INDEX));
+        }
+    }
+
+    Alarm(Parcel p) {
+        id = p.readLong();
+        enabled = p.readInt() == 1;
+        year = p.readInt();
+        month = p.readInt();
+        day = p.readInt();
+        hour = p.readInt();
+        minutes = p.readInt();
+        daysOfWeek = Weekdays.fromBits(p.readInt());
+        vibrate = p.readInt() == 1;
+        flash = p.readInt() == 1;
+        label = p.readString();
+        alert = p.readParcelable(getClass().getClassLoader(), Uri.class);
+        deleteAfterUse = p.readInt() == 1;
+        autoSilenceDuration = p.readInt();
+        snoozeDuration = p.readInt();
+        missedAlarmRepeatLimit = p.readInt();
+        crescendoDuration = p.readInt();
+        alarmVolume = p.readInt();
+        pauseStartTime = p.readLong();
+        pauseEndTime = p.readLong();
+    }
+
+    public static ContentValues createContentValues(Alarm alarm) {
+        ContentValues values = new ContentValues(COLUMN_COUNT);
+        if (alarm.id != INVALID_ID) {
+            values.put(ClockContract.AlarmsColumns._ID, alarm.id);
+        }
+
+        values.put(ENABLED, alarm.enabled ? 1 : 0);
+        values.put(YEAR, alarm.year);
+        values.put(MONTH, alarm.month);
+        values.put(DAY, alarm.day);
+        values.put(HOUR, alarm.hour);
+        values.put(MINUTES, alarm.minutes);
+        values.put(DAYS_OF_WEEK, alarm.daysOfWeek.getBits());
+        values.put(VIBRATE, alarm.vibrate ? 1 : 0);
+        values.put(FLASH, alarm.flash ? 1 : 0);
+        values.put(LABEL, alarm.label);
+        values.put(DELETE_AFTER_USE, alarm.deleteAfterUse ? 1 : 0);
+        values.put(AUTO_SILENCE_DURATION, alarm.autoSilenceDuration);
+        values.put(SNOOZE_DURATION, alarm.snoozeDuration);
+        values.put(MISSED_ALARM_REPEAT_LIMIT, alarm.missedAlarmRepeatLimit);
+        values.put(CRESCENDO_DURATION, alarm.crescendoDuration);
+        values.put(ALARM_VOLUME, alarm.alarmVolume);
+        values.put(PAUSE_START_TIME, alarm.pauseStartTime);
+        values.put(PAUSE_END_TIME, alarm.pauseEndTime);
+        if (alarm.alert == null) {
+            // We want to put null, so default alarm changes
+            values.putNull(RINGTONE);
+        } else {
+            values.put(RINGTONE, alarm.alert.toString());
+        }
+
+        return values;
+    }
+
+    public void writeToParcel(Parcel p, int flags) {
+        p.writeLong(id);
+        p.writeInt(enabled ? 1 : 0);
+        p.writeInt(year);
+        p.writeInt(month);
+        p.writeInt(day);
+        p.writeInt(hour);
+        p.writeInt(minutes);
+        p.writeInt(daysOfWeek.getBits());
+        p.writeInt(vibrate ? 1 : 0);
+        p.writeInt(flash ? 1 : 0);
+        p.writeString(label);
+        p.writeParcelable(alert, flags);
+        p.writeInt(deleteAfterUse ? 1 : 0);
+        p.writeInt(autoSilenceDuration);
+        p.writeInt(snoozeDuration);
+        p.writeInt(missedAlarmRepeatLimit);
+        p.writeInt(crescendoDuration);
+        p.writeInt(alarmVolume);
+        p.writeLong(pauseStartTime);
+        p.writeLong(pauseEndTime);
+    }
+
+    public int describeContents() {
+        return 0;
+    }
+
+    public static Intent createIntent(Context context, Class<?> cls, long alarmId) {
+        return new Intent(context, cls).setData(getContentUri(alarmId));
+    }
+
+    public static Uri getContentUri(long alarmId) {
+        return ContentUris.withAppendedId(CONTENT_URI, alarmId);
+    }
+
+    public static long getId(Uri contentUri) {
+        return ContentUris.parseId(contentUri);
+    }
+
+    /**
+     * Get alarm cursor loader for all alarms.
+     *
+     * @param context to query the database.
+     * @return cursor loader with all the alarms.
+     */
+    public static CursorLoader getAlarmsCursorLoader(Context context) {
+        final SharedPreferences prefs = getDefaultSharedPreferences(context);
+        boolean areEnabledAlarmsFirst = SettingsDAO.areEnabledAlarmsDisplayedFirst(prefs);
+
+        String sortOrder = DEFAULT_SORT_ORDER;
+        String sortingPref = SettingsDAO.getAlarmSorting(prefs);
+
+        switch (sortingPref) {
+            case DEFAULT_SORT_BY_ALARM_TIME -> {
+                if (areEnabledAlarmsFirst) {
+                    sortOrder = DEFAULT_SORT_ORDER_WITH_ENABLED_FIRST;
+                }
+            }
+
+            case SORT_ALARM_BY_DESCENDING_CREATION_ORDER -> {
+                if (areEnabledAlarmsFirst) {
+                    sortOrder = SORT_ORDER_BY_DESCENDING_CREATION_WITH_ENABLED_FIRST;
+                } else {
+                    sortOrder = SORT_ORDER_BY_DESCENDING_CREATION;
+                }
+            }
+
+            case SORT_ALARM_BY_ASCENDING_CREATION_ORDER -> {
+                if (areEnabledAlarmsFirst) {
+                    sortOrder = SORT_ORDER_BY_ASCENDING_CREATION_WITH_ENABLED_FIRST;
+                } else {
+                    sortOrder = SORT_ORDER_BY_ASCENDING_CREATION;
+                }
+            }
+        }
+
+        return new CursorLoader(context, ALARMS_WITH_INSTANCES_URI,
+                QUERY_ALARMS_WITH_INSTANCES_COLUMNS, null, null, sortOrder) {
+            @Override
+            public Cursor loadInBackground() {
+                // Prime the ringtone title cache for later access. Most alarms will refer to
+                // system ringtones.
+                DataModel.getDataModel().loadRingtoneTitles();
+
+                return super.loadInBackground();
+            }
+        };
+    }
+
+    /**
+     * Get alarm by id.
+     *
+     * @param cr      provides access to the content model
+     * @param alarmId for the desired alarm.
+     * @return alarm if found, null otherwise
+     */
+    public static Alarm getAlarm(ContentResolver cr, long alarmId) {
+        try (Cursor cursor = cr.query(getContentUri(alarmId), QUERY_COLUMNS, null, null, null)) {
+            if (cursor != null && cursor.moveToFirst()) {
+                return new Alarm(cursor);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Get all alarms given conditions.
+     *
+     * @param cr            provides access to the content model
+     * @param selection     A filter declaring which rows to return, formatted as an
+     *                      SQL WHERE clause (excluding the WHERE itself). Passing null will
+     *                      return all rows for the given URI.
+     * @param selectionArgs You may include ?s in selection, which will be
+     *                      replaced by the values from selectionArgs, in the order that they
+     *                      appear in the selection. The values will be bound as Strings.
+     * @return list of alarms matching where clause or empty list if none found.
+     */
+    public static List<Alarm> getAlarms(ContentResolver cr, String selection,
+                                        String... selectionArgs) {
+        final List<Alarm> result = new LinkedList<>();
+        try (Cursor cursor = cr.query(CONTENT_URI, QUERY_COLUMNS, selection, selectionArgs, null)) {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    result.add(new Alarm(cursor));
+                } while (cursor.moveToNext());
+            }
+        }
+
+        return result;
+    }
+
+    public static Alarm addAlarm(ContentResolver contentResolver, Alarm alarm) {
+        ContentValues values = createContentValues(alarm);
+        Uri uri = contentResolver.insert(CONTENT_URI, values);
+        alarm.id = getId(uri);
+        return alarm;
+    }
+
+    public static void updateAlarm(ContentResolver contentResolver, Alarm alarm) {
+        if (alarm.id == Alarm.INVALID_ID) return;
+        ContentValues values = createContentValues(alarm);
+        contentResolver.update(getContentUri(alarm.id), values, null, null);
+    }
+
+    public static boolean deleteAlarm(ContentResolver contentResolver, long alarmId) {
+        if (alarmId == INVALID_ID) return false;
+        int deletedRows = contentResolver.delete(getContentUri(alarmId), "", null);
+        return deletedRows == 1;
+    }
+
+    public String getLabelOrDefault(Context context) {
+        return label.isEmpty() ? context.getString(R.string.default_label) : label;
+    }
+
+    /**
+     * Determines whether the alarm is eligible to show a preemptive dismiss button.
+     * <p>
+     * The behavior depends on user settings and the current alarm state:</p>
+     * <ul>
+     *      <li>If the dismiss button is configured to be shown when the alarm is enabled,
+     *          the method returns {@code true} if the alarm is enabled or currently snoozed.</li>
+     *      <li>Otherwise, it returns true only if the alarm is in SNOOZE_STATE or NOTIFICATION_STATE.</li>
+     * </ul>
+     * @param context the context used to access shared preferences
+     * @return {@code true} if the alarm can show a preemptive dismiss button; {@code false} otherwise.
+     */
+    public boolean canPreemptivelyDismiss(Context context) {
+        if (SettingsDAO.isDismissButtonDisplayedWhenAlarmEnabled(getDefaultSharedPreferences(context))) {
+            return enabled || instanceState == AlarmInstance.SNOOZE_STATE;
+        } else {
+            return instanceState == AlarmInstance.SNOOZE_STATE || instanceState == AlarmInstance.NOTIFICATION_STATE;
+        }
+    }
+
+    /**
+     * @return {@code true} if the styled repeat day display is enabled for this alarm;
+     * {@code false} otherwise.
+     */
+    public boolean isRepeatDayStyleEnabled(SharedPreferences prefs) {
+        return prefs.getBoolean(KEY_SHOW_STYLED_REPEAT_DAY + id, false);
+    }
+
+    /**
+     * Enables the styled repeat day display for this alarm only if all days are selected.
+     */
+    public void enableRepeatDayStyleIfAllDaysSelected(SharedPreferences prefs) {
+        if (!daysOfWeek.isAllDaysSelected()) {
+            return;
+        }
+
+        prefs.edit().putBoolean(KEY_SHOW_STYLED_REPEAT_DAY + id, true).apply();
+    }
+
+    /**
+     * Removes the styled repeat day display preference for this alarm.
+     * This disables the styled repeat day behavior.
+     */
+    public void removeRepeatDayStyle(SharedPreferences prefs) {
+        prefs.edit().remove(KEY_SHOW_STYLED_REPEAT_DAY + id).apply();
+    }
+
+    public static boolean isTomorrow(Alarm alarm, Calendar now) {
+        if (alarm.instanceState == AlarmInstance.SNOOZE_STATE) {
+            return false;
+        }
+
+        final int totalAlarmMinutes = alarm.hour * 60 + alarm.minutes;
+        final int totalNowMinutes = now.get(Calendar.HOUR_OF_DAY) * 60 + now.get(Calendar.MINUTE);
+
+        return totalAlarmMinutes <= totalNowMinutes;
+    }
+
+    public boolean isDateInThePast() {
+        // If year is 0, this alarm has no specific date and cannot be "in the past"
+        if (year == 0) {
+            return false;
+        }
+        
+        Calendar alarmCalendar = Calendar.getInstance();
+        alarmCalendar.set(year, month, day);
+        alarmCalendar.set(Calendar.MILLISECOND, 0);
+
+        Calendar currentCalendar = Calendar.getInstance();
+
+        long alarmTimeInMillis = alarmCalendar.getTimeInMillis();
+        long currentTimeInMillis = currentCalendar.getTimeInMillis();
+
+        return alarmTimeInMillis < currentTimeInMillis;
+    }
+
+    public boolean isSpecifiedDate() {
+        // If year is 0, this is a "natural" alarm without a specific date
+        if (year == 0) {
+            return false;
+        }
+        
+        Calendar now = Calendar.getInstance();
+        // Set this variable to avoid lint warning
+        int currentMonth = now.get(Calendar.MONTH);
+
+        return year != now.get(Calendar.YEAR)
+                || month != currentMonth
+                || day != now.get(Calendar.DAY_OF_MONTH);
+    }
+
+    public static boolean isSpecifiedDateTomorrow(int alarmYear, int alarmMonth, int alarmDayOfMonth) {
+        // If year is 0, this is not a specified date
+        if (alarmYear == 0) {
+            return false;
+        }
+        
+        Calendar today = Calendar.getInstance();
+        Calendar tomorrow = (Calendar) today.clone();
+
+        tomorrow.add(Calendar.DAY_OF_YEAR, 1);
+
+        // Set this variable to avoid lint warning
+        int nextDayMonth = tomorrow.get(Calendar.MONTH);
+
+        return alarmYear == tomorrow.get(Calendar.YEAR) &&
+                alarmMonth == nextDayMonth &&
+                alarmDayOfMonth == tomorrow.get(Calendar.DAY_OF_MONTH);
+    }
+
+    public boolean isTimeBeforeOrEqual(Calendar referenceTime) {
+        int currentHour = referenceTime.get(Calendar.HOUR_OF_DAY);
+        int currentMinute = referenceTime.get(Calendar.MINUTE);
+
+        return hour < currentHour || (hour == currentHour && minutes <= currentMinute);
+    }
+
+    public boolean isScheduledForToday(Calendar reference) {
+        // For alarms without a specific date (year=0), check if it would fire today
+        if (year == 0) {
+            return !isTimeBeforeOrEqual(reference);
+        }
+        
+        int currentMonth = reference.get(Calendar.MONTH);
+        return year == reference.get(Calendar.YEAR)
+                && month == currentMonth
+                && day == reference.get(Calendar.DAY_OF_MONTH);
+    }
+
+    public AlarmInstance createInstanceAfter(Calendar time) {
+        Calendar nextInstanceTime = getNextAlarmTime(time);
+        AlarmInstance result = new AlarmInstance(nextInstanceTime, id);
+        result.mVibrate = vibrate;
+        result.mFlash = flash;
+        result.mLabel = label;
+        result.mRingtone = RingtoneUtils.isRandomRingtone(alert)
+                ? RingtoneUtils.getRandomRingtoneUri()
+                : RingtoneUtils.isRandomCustomRingtone(alert)
+                ? RingtoneUtils.getRandomCustomRingtoneUri()
+                : alert;
+        result.mAutoSilenceDuration = autoSilenceDuration;
+        result.mSnoozeDuration = snoozeDuration;
+        result.mMissedAlarmRepeatLimit = missedAlarmRepeatLimit;
+        result.mCrescendoDuration = crescendoDuration;
+        result.mAlarmVolume = alarmVolume;
+        return result;
+    }
+
+    /**
+     * @param currentTime the current time
+     * @return previous firing time, or null if this is a one-time alarm.
+     */
+    public Calendar getPreviousAlarmTime(Calendar currentTime) {
+        // If year is 0, this is a one-time alarm with no specific date
+        if (year == 0) {
+            return null;
+        }
+        
+        final Calendar previousInstanceTime = Calendar.getInstance(currentTime.getTimeZone());
+        previousInstanceTime.set(Calendar.YEAR, year);
+        previousInstanceTime.set(Calendar.MONTH, month);
+        previousInstanceTime.set(Calendar.DAY_OF_MONTH, day);
+        previousInstanceTime.set(Calendar.HOUR_OF_DAY, hour);
+        previousInstanceTime.set(Calendar.MINUTE, minutes);
+        previousInstanceTime.set(Calendar.SECOND, 0);
+        previousInstanceTime.set(Calendar.MILLISECOND, 0);
+
+        final int subtractDays = daysOfWeek.getDistanceToPreviousDay(previousInstanceTime);
+        if (subtractDays > 0) {
+            previousInstanceTime.add(Calendar.DAY_OF_WEEK, -subtractDays);
+            return previousInstanceTime;
+        } else {
+            return null;
+        }
+    }
+
+    public Calendar getNextAlarmTime(Calendar currentTime) {
+        final Calendar nextInstanceTime = Calendar.getInstance(currentTime.getTimeZone());
+        nextInstanceTime.set(Calendar.SECOND, 0);
+        nextInstanceTime.set(Calendar.MILLISECOND, 0);
+
+        if (daysOfWeek.isRepeating()) {
+            nextInstanceTime.setTimeInMillis(currentTime.getTimeInMillis());
+            nextInstanceTime.set(Calendar.HOUR_OF_DAY, hour);
+            nextInstanceTime.set(Calendar.MINUTE, minutes);
+
+            // If we are still behind the passed in currentTime, then add a day
+            if (nextInstanceTime.getTimeInMillis() <= currentTime.getTimeInMillis()) {
+                nextInstanceTime.add(Calendar.DAY_OF_YEAR, 1);
+            }
+
+            // The day of the week might be invalid, so find next valid one
+            final int addDays = daysOfWeek.getDistanceToNextDay(nextInstanceTime);
+            if (addDays > 0) {
+                nextInstanceTime.add(Calendar.DAY_OF_WEEK, addDays);
+            }
+
+            // Daylight Savings Time can alter the hours and minutes when adjusting the day above.
+            // Reset the desired hour and minute now that the correct day has been chosen.
+            nextInstanceTime.set(Calendar.HOUR_OF_DAY, hour);
+            nextInstanceTime.set(Calendar.MINUTE, minutes);
+        } else if (year == 0) {
+            // This is a "natural" alarm without a specific date.
+            // Use current time and calculate next occurrence based on time only.
+            nextInstanceTime.setTimeInMillis(currentTime.getTimeInMillis());
+            nextInstanceTime.set(Calendar.HOUR_OF_DAY, hour);
+            nextInstanceTime.set(Calendar.MINUTE, minutes);
+
+            // If we are still behind the passed in currentTime, then add a day
+            if (nextInstanceTime.getTimeInMillis() <= currentTime.getTimeInMillis()) {
+                nextInstanceTime.add(Calendar.DAY_OF_YEAR, 1);
+            }
+        } else {
+            // This is an alarm with a specific date
+            nextInstanceTime.set(Calendar.YEAR, year);
+            nextInstanceTime.set(Calendar.MONTH, month);
+            nextInstanceTime.set(Calendar.DAY_OF_MONTH, day);
+            nextInstanceTime.set(Calendar.HOUR_OF_DAY, hour);
+            nextInstanceTime.set(Calendar.MINUTE, minutes);
+
+            // If we are still behind the passed in currentTime, then add a day
+            if (nextInstanceTime.getTimeInMillis() <= currentTime.getTimeInMillis()) {
+                nextInstanceTime.add(Calendar.DAY_OF_YEAR, 1);
+            }
+        }
+
+        if (pauseStartTime > 0 && pauseEndTime > pauseStartTime) {
+            long triggerProps = nextInstanceTime.getTimeInMillis();
+            if (triggerProps >= pauseStartTime && triggerProps <= pauseEndTime) {
+                // Alarm is paused; find next time after pause window
+                Calendar afterPause = Calendar.getInstance(currentTime.getTimeZone());
+                afterPause.setTimeInMillis(pauseEndTime);
+                return getNextAlarmTime(afterPause);
+            }
+        }
+
+        return nextInstanceTime;
+    }
+
+    /**
+     * Returns the day of the week (as Calendar.DAY_OF_WEEK) when the alarm will next trigger.
+     * <p>
+     * If a valid AlarmInstance is provided and its scheduled time is in the future,
+     * that time is used to determine the next alarm day.
+     * Otherwise, the method calculates the next scheduled alarm time based on the current time
+     * and the alarm's repeat settings.</p>
+     *
+     * @param alarmInstance the current AlarmInstance, or null if not yet created
+     * @return the day of the week (e.g., Calendar.MONDAY, Calendar.TUESDAY, ...)
+     */
+    public int getNextAlarmDayOfWeek(AlarmInstance alarmInstance) {
+        Calendar referenceTime = Calendar.getInstance();
+        Calendar nextAlarmTime;
+
+        if (alarmInstance != null && alarmInstance.getAlarmTime().after(referenceTime)) {
+            nextAlarmTime = alarmInstance.getAlarmTime();
+        } else {
+            nextAlarmTime = getNextAlarmTime(referenceTime);
+        }
+
+        return nextAlarmTime.get(Calendar.DAY_OF_WEEK);
+    }
+
+    /**
+     * Returns the next alarm time for sorting purposes.
+     */
+    public Calendar getSortableNextAlarmTime(Alarm alarm, Calendar now) {
+        Calendar result = Calendar.getInstance(now.getTimeZone());
+        result.set(Calendar.SECOND, 0);
+        result.set(Calendar.MILLISECOND, 0);
+
+        if (alarm.daysOfWeek.isRepeating()) {
+            // getNextAlarmTime() properly handles the next valid day + DST
+            return alarm.getNextAlarmTime(now);
+        } else {
+            if (alarm.isSpecifiedDate()) {
+                if (alarm.isDateInThePast()) {
+                    // Expired specific date → anchor to today at the alarm's time
+                    result.set(Calendar.YEAR, now.get(Calendar.YEAR));
+                    result.set(Calendar.MONTH, now.get(Calendar.MONTH));
+                    result.set(Calendar.DAY_OF_MONTH, now.get(Calendar.DAY_OF_MONTH));
+                    result.set(Calendar.HOUR_OF_DAY, alarm.hour);
+                    result.set(Calendar.MINUTE, alarm.minutes);
+
+                    // If the time has already passed today, shift to tomorrow
+                    if (result.getTimeInMillis() < now.getTimeInMillis()) {
+                        result.add(Calendar.DAY_OF_YEAR, 1);
+                    }
+                } else {
+                    // Future or today’s specified date → respect the defined date/time
+                    result.set(Calendar.YEAR, alarm.year);
+                    result.set(Calendar.MONTH, alarm.month);
+                    result.set(Calendar.DAY_OF_MONTH, alarm.day);
+                    result.set(Calendar.HOUR_OF_DAY, alarm.hour);
+                    result.set(Calendar.MINUTE, alarm.minutes);
+                }
+
+                return result;
+            }
+        }
+
+        // Alarms with no date and no repetition → today at the alarm time,
+        // and if the time has passed, shift to tomorrow
+        result.set(Calendar.YEAR, now.get(Calendar.YEAR));
+        result.set(Calendar.MONTH, now.get(Calendar.MONTH));
+        result.set(Calendar.DAY_OF_MONTH, now.get(Calendar.DAY_OF_MONTH));
+        result.set(Calendar.HOUR_OF_DAY, alarm.hour);
+        result.set(Calendar.MINUTE, alarm.minutes);
+
+        if (result.getTimeInMillis() < now.getTimeInMillis()) {
+            result.add(Calendar.DAY_OF_YEAR, 1);
+        }
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof final Alarm other)) return false;
+        return id == other.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Long.valueOf(id).hashCode();
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Alarm{" +
+                "alert=" + alert +
+                ", id=" + id +
+                ", enabled=" + enabled +
+                ", year=" + year +
+                ", month=" + month +
+                ", day=" + day +
+                ", hour=" + hour +
+                ", minutes=" + minutes +
+                ", daysOfWeek=" + daysOfWeek +
+                ", vibrate=" + vibrate +
+                ", flash=" + flash +
+                ", label='" + label + '\'' +
+                ", deleteAfterUse=" + deleteAfterUse +
+                ", autoSilenceDuration=" + autoSilenceDuration +
+                ", snoozeDuration=" + snoozeDuration +
+                ", missedAlarmRepeatLimit=" + missedAlarmRepeatLimit +
+                ", crescendoDuration=" + crescendoDuration +
+                ", alarmVolume=" + alarmVolume +
+                '}';
+    }
+
+}

@@ -1,0 +1,43 @@
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_hourglass">
+
+    <!-- ROTATION PHASE (Group) -->
+    <target
+        android:name="frame_sand_bottom"
+        android:animation="@animator/hourglass_rotate" />
+
+    <!-- HIDE frame_sand_bottom AFTER rotation (Path) -->
+    <target
+        android:name="frame_sand_bottom_path"
+        android:animation="@animator/fade_out_fill"
+        android:startOffset="600" />
+
+    <!-- SHOW frame + sand AFTER rotation (Path) -->
+    <target
+        android:name="frame_path"
+        android:animation="@animator/fade_in_fill"
+        android:startOffset="600" />
+
+    <target
+        android:name="sand_top_path"
+        android:animation="@animator/fade_in_fill"
+        android:startOffset="600" />
+
+    <target
+        android:name="sand_bottom_path"
+        android:animation="@animator/fade_in_fill"
+        android:startOffset="600" />
+
+    <!-- SAND FALL (Group - ScaleY) -->
+    <target
+        android:name="sand_top"
+        android:animation="@animator/sand_top_drain"
+        android:startOffset="600" />
+
+    <target
+        android:name="sand_bottom"
+        android:animation="@animator/sand_bottom_fill"
+        android:startOffset="600" />
+
+</animated-vector>

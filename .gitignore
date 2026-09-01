@@ -1,0 +1,57 @@
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log/OS Files
+*.log
+*_log.txt
+*_errors.txt
+*_errs.txt
+build_log.txt
+.DS_Store
+Thumbs.db
+
+# Android Studio generated files and folders
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+output.json
+
+# IntelliJ
+*.iml
+.idea/
+
+# Keystore files and signing credentials.
+# keystore.properties.example is the tracked template; keystore.properties is yours and
+# must never be committed.
+*.jks
+*.keystore
+keystore.properties
+!keystore.properties.example
+
+# Release artifacts and R8 mapping files (upload mapping.txt to Play, don't commit it)
+*.aab
+mapping.txt
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
+# Android Profiling
+*.hprof
+
+# Compiled application files
+app/build
+app/release
+app/debug
+app/nightly
+/.agent_tmp/
+/clock-dashboard-qa.png
+/kotlin_errs.txt
+/release/
+
+# Local agent scratch (never publish)
+.codex-remote-attachments/

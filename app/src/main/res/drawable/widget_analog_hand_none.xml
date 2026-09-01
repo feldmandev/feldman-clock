@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Fully transparent hand, used to hide the second hand. AnalogClock's remotable setters take an
+    Icon, so swapping in a blank drawable is safer than trying to pass null through RemoteViews.
+    SPDX-License-Identifier: GPL-3.0-only
+-->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:width="380dp"
+    android:height="380dp"
+    android:viewportWidth="380"
+    android:viewportHeight="380"
+    tools:ignore="VectorRaster">
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M190,190h0v0h0z" />
+</vector>

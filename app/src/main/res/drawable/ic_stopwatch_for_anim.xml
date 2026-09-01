@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2014 The Android Open Source Project
+    modified
+    SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
+-->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+    <group
+        android:name="timer"
+        android:translateX="480"
+        android:translateY="480">
+        <group
+            android:name="timer_pivot"
+            android:translateX="-480"
+            android:translateY="-480">
+            <group android:name="timer_body">
+                <path
+                    android:name="timer_interior_path"
+                    android:fillAlpha="1"
+                    android:fillColor="@android:color/white"
+                    android:pathData="M480 880q-74 0-139.5-28.5T226 774 148.5 659.5 120 520t28.5-139.5T226 266t114.5-77.5T480 160q62 0 119 20t107 58l28-28q11-11 28-11t28 11 11 28-11 28l-28 28q38 50 58 107t20 119q0 74-28.5 139.5T734 774 619.5 851.5 480 880ZM480 800q116 0 198-82t82-198-82-198-198-82-198 82-82 198 82 198 198 82Z" />
+            </group>
+        </group>
+    </group>
+    <group
+        android:name="hand"
+        android:translateX="480"
+        android:translateY="480">
+        <group
+            android:name="hand_pivot"
+            android:translateX="-480"
+            android:translateY="-480">
+            <path
+                android:name="hand_path"
+                android:fillAlpha="1"
+                android:fillColor="@android:color/white"
+                android:pathData="M480 560q17 0 28.5-11.5T520 520V360q0-17-11.5-28.5T480 320t-28.5 11.5T440 360V520q0 17 11.5 28.5T480 560Z" />
+        </group>
+    </group>
+    <group
+        android:name="button"
+        android:translateX="480"
+        android:translateY="480">
+        <group
+            android:name="button_pivot"
+            android:translateX="-480"
+            android:translateY="-480">
+            <path
+                android:name="button_path"
+                android:fillAlpha="1"
+                android:fillColor="@android:color/white"
+                android:pathData="M400 120q-17 0-28.5-11.5T360 80t11.5-28.5T400 40H560q17 0 28.5 11.5T600 80t-11.5 28.5T560 120H400Z" />
+        </group>
+    </group>
+</vector>

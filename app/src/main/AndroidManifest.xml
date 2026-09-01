@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2016 The Android Open Source Project
+    modified
+    SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <permission
+        android:name="com.feldman.clock.permission.READ_AT_A_GLANCE"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="com.feldman.clock.permission.MANAGE_ALARMS"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="org.codeaurora.permission.POWER_OFF_ALARM" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.TURN_SCREEN_ON" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.POST_PROMOTED_NOTIFICATIONS" />
+    <uses-permission android:name="app.lawnchair.permission.UPDATE_CLOCK_WIDGETS" />
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--
+        Location is optional and used only to resolve the local weather forecast shown on the
+        clock screen. Coarse accuracy is sufficient for a city-level forecast; fine location is
+        not requested. See PRIVACY.md.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.HOME" />
+        </intent>
+    </queries>
+
+    <application
+        android:name="com.feldman.clock.app.ClockApplication"
+        android:allowBackup="false"
+        android:appCategory="productivity"
+        android:backupAgent="com.feldman.clock.app.ClockBackupAgent"
+        android:fullBackupContent="@xml/backup_scheme"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupOnly="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="${appName}"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requiredForAllUsers="true"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Clock"
+        tools:targetApi="s">
+
+        <meta-data
+            android:name="android.app.shortcuts"
+            android:resource="@xml/shortcuts" />
+
+        <!-- ============================================================== -->
+        <!-- Main app components.                                           -->
+        <!-- ============================================================== -->
+
+<!--        <activity-->
+<!--            android:name="com.feldman.clock.FirstLaunch"-->
+<!--            android:launchMode="singleTask"-->
+<!--            android:theme="@style/Theme.Clock">-->
+<!--        </activity>-->
+
+        <activity
+            android:name="com.feldman.clock.app.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Clock">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
+
+
+        <activity
+            android:name="com.feldman.clock.settings.SettingsActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/settings"
+            android:parentActivityName="com.feldman.clock.app.MainActivity"
+            android:taskAffinity=""
+            android:theme="@style/Theme.Clock" />
+
+        <activity
+            android:name="com.feldman.clock.app.integration.HandleShortcuts"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.NoDisplay" />
+
+        <!-- ============================================================== -->
+        <!-- AlarmClock API components.                                     -->
+        <!-- ============================================================== -->
+
+        <activity
+            android:name="com.feldman.clock.app.integration.HandleApiCalls"
+            android:directBootAware="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:showWhenLocked="true"
+            android:taskAffinity=""
+            android:exported="true"
+            android:permission="com.android.alarm.permission.SET_ALARM"
+            android:theme="@android:style/Theme.NoDisplay">
+
+            <intent-filter>
+                <action android:name="android.intent.action.DISMISS_ALARM" />
+                <action android:name="android.intent.action.DISMISS_TIMER" />
+                <action android:name="android.intent.action.SHOW_ALARMS" />
+                <action android:name="android.intent.action.SHOW_TIMERS" />
+                <action android:name="android.intent.action.SNOOZE_ALARM" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="feldmanclock"
+                    android:host="alarm"
+                    android:path="/create" />
+            </intent-filter>
+        </activity>
+
+        <activity-alias
+            android:name="com.feldman.clock.HandleSetAlarmApiCalls"
+            android:permission="com.android.alarm.permission.SET_ALARM"
+            android:exported="true"
+            android:targetActivity="com.feldman.clock.app.integration.HandleApiCalls">
+            <intent-filter>
+                <action android:name="android.intent.action.SET_ALARM" />
+                <action android:name="android.intent.action.SET_TIMER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- ============================================================== -->
+        <!-- Alarm components.                                              -->
+        <!-- ============================================================== -->
+
+        <activity
+            android:name="com.feldman.clock.alarm.AlarmFiringActivity"
+            android:directBootAware="true"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false"
+            android:showOnLockScreen="true"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.Clock.Wallpaper"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="DiscouragedApi, NonResizeableActivity" />
+
+        <activity
+            android:name="com.feldman.clock.ui.alarm.AlarmSelectionActivity"
+            android:label="@string/dismiss_alarm"
+            android:theme="@android:style/Theme.Material.Dialog.NoActionBar" />
+
+        <activity
+            android:name="com.feldman.clock.ui.alarm.EditNextAlarmActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:permission="com.android.alarm.permission.SET_ALARM"
+            android:taskAffinity=""
+            android:theme="@style/Theme.Clock.Translucent">
+            <intent-filter>
+                <action android:name="com.feldman.clock.action.EDIT_NEXT_ALARM" />
+                <action android:name="com.feldman.clock.action.SHOW_ALARM_LIST" />
+                <action android:name="com.feldman.clock.action.DISABLE_NEXT_ALARM" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="com.feldman.clock.core.storage.provider.ClockProvider"
+            android:authorities="${applicationId}"
+            android:directBootAware="true"
+            android:exported="false" />
+
+        <provider
+            android:name="com.feldman.clock.app.integration.AlarmBridgeProvider"
+            android:authorities="${applicationId}.alarm-bridge"
+            android:exported="true"
+            android:permission="com.feldman.clock.permission.MANAGE_ALARMS" />
+
+        <provider
+            android:name="com.feldman.clock.app.integration.AtAGlanceProvider"
+            android:authorities="${applicationId}.at-a-glance"
+            android:exported="true"
+            android:readPermission="com.feldman.clock.permission.READ_AT_A_GLANCE" />
+
+        <receiver
+            android:name="com.feldman.clock.alarm.AlarmInitReceiver"
+            android:directBootAware="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+                <action android:name="org.codeaurora.poweroffalarm.action.UPDATE_ALARM" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.feldman.clock.alarm.AlarmStateManager"
+            android:directBootAware="true" />
+            
+        <receiver
+            android:name="com.feldman.clock.alarm.AlarmReceiver"
+            android:directBootAware="true"
+            android:exported="false" />
+            
+
+        <service
+            android:name="com.feldman.clock.alarm.AlarmService"
+            android:directBootAware="true"
+            android:foregroundServiceType="mediaPlayback" />
+
+        <!-- ============================================================== -->
+        <!-- Timer components.                                              -->
+        <!-- ============================================================== -->
+
+
+
+        <!-- Legacy broadcast receiver that honors old scheduled timers across app upgrade. -->
+        <receiver
+            android:name="com.feldman.clock.timer.TimerReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="times_up" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.feldman.clock.timer.TimerService"
+            android:description="@string/timer_service_desc"
+            android:directBootAware="true"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Timer countdown notifications" />
+        </service>
+
+
+        <!-- ============================================================== -->
+        <!-- Stopwatch components.                                          -->
+        <!-- ============================================================== -->
+
+        <!--
+            "specialUse" rather than "systemExempted": the latter is reserved for system and
+            privileged apps and is rejected for Play distribution. The stopwatch needs to keep
+            counting with the app backgrounded, which is exactly the special-use case.
+        -->
+        <service
+            android:name="com.feldman.clock.stopwatch.StopwatchService"
+            android:description="@string/stopwatch_service_desc"
+            android:directBootAware="true"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Stopwatch elapsed-time notification" />
+        </service>
+
+
+
+
+
+
+        <!-- ============================================================== -->
+        <!-- Quick Settings tiles.                                          -->
+        <!-- ============================================================== -->
+
+        <service
+            android:name="com.feldman.clock.app.tiles.StopwatchTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_tab_stopwatch_static"
+            android:label="@string/stopwatch_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.feldman.clock.app.tiles.TimerTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_hourglass"
+            android:label="@string/timer_tile_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.feldman.clock.app.tiles.StandbyTileService"
+            android:exported="true"
+            android:icon="@drawable/shortcut_standby"
+            android:label="@string/shortcut_start_standby_short"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <!-- ============================================================== -->
+        <!-- Home screen widgets.                                           -->
+        <!-- ============================================================== -->
+
+        <!-- Opened by the launcher when a placed widget is long-pressed and edited. -->
+        <activity
+            android:name="com.feldman.clock.ui.widgets.WidgetConfigureActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.Clock">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="com.feldman.clock.ui.widgets.AnalogClockWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_label_analog">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_analog_clock_info" />
+        </receiver>
+
+
+        <receiver
+            android:name="com.feldman.clock.ui.widgets.DigitalClockWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_label_digital">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.app.action.NEXT_ALARM_CLOCK_CHANGED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_digital_clock_info" />
+        </receiver>
+
+        <receiver
+            android:name="com.feldman.clock.ui.widgets.StopwatchWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_label_stopwatch">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_stopwatch_info" />
+        </receiver>
+
+        <receiver
+            android:name="com.feldman.clock.ui.widgets.TimerWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_label_timer">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_timer_info" />
+        </receiver>
+
+        <receiver
+            android:name="com.feldman.clock.ui.widgets.ClockWidgetTickReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- DreamService for standby -->
+        <service
+            android:name="com.feldman.clock.ui.standby.ClockStandbyService"
+            android:label="Clock Standby"
+            android:permission="android.permission.BIND_DREAM_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.dream"
+                android:resource="@xml/standby_config" />
+            <meta-data
+                android:name="android.service.dream.settingsActivity"
+                android:value="com.feldman.clock.ui.standby.activities.StandbyCustomizeActivity" />
+        </service>
+
+        <!--
+            Standby screensaver launched on demand from the dynamic launcher shortcut created
+            in ShortcutController.createStandbyShortcut(). Distinct from ClockStandbyService
+            above, which is the DreamService the system starts while docked/charging.
+            Not exported: LauncherApps.startShortcut() launches it on the app's behalf.
+        -->
+        <activity
+            android:name="com.feldman.clock.ui.standby.StandbyActivity"
+            android:exported="false"
+            android:label="@string/shortcut_start_standby_short"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.Clock" />
+
+        <activity
+            android:name="com.feldman.clock.ui.standby.activities.StandbyCustomizeActivity"
+            android:exported="false"
+            android:taskAffinity=""
+            android:excludeFromRecents="true" />
+
+        <!-- Settings screen (appears in standby picker) -->
+        <activity
+            android:name="com.feldman.clock.ui.standby.activities.StandbySettingsActivity"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name="com.feldman.clock.ui.standby.activities.PreviewActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.feldman.clock.ui.standby.widgets.ClockWidgetHostActivity"
+            android:exported="false" />
+    </application>
+</manifest>

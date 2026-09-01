@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actions>
+    <action intentName="actions.intent.CREATE_ALARM">
+
+        <fulfillment urlTemplate="feldmanclock://create{?time,message}">
+
+            <parameter-mapping
+                intentParameter="alarm.schedule.startTime"
+                urlParameter="time" />
+
+            <parameter-mapping
+                intentParameter="alarm.name"
+                urlParameter="message" />
+
+        </fulfillment>
+    </action>
+</actions>

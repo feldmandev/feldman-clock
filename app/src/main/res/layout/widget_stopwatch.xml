@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/stopwatch_widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/stopwatch_widget_face"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_gravity="center"
+        android:background="@drawable/widget_stopwatch_circle">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Chronometer
+                android:id="@+id/stopwatch_widget_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:format="%s"
+                android:textColor="@color/md_theme_onPrimaryContainer"
+                android:textSize="28sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/stopwatch_widget_toggle"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/widget_stopwatch_fab"
+                android:contentDescription="@string/stopwatch_widget_start_pause"
+                android:padding="10dp"
+                android:tint="@color/md_theme_onPrimary" />
+
+            <TextView
+                android:id="@+id/stopwatch_widget_lap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/md_theme_onPrimaryContainer"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/stopwatch_widget_reset"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="top|end"
+            android:background="@drawable/widget_stopwatch_reset_fab"
+            android:contentDescription="@string/stopwatch_widget_reset"
+            android:padding="10dp"
+            android:src="@drawable/ic_reset"
+            android:tint="@color/md_theme_onTertiary" />
+    </FrameLayout>
+</FrameLayout>

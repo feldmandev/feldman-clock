@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2016 The Android Open Source Project
+    modified
+    SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
+--><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="6674495003718166674">"Klok"</string>
+    <string name="default_label" msgid="5590025289805630372">"Wekker"</string>
+    <string name="alarm_vibrate" msgid="3476686921490362230">"Trillen"</string>
+    <string name="time_picker_dialog_title">Tijd selecteren</string>
+    <string name="date_picker_dialog_title">Selecteer een datum</string>
+    <string name="delete" msgid="5732434972457000541">"Verwijderen"</string>
+    <string name="default_alarm_ringtone_title" msgid="2916376768509623643">Standaard wekkergeluid</string>
+    <string name="alarm_sound" msgid="8754499591391638405">Wekkergeluid</string>
+    <string name="timer_sound" msgid="896163086604894735">Kookwekkergeluid</string>
+    <string name="add_new_sound" msgid="2546936797351540244">"Nieuw toevoegen"</string>
+    <string name="remove_sound" msgid="2064643204455734239">"Verwijderen"</string>
+    <string name="confirm_remove_custom_ringtone" msgid="1724111242265208553">Voor wekkers en kookwekkers die dit geluid gebruiken, wordt in plaats daarvan het standaardgeluid afgespeeld.</string>
+    <string name="your_sounds" msgid="1672779351352629681">"Jouw geluiden"</string>
+    <string name="device_sounds" msgid="1584894148222639823">"Apparaatgeluiden"</string>
+    <string name="custom_ringtone_lost_permissions" msgid="3406310054255354331">De geluidsinhoud is niet toegankelijk.</string>
+    <string name="default_timer_ringtone_title" msgid="1370799536406862317">Kookwekker verlopen</string>
+    <string name="alarm_tomorrow" msgid="131356848787643420">"Morgen"</string>
+    <string name="alarm_today" msgid="7873594221106531654">"Vandaag"</string>
+    <string name="alarm_alert_dismiss_text" msgid="4942914605480888820">"Uitzetten"</string>
+    <string name="alarm_missed_title" msgid="3828345099754063392">"Wekker gemist"</string>
+    <string name="alarm_missed_text" msgid="6585658367289194023">"<xliff:g id="ALARM_TIME">%1$s</xliff:g> - <xliff:g id="ALARM_LABEL">%2$s</xliff:g>"</string>
+    <string name="alarm_alert_snoozed_text" msgid="7064642998528766113">Gesluimerd</string>
+    <plurals name="alarm_alert_snooze_duration" formatted="false" msgid="7844300009062867865">
+        <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> min.</item>
+        <item quantity="one">1 min.</item>
+    </plurals>
+    <string name="alarm_alert_off_text" msgid="4472073417593915002">"Wekker uit"</string>
+    <string name="alarm_alert_snooze_text" msgid="1774416052207651584">Sluimeren</string>
+    <plurals name="alarm_alert_snooze_set" formatted="false" msgid="3212729193036041768">
+        <item quantity="one">Sluimeren is ingesteld op 1 minuut.</item>
+        <item quantity="other">Sluimeren is ingesteld op <xliff:g id="MINUTES">%d</xliff:g> minuten.</item>
+    </plurals>
+    <string name="alarm_alert_snooze_until" msgid="6958013659168344550">Sluimeren tot <xliff:g id="TIME">%s</xliff:g></string>
+    <string name="alarm_alert_predismiss_title" msgid="5723945586913705445">Aankomende wekker</string>
+    <string name="missed_alarm_has_been_deleted" msgid="5295473204045979335">"Je gemiste wekker is verwijderd"</string>
+    <string name="timer_notifications_less_min" msgid="5481375048976427255">"Nog minder dan een minuut"</string>
+    <string name="timer_notifications_hours" msgid="1613266446037145138">"<xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g>"</string>
+    <string name="timer_notifications_minutes" msgid="8543138714519498893">"<xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g>"</string>
+    <string name="timer_notifications_hours_minutes" msgid="4788475350933275505">"<xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> resterend"</string>
+    <string name="timer_notifications_seconds" msgid="122102514929728907">"<xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g>"</string>
+    <string name="timer_notifications_minutes_seconds" msgid="7059651926379491350">"<xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g>"</string>
+    <string name="timer_notifications_hours_seconds" msgid="8168090805113197804">"<xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g>"</string>
+    <string name="timer_notifications_hours_minutes_seconds" msgid="4666176878038730417">"<xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g>"</string>
+    <string name="timer_accessibility_custom_time_added" msgid="6096646178998456004">%1$s minuut toegevoegd aan kookwekker, <xliff:g id="TIME">%2$s</xliff:g></string>
+    <string name="timer_remaining_single" msgid="6782851171906765864">"resterend"</string>
+    <string name="timer_remaining_multiple" msgid="6052775962092160851">"resterend"</string>
+    <string name="alarm_confirmation_toast_1">"Wekker gaat over minder dan 1 minuut."</string>
+    <string name="alarm_confirmation_toast_2">Wekker gaat over <xliff:g example="2 days" id="DAYS">%1$s</xliff:g></string>
+    <string name="alarm_confirmation_toast_3">"Wekker gaat over <xliff:g id="HOURS">%2$s</xliff:g>."</string>
+    <string name="alarm_confirmation_toast_4">Wekker gaat over <xliff:g example="2 days" id="DAYS">%1$s</xliff:g> en <xliff:g example="2 hours" id="HOURS">%2$s</xliff:g></string>
+    <string name="alarm_confirmation_toast_5">Wekker gaat over <xliff:g example="2 minutes" id="MINUTES">%3$s</xliff:g></string>
+    <string name="alarm_confirmation_toast_6">Wekker gaat over <xliff:g example="2 days" id="DAYS">%1$s</xliff:g> en <xliff:g example="2 minutes" id="MINUTES">%3$s</xliff:g></string>
+    <string name="alarm_confirmation_toast_7">Wekker gaat over <xliff:g example="2 hours" id="HOURS">%2$s</xliff:g> en <xliff:g example="2 minutes" id="MINUTES">%3$s</xliff:g></string>
+    <string name="alarm_confirmation_toast_8">Wekker gaat over <xliff:g example="2 days" id="DAYS">%1$s</xliff:g>, <xliff:g example="2 hours" id="HOURS">%2$s</xliff:g>, en <xliff:g example="2 minutes" id="MINUTES">%3$s</xliff:g></string>
+    <plurals name="days" formatted="false" msgid="3706846447285206235">
+        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> dagen</item>
+        <item quantity="one">1 dag</item>
+    </plurals>
+    <plurals name="hours" formatted="false" msgid="3871283109767171655">
+        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> uur</item>
+        <item quantity="one">1 uur</item>
+    </plurals>
+    <plurals name="hours_short" formatted="false" msgid="3709250715691092925">
+        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> u</item>
+        <item quantity="one">1 u</item>
+    </plurals>
+    <plurals name="minutes" formatted="false" msgid="5484431721696058697">
+        <item quantity="one">1 minuut</item>
+        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> minuten</item>
+    </plurals>
+    <plurals name="minutes_short" formatted="false" msgid="6397328304369080233">
+        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min.</item>
+        <item quantity="one">1 min.</item>
+    </plurals>
+    <plurals name="seconds" formatted="false" msgid="670343577734266047">
+        <item quantity="one">1 seconde</item>
+        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> seconden</item>
+    </plurals>
+    <string name="every_day" msgid="4100909974923444602">"Elke dag"</string>
+    <string name="day_concat" msgid="971998564991636532">", "</string>
+    <string name="loading_widget" msgid="5306242862476796500">"Laden…"</string>
+    <string name="analog_widget" msgid="1670505720837152766">"Analoge klok"</string>
+    <string name="digital_widget" msgid="2326954556720571358">"Digitale klok"</string>
+    <string name="settings" msgid="5849739030579520686">"Instellingen"</string>
+    <string name="snooze_duration_title" msgid="1097309861110780483">Sluimerduur</string>
+    <string name="crescendo_duration_title" msgid="8606408542726189528">"Volume geleidelijk verhogen"</string>
+    <string name="auto_silence_title" msgid="2012754009554434544">"Stil na"</string>
+    <string name="label_never" msgid="4821982647348750809">"Nooit"</string>
+    <string name="label_off">Uit</string>
+    <string name="week_start_title" msgid="4268917518596832096">"Week starten op"</string>
+    <string name="week_start_saturday">Zaterdag</string>
+    <string name="week_start_sunday">Zondag</string>
+    <string name="week_start_monday">Maandag</string>
+    <string name="alarm_volume_title" msgid="8506245173912428522">Wekkervolume</string>
+    <string name="silent_ringtone_title" msgid="6177287302898634765">"Stil"</string>
+    <string name="unknown_ringtone_title" msgid="6637522029614550112">"Onbekend"</string>
+    <string name="alarm_volume_muted" msgid="6658289289695673569">Wekkervolume gedempt</string>
+    <string name="unmute_alarm_volume" msgid="2655009276035357497">"Dempen opheffen"</string>
+    <string name="silent_default_alarm_ringtone" msgid="6012855475009670997">Standaard wekkergeluid is stil</string>
+    <string name="change_setting_action" msgid="1224356633832430160">"Wijzigen"</string>
+    <string name="alarms_blocked_by_dnd" msgid="6089433757505898969">"Apparaat is ingesteld op totale stilte"</string>
+    <string name="volume_button_setting_title" msgid="6937131248843413357">"Volumeknoppen"</string>
+    <string name="button_action_snooze">Sluimeren</string>
+    <string name="button_action_dismiss">Uitzetten</string>
+    <string name="button_action_control_volume">Volume regelen</string>
+    <string name="button_action_nothing">Geen</string>
+    <string name="label_description" msgid="8736179296142915727">"Label"</string>
+    <string name="ringtone_description" msgid="7580922112921069925">Geluid</string>
+    <string name="menu_alarm" msgid="4772010125376647519">"Wekker"</string>
+    <string name="menu_timer" msgid="6459070074762877114">Kookwekker</string>
+    <string name="menu_clock" msgid="5612760670606829805">"Klok"</string>
+    <string name="menu_stopwatch" msgid="3396117705293574701">Stopklok</string>
+    <string name="button_alarms" msgid="3907838219512538763">"Wekker toevoegen"</string>
+    <string name="button_cities" msgid="4555761857494501363">"Plaatsen"</string>
+    <string name="standby_settings_title" msgid="2930695838866189483">"Standby"</string>
+    <string name="menu_item_sort_by_gmt_offset" msgid="3120860422682721706">"Sorteren op tijd"</string>
+    <string name="menu_item_sort_by_name" msgid="1762931290495104106">"Sorteren op naam"</string>
+    <string name="selected_cities_label" msgid="3607479399424246605">"Geselecteerde plaatsen"</string>
+    <string name="sw_resume_button" msgid="2569360966002022248">"Hervatten"</string>
+    <string name="reset" msgid="6616804728322906117">Terugzetten</string>
+    <string name="sw_start_button" msgid="8373422516681242270">"Starten"</string>
+    <string name="sw_pause_button" msgid="2422084453454138042">"Pauze"</string>
+    <string name="sw_lap_button" msgid="6992264696039004233">"Ronde"</string>
+    <string name="sw_share_button" msgid="4478648110382859382">"Delen"</string>
+    <string name="hours_label" msgid="3393478155635368097">"u"</string>
+    <string name="minutes_label" msgid="3568098128251438588">"m"</string>
+    <string name="seconds_label" msgid="124655952824003246">"s"</string>
+    <string name="timer_setup_description" msgid="2488277921227564704">"<xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g>"</string>
+    <string name="lap_number_single_digit" msgid="1051159504304610877">"Nr. <xliff:g id="LAPNUMBER">%d</xliff:g>"</string>
+    <string name="lap_number_double_digit" msgid="2138536756534362037">"Nr. <xliff:g id="LAPNUMBER">%02d</xliff:g>"</string>
+    <string name="sw_share_main" msgid="7703563468204234405">"Mijn tijd is <xliff:g id="TIME">%s</xliff:g>"</string>
+    <string name="sw_share_laps" msgid="614390674795945007">"Rondetijden:"</string>
+    <string name="sw_notification_lap_number" msgid="3535420316052647126">"Ronde <xliff:g id="NUMBER">%d</xliff:g>"</string>
+    <string name="timer_add_timer" msgid="862733633862574752">Kookwekker toevoegen</string>
+    <string name="timer_start" msgid="6158486445614356442">"Starten"</string>
+    <string name="timer_descriptive_delete" msgid="8794915342760383536">"<xliff:g id="NUMBER_STRING">%s</xliff:g> verwijderen"</string>
+    <string name="timer_add_custom_time_description" msgid="6631211310420106116">"%s minuut toevoegen"</string>
+    <string name="timer_add_custom_time_for_notification" msgid="8645224089494875062">"%s min. toevoegen"</string>
+    <string name="timer_stop" msgid="3361154678667736722">"Stoppen"</string>
+    <string name="timer_stop_all" msgid="9080780442843034376">Alle kookwekkers stoppen</string>
+    <string name="timer_canceled" msgid="7327923392567128060">Kookwekker geannuleerd</string>
+    <string name="timer_times_up" msgid="9190440395938519009">"De tijd is om"</string>
+    <string name="timer_multi_times_up" msgid="1239104626836080409"><xliff:g id="NUM_TIMERS">%d</xliff:g> kookwekkers verlopen</string>
+    <string name="timer_multi_missed" msgid="9085073572920385362"><xliff:g id="NUMBER">%d</xliff:g> kookwekkers gemist</string>
+    <string name="timer_notification_label" msgid="4933184831583137249">Kookwekker</string>
+    <string name="missed_named_timer_notification_label" msgid="665604640028289175">Gemiste kookwekker: <xliff:g id="NAME">%s</xliff:g></string>
+    <string name="timer_pause" msgid="3748323712728398743">"Pauzeren"</string>
+    <string name="timer_reset_all" msgid="7530633132757866087">Alle kookwekkers terugzetten</string>
+    <string name="hours_minutes_seconds" msgid="5680088738059791288">"<xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g>"</string>
+    <string name="minutes_seconds" msgid="6189446107009577914">"<xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g>"</string>
+    <string name="jocular_content_message_1">"Je bent wel erg snel."</string>
+    <string name="jocular_content_message_2">"Profiteer van je inspanningen."</string>
+    <string name="jocular_content_message_3">Androids staan bekend om hun snelheid, maar jij bent nog sneller!</string>
+    <string name="jocular_content_message_4">"Oef."</string>
+    <string name="jocular_content_message_5">"Mooie tijden."</string>
+    <string name="jocular_content_message_6">"Wat een wonderbaarlijke snelheid."</string>
+    <string name="jocular_content_message_7">"Laten we weer gaan tijdreizen."</string>
+    <string name="jocular_content_message_8">"Spring gewoon naar links."</string>
+    <string name="jocular_content_message_9">"Haast zit in je aard."</string>
+    <string name="jocular_content_message_10">"Lichtsnelheid."</string>
+    <string name="home_label" msgid="4436139365695453870">"Thuis"</string>
+    <string name="cities_activity_title" msgid="8552462751129256730">"Plaatsen"</string>
+    <string name="clock_settings" msgid="8317286807280600391">"Klok"</string>
+    <string name="clock_style" msgid="2265011060429742344">"Stijl"</string>
+    <string name="display_clock_seconds_pref" msgid="691506643469501643">Tijd met seconden weergeven</string>
+    <string name="open_date_settings" msgid="7712226973337806152">"Datum en tijd wijzigen"</string>
+    <string name="clock_style_analog">Analoog</string>
+    <string name="clock_style_digital">Digitaal</string>
+    <string name="automatic_home_clock" msgid="6274174710735449252">"Automatische klok voor thuis"</string>
+    <string name="automatic_home_clock_summary" msgid="6020476321040807273">Voeg een klok voor thuis toe wanneer je in een andere tijdzone reist</string>
+    <string name="home_time_zone" msgid="9199730676287974501">"Eigen tijdzone"</string>
+    <string name="city_checked" msgid="616847871968019">"<xliff:g id="CITY_NAME">%s</xliff:g> aangevinkt"</string>
+    <string name="city_unchecked" msgid="710212932781145918">"<xliff:g id="CITY_NAME">%s</xliff:g> niet aangevinkt"</string>
+    <string-array name="timezone_labels">
+        <item msgid="5495601234086197399">"Marshalleilanden"</item>
+        <item msgid="4196408495909011020">"Midway Island"</item>
+        <item msgid="1414384194857730006">"Hawaï"</item>
+        <item msgid="2687091371581931926">"Alaska"</item>
+        <item msgid="1922100269679049660">"Pacific Time"</item>
+        <item msgid="7156402158716866161">"Tijuana"</item>
+        <item msgid="1144117502254612241">"Arizona"</item>
+        <item msgid="101284182011722637">"Chihuahua"</item>
+        <item msgid="689121094232986897">"Mountain Time"</item>
+        <item msgid="5445331923942302756">"Centraal-Amerika"</item>
+        <item msgid="2749806434052452351">"Central Time"</item>
+        <item msgid="3997138870229703753">"Mexico-stad"</item>
+        <item msgid="5425567073027744888">"Saskatchewan"</item>
+        <item msgid="2877342865396629368">"Bogotá"</item>
+        <item msgid="568682398893899670">"Eastern Time"</item>
+        <item msgid="668135984541863866">"Venezuela"</item>
+        <item msgid="3737474220861486223">"Atlantic Time (Barbados)"</item>
+        <item msgid="6279116051273436870">"Atlantic Time (Canada)"</item>
+        <item msgid="8513382867172014244">"Manaus"</item>
+        <item msgid="7776299003105932407">"Santiago"</item>
+        <item msgid="8636989494746218677">"Newfoundland"</item>
+        <item msgid="4402541016410147505">"Brasilia"</item>
+        <item msgid="2251184440733164084">"Buenos Aires"</item>
+        <item msgid="6202926618569004969">"Groenland"</item>
+        <item msgid="2355275037115290628">"Montevideo"</item>
+        <item msgid="1377549694711708945">"Midatlantisch"</item>
+        <item msgid="3457671272126347981">"Azoren"</item>
+        <item msgid="3659315141063710840">"Kaapverdië"</item>
+        <item msgid="1260941741802367635">"Casablanca"</item>
+        <item msgid="8275203689687954762">"Londen, Dublin"</item>
+        <item msgid="5970179539479320905">"Amsterdam, Berlijn"</item>
+        <item msgid="5396319478750517962">"Belgrado"</item>
+        <item msgid="8688787475056663004">"Brussel"</item>
+        <item msgid="3415827874921681622">"Sarajevo"</item>
+        <item msgid="402008965928320066">"Windhoek"</item>
+        <item msgid="6436942724959275569">"West-Afrikaanse Tijd"</item>
+        <item msgid="954536568417204026">"Amman, Jordanië"</item>
+        <item msgid="8932745482008902551">"Athene, Istanbul"</item>
+        <item msgid="320025725949024510">"Beiroet, Libanon"</item>
+        <item msgid="7242083112551905970">"Caïro"</item>
+        <item msgid="7241520146011450419">"Helsinki"</item>
+        <item msgid="2717065017510546526">"Jeruzalem"</item>
+        <item msgid="8698556287741466553">"Minsk"</item>
+        <item msgid="1797598357342084506">"Harare"</item>
+        <item msgid="5169119919905066998">"Bagdad"</item>
+        <item msgid="2615788116201065182">"Moskou"</item>
+        <item msgid="9084354867885584646">"Koeweit"</item>
+        <item msgid="1351570519986178268">"Nairobi"</item>
+        <item msgid="7094569580635877460">"Teheran"</item>
+        <item msgid="3953138772617909704">"Bakoe"</item>
+        <item msgid="2868893113598800752">"Tbilisi"</item>
+        <item msgid="7088581865802476373">"Erevan"</item>
+        <item msgid="1941122257623887992">"Dubai"</item>
+        <item msgid="9194797225058249720">"Kabul"</item>
+        <item msgid="6486569254364577332">"Islamabad, Karachi"</item>
+        <item msgid="5487724896895412089">"Oeralsk"</item>
+        <item msgid="364906869710826982">"Jekaterinenburg"</item>
+        <item msgid="2106505051751383358">"Kolkata"</item>
+        <item msgid="6851586621581501447">"Sri Lanka"</item>
+        <item msgid="800438544128213134">"Kathmandu"</item>
+        <item msgid="6173621471007643021">"Astana"</item>
+        <item msgid="8645125891971581128">"Yangon"</item>
+        <item msgid="2886407505119737794">"Krasnoyarsk"</item>
+        <item msgid="3408222398188107090">"Bangkok"</item>
+        <item msgid="4441612937172851228">"Peking"</item>
+        <item msgid="4936715789028996930">"Hongkong"</item>
+        <item msgid="4261031143777385525">"Irkoetsk"</item>
+        <item msgid="3538060959338191835">"Kuala Lumpur"</item>
+        <item msgid="1438847562643099201">"Perth"</item>
+        <item msgid="3063913827688244383">"Taipei"</item>
+        <item msgid="3502757135046564209">"Seoul"</item>
+        <item msgid="6107588684519111669">"Tokio, Osaka"</item>
+        <item msgid="4350769099755608471">"Jakoetsk"</item>
+        <item msgid="2422707004533526462">"Adelaide"</item>
+        <item msgid="1292192084554134339">"Darwin"</item>
+        <item msgid="1320883699470001716">"Brisbane"</item>
+        <item msgid="5137198806146386527">"Hobart"</item>
+        <item msgid="5920063686933941174">"Sydney, Canberra"</item>
+        <item msgid="615906039696009425">"Vladivostok"</item>
+        <item msgid="7738680449356275374">"Guam"</item>
+        <item msgid="2882915026380778227">"Magadan"</item>
+        <item msgid="8255615641810148152">"Auckland"</item>
+        <item msgid="3027153773466391728">"Fiji"</item>
+        <item msgid="5911600083231840181">"Tonga"</item>
+        <item msgid="5176858645450908751">"Jakarta"</item>
+        <item>"Riyad"</item>
+        <item>"Reykjavik"</item>
+    </string-array>
+    <string name="shortcut_new_alarm_short" msgid="3490418929139725538">"Nieuwe wekker"</string>
+    <string name="shortcut_new_alarm_long" msgid="4778064830147981089">Nieuwe wekker maken</string>
+    <string name="shortcut_new_timer_short" msgid="3793414543219297884">Nieuwe kookwekker</string>
+    <string name="shortcut_new_timer_long" msgid="5194092459678096067">Nieuwe kookwekker maken</string>
+    <string name="shortcut_start_stopwatch_short" msgid="5469715764277476796">"Starten"</string>
+    <string name="shortcut_start_stopwatch_long" msgid="9183061797046030376">Stopklok starten</string>
+    <string name="shortcut_pause_stopwatch_short" msgid="4022667323693785830">"Onderbreken"</string>
+    <string name="shortcut_pause_stopwatch_long" msgid="435026905074898334">Stopklok onderbreken</string>
+    <string name="shortcut_start_standby_short" msgid="3414762073311954753">"Standby"</string>
+    <string name="shortcut_start_standby_long" msgid="6134275671119484907">"Standby starten"</string>
+    <string name="alarm_settings" msgid="2947147071388290814">"Wekkers"</string>
+    <string name="timer_service_desc" msgid="2256002649882602433">Verwerkt acties van kookwekkermeldingen.</string>
+    <string name="stopwatch_service_desc" msgid="9220132827343760767">Verwerkt acties van stopklokmeldingen.</string>
+    <string name="swn_paused" msgid="6364358842808263589">"Onderbroken"</string>
+    <string name="description_direction_both" msgid="1841309486023845685">Veeg naar links om te sluimeren of naar rechts om te sluiten</string>
+    <string name="timer_settings" msgid="7955522143086154795">Kookwekkers</string>
+    <string name="timer_vibrate_title" msgid="7788920024785587518">Trillen voor kookwekker</string>
+    <string name="timer_paused" msgid="5941160896040771462">Kookwekker gepauzeerd</string>
+    <string name="timers_in_use" msgid="5570729467344408506"><xliff:g id="NUMBER">%d</xliff:g> kookwekkers</string>
+    <string name="expand_alarm" msgid="7392616528943305020">"Wekker uitvouwen"</string>
+    <string name="collapse_alarm" msgid="3561772046433483980">"Wekker samenvouwen"</string>
+    <string name="alarm_deleted" msgid="6131529309389084785">"Verwijderd"</string>
+    <string name="world_day_of_week_label" msgid="5911196322328341288">/ <xliff:g id="label">%s</xliff:g></string>
+    <string name="world_time_ahead" msgid="625559988238637652">"<xliff:g id="TIME">%1$s</xliff:g> later"</string>
+    <string name="world_time_behind" msgid="5395771290726167865">"<xliff:g id="TIME">%1$s</xliff:g> vroeger"</string>
+    <string name="world_hours_minutes_ahead" msgid="5132012793021696377">"<xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g> later"</string>
+    <string name="world_hours_minutes_behind" msgid="8978567362140923698">"<xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g> vroeger"</string>
+    <string name="world_hours_tomorrow" msgid="2504465609269004794">"Morgen, <xliff:g id="TIME">%1$s</xliff:g>"</string>
+    <string name="world_hours_yesterday" msgid="4425086322610882745">"Gisteren, <xliff:g id="TIME">%1$s</xliff:g>"</string>
+    <string name="next_alarm_description" msgid="2650244835760747046">"Volgende wekker: <xliff:g id="ALARM_TIME">%s</xliff:g>"</string>
+    <string name="no_alarms" msgid="6429431324842022917">"Geen wekkers"</string>
+    <string name="invalid_time" msgid="2782334750243998633">"Ongeldige tijd: <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g>"</string>
+    <string name="no_alarm_at" msgid="8140632482969193119">"Geen wekker om <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g>"</string>
+    <string name="no_scheduled_alarms" msgid="2115420148192753534">"Geen geplande wekkers"</string>
+    <string name="no_label_specified" msgid="2008482054428460626">"Geen label opgegeven"</string>
+    <string name="no_alarms_with_label" msgid="6250998794542941665">"Er zijn geen wekkers die het label bevatten"</string>
+    <string name="no_alarm_scheduled_for_this_time" msgid="4463069177414482818">"Geen wekker gepland op deze tijd"</string>
+    <string name="alarm_is_dismissed" msgid="5509897230565826642">"<xliff:g id="ALARM_TIME">%s</xliff:g> wekker gesloten"</string>
+    <string name="alarm_is_set" msgid="5503226382620011088">"Wekker is ingesteld voor <xliff:g id="ALARM_TIME">%s</xliff:g>"</string>
+    <string name="timer_created" msgid="4381027137335885547">Kookwekker gemaakt</string>
+    <plurals name="expired_timers_dismissed" formatted="false" msgid="1294953410988488149">
+        <item quantity="one">Kookwekker gesloten</item>
+        <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> kookwekkers gesloten</item>
+    </plurals>
+    <string name="invalid_timer_length" msgid="3104567893212932487">Ongeldige kookwekkerduur</string>
+    <string name="invalid_timer" msgid="900957020728335675">Ongeldige kookwekker geselecteerd</string>
+    <string name="no_expired_timers" msgid="4624192298397846876">Geen verlopen kookwekkers</string>
+    <string name="alarm_cant_be_dismissed_still_more_than_24_hours_away" msgid="8810520940995307437">"<xliff:g id="ALARM_TIME">%s</xliff:g> wekker kan nog niet worden gesloten omdat deze over meer dan 24 uur afgaat"</string>
+    <string name="dismiss_alarm" msgid="7204593078688533541">"Wekker sluiten"</string>
+    <string name="pick_alarm_to_dismiss" msgid="5408769235866082896">"Kiezen welke wekker je wilt sluiten"</string>
+    <string name="no_firing_alarms" msgid="4986161963178722289">"Geen actieve wekkers"</string>
+    <string name="alarm_is_snoozed" msgid="7044644119744928846"><xliff:g id="ALARM_TIME">%s</xliff:g> wekker tien minuten gesluimerd\"</string>
+    <string name="flip_action_title">Actie bij apparaat omdraaien</string>
+    <string name="shake_action_title">Actie bij apparaat schudden</string>
+    <string name="title_theme">Thema</string>
+    <string name="selected">Geselecteerd</string>
+    <string name="material_you_digital_widget">Digitale klok Material You</string>
+    <string name="display_background_border_title">Achtergrondranden weergeven</string>
+    <string name="display_background_border_summary">Gebruikt een achtergrondrand voor sommige elementen (wekkers, steden, kookwekkerknoppen etc.)</string>
+    <string name="settings_vibration_title">Trillen inschakelen</string>
+    <string name="duplicate">Dupliceren</string>
+    <string name="more_options">Meer opties</string>
+    <string name="analog_widget_material_you">Analoge klok Material You</string>
+    <string name="settings_permission_message">Één of meer essentiële rechten zijn niet toegestaan. Niet toestemmen kan ervoor zorgen dat de app niet goed werkt.</string>
+    <string name="settings_permission_summary">Tik hier om de pagina rechtenbeheer te tonen.</string>
+    <string name="interface_customization_settings">Uiterlijk</string>
+    <string name="style_category_title">Stijl</string>
+    <string name="font_category_title">Lettertype</string>
+    <string name="title_accent_color">Accentkleur</string>
+    <string name="display_card_background_summary">Gebruikt een achtergrond voor sommige elementen (wekkers, steden, kookwekkerknoppen, etc.)</string>
+    <string name="title_dark_theme_mode">Donkere themastijl</string>
+    <string name="display_card_background_title">Kaartachtergronden weergeven</string>
+    <string name="settings_vibration_summary">Alleen van toepassing op sommige elementen (bijv. de start/pauze knop van de kookwekker)</string>
+    <string name="ignore_battery_optimizations_dialog_title">Batterijoptimalisaties</string>
+    <string name="about_title">Over</string>
+    <string name="standby_daydream_settings">Standby selecteren/inschakelen</string>
+    <string name="standby_daydream_settings_summary">Opent de systeeminstellingen voor standbys</string>
+    <string name="standby_clock_dynamic_colors_title">Dynamische klokkleuren</string>
+    <string name="standby_settings_summary">Stijl, kleur en het lettertype van de standby aanpassen</string>
+    <string name="standby_bold_digital_clock_title">Dikgedrukte digitale klok</string>
+    <string name="standby_italic_digital_clock_title">Schuingedrukte digitale klok</string>
+    <string name="standby_bold_date_title">Dikgedrukte datum</string>
+    <string name="standby_italic_date_title">Schuingedrukte datum</string>
+    <string name="standby_italic_next_alarm_title">Schuingedrukte volgende wekker</string>
+    <string name="preview_title">Voorvertoning</string>
+    <string name="standby_preview_summary">Start de standby meteen</string>
+    <string name="alarm_created">Wekker aangemaakt</string>
+    <string name="alarm_missed_channel">Gemiste wekkers</string>
+    <string name="alarm_snooze_channel">Gesluimerde wekkers</string>
+    <string name="alarm_upcoming_channel">Volgende wekkers</string>
+    <string name="stopwatch_channel">Stopklok</string>
+    <string name="timer_channel">Kookwekker</string>
+    <string name="first_launch_version">Versie %s</string>
+    <string name="first_launch_main_feature_title">BELANGRIJKSTE KENMERKEN</string>
+    <string name="first_launch_button_now">Nu</string>
+    <string name="first_launch_button_later">Later</string>
+    <string name="first_launch_important_info_title">BELANGRIJKE INFORMATIE</string>
+    <string name="first_launch_important_info_message_for_SDK34">• &lt;b&gt;MELDINGEN OP VOLLEDIG SCHERM SCHERM;&lt;/b&gt; &lt;br&gt; &lt;br&gt;</string>
+    <string name="first_launch_dialog_title">Verlaten</string>
+    <string name="first_launch_dialog_message">Weet je zeker dat je de app wil verlaten?</string>
+    <string name="permission_management_settings">Rechtenbeheer</string>
+    <string name="permission_requirement_title">Vereiste: </string>
+    <string name="permission_highly_recommended">Sterk aanbevolen</string>
+    <string name="permission_status_title">Status: </string>
+    <string name="permission_granted">Toegestaan</string>
+    <string name="permission_denied">Geweigerd</string>
+    <string name="permission_dialog_revoke_title">Toegang intrekken</string>
+    <string name="revoke_permission_dialog_message">Weet je zeker dat je dit recht wilt intrekken?</string>
+    <string name="ignore_battery_optimizations_title">NEGEER BATTERIJOPTIMALISATIES</string>
+    <string name="notifications_permission_title">MELDINGEN INSCHAKELEN</string>
+    <string name="notifications_dialog_title">MELDINGEN</string>
+    <string name="ignore_battery_optimizations_dialog_text">Het Androidsysteem configureert standaard alle gebruikersapps om batterij te besparen.
+\n
+\nHoewel dit aanvaardbaar is voor de meeste apps, kan dit voor problemen zorgen bij een wekker-app zoals deze. Als batterijoptimalisatie aan staat kan Android de app elk moment sluiten en geplande wekkers annuleren, wat de werking van de app negatief zou beïnvloeden.
+\n
+\nWe raden aan deze app op de witte lijst te zetten van batterijoptimalisaties.</string>
+    <string name="notifications_dialog_text">Naast het instellen van wekkers beschikt deze app ook over een kookwekker en stopklok. \n \nOm ervoor te zorgen dat meldingen correct verschijnen voor alle functies en vooral zodat de wekker kan activeren, raden we aan om meldingen voor deze app te aan te zetten.</string>
+    <string name="standby_brightness_title">Helderheid</string>
+    <string name="standby_bold_next_alarm_title">Dikgedrukte volgende wekker</string>
+    <string name="add_label">Label toevoegen</string>
+    <string name="app_slogan">100% FOSS Klok, gebaseerd op AOSP</string>
+    <string name="version">Versie</string>
+    <string name="version_text">Version <xliff:g id="VERSION_NUMBER" example="1.0">%1$s</xliff:g></string>
+    <string name="whats_new_title">Wat is er nieuw</string>
+    <string name="features_title">Belangrijkste kenmerken</string>
+    <string name="about_github_link">Bekijk op GitHub</string>
+    <string name="license">Open-source licentie</string>
+    <string name="dialog_close">Sluiten</string>
+    <string name="first_launch_main_feature_message">► Licht, donker of systeemthema; &lt;br&gt; &lt;br&gt; ► Aanpasbare standby; &lt;br&gt; &lt;br&gt;► Aanpasbare widgets; &lt;br&gt; &lt;br&gt; ►Ondersteuning voor tegels in de snelle instellingen (Android 7+)&lt;br&gt; &lt;br&gt;►Backup en herstel app-data (behalve aangepaste geluiden);&lt;br&gt; &lt;br&gt; ► Material design en dynamische kleuren; &lt;br&gt; &lt;br&gt; ►Wekkers zetten voor een specifieke datum; &lt;br&gt; &lt;br&gt; ► Vegen om wekkers te verwijderen; &lt;br&gt; &lt;br&gt; ► Wekker dupliceren; &lt;br&gt; &lt;br&gt; ► Omdraaien en schudden om wekker uit te zetten/stellen; &lt;br&gt; &lt;br&gt; ► Wekker uitzetten/stellen met de aan/uit-knop of volume knoppen; &lt;br&gt; &lt;br&gt; ► %s</string>
+    <string name="firing_alarms_timers_channel">Wekkers en kookwekkers activeren</string>
+    <string name="first_launch_main_feature_link">… en veel meer!</string>
+    <string name="permission_management_summary">Toon de rechten die nodig zijn om de app goed te laten werken</string>
+    <string name="FSN_permission_title">MELDINGEN OP VOLLEDIG SCHERM INSCHAKELEN</string>
+    <string name="FSN_dialog_title">Meldingen op volledig scherm</string>
+    <string name="FSN_dialog_text">Zodat de wekker af kan gaan als het scherm uit staat, is het sinds Android 14 noodzakelijk om het recht \"Meldingen op volledig scherm\" toe te staan.</string>
+    <string name="power_button_title">Aan/uit-knop</string>
+    <string name="gnu_gpl">GNU General Public License v3.0</string>
+    <string name="first_launch_important_info_message">Om zeker te zijn dat de app goed werkt, &lt;b&gt;moeten sommige instellingen van je apparaat veranderd worden:&lt;/b&gt; &lt;br&gt; &lt;br&gt; • &lt;b&gt;NIET STOREN;&lt;/b&gt; &lt;br&gt; &lt;br&gt; • &lt;b&gt;BATTERIJOPTIMALISATIE;&lt;/b&gt; &lt;br&gt; &lt;br&gt; • &lt;b&gt;MELDINGEN;&lt;/b&gt; &lt;br&gt; &lt;br&gt; %s &lt;i&gt;Afhankelijk van de Androidversie van je apparaat zijn sommige instellingen al geoptimaliseerd (bijv. meldingen).&lt;/i&gt; &lt;br&gt; &lt;br&gt; Je kan ze nu of later veranderen in de rechtenbeheer-instellingen:</string>
+    <string name="material_time_picker_style_title">Tijdselectie</string>
+    <string name="alarm_settings_summary">Uiterlijk, standaard geluid, volume, sluimeracties, eerste weekdag, herinneringstijd aanpassen</string>
+    <string name="next_alarm_default_color_title">Standaardkleur voor volgende wekker</string>
+    <string name="digital_widget_message_summary">\"Steden op widget weergeven\" moet uitgeschakeld zijn voor deze optie</string>
+    <string name="alarm_label_box_title">Wekkerlabel</string>
+    <string name="actions_category_title">Acties</string>
+    <string name="interface_customization_summary">Uiterlijk en kleur van de app aanpassen</string>
+    <string name="swipe_action_title">Vegen om wekkers te sluimeren of uit te zetten</string>
+    <string name="clock_color_title">Kleur klok</string>
+    <string name="next_alarm_color_title">Kleur volgende wekker</string>
+    <string name="date_color_title">Kleur datum</string>
+    <string name="auto_silence_end_of_ringtone">Het einde van het wekkergeluid</string>
+    <string name="timer_label_box_title">Kookwekkerlabel</string>
+    <string name="timer_button_time_box_title">Minuten om aan de kookwekker toe te voegen</string>
+    <string name="timer_add_custom_time">+ %s</string>
+    <string name="clock_settings_summary">Stijl, tijdzone en systeemtijd aanpassen</string>
+    <string name="description_direction_both_for_non_repeatable_alarm">Veeg naar links of rechts om uit te zetten</string>
+    <string name="timer_settings_summary">Standaard geluid, volume en kookwekkers sorteren</string>
+    <string name="default_time_to_add_to_timer_title">Standaardtijd om aan kookwekker toe te voegen</string>
+    <string name="widget_background_title">Achtergrond weergeven</string>
+    <string name="background_color_title">Achtergrondkleur</string>
+    <string name="display_city_title">Steden op widget weergeven</string>
+    <string name="clock_default_color_title">Standaardkleur voor klok</string>
+    <string name="date_default_color_title">Standaardkleur voor datum</string>
+    <string name="city_clock_default_color_title">Standaardkleur voor stedenklok</string>
+    <string name="city_clock_color_title">Kleur stedenklok</string>
+    <string name="city_name_default_color_title">Standaardkleur voor stadsnaam</string>
+    <string name="city_name_color_title">Kleur stadsnaam</string>
+    <string name="max_clock_font_size_title">Maximum lettergrootte van de klok</string>
+    <string name="miscellaneous_category_title">Overig</string>
+    <string name="ringtone_category_title">Geluid</string>
+    <string name="enable_alarm_vibrations_by_default_setting_title">Trillen bij het maken van wekkers</string>
+    <string name="alarm_notification_reminder_title">Wekkerherinnering</string>
+    <string name="label_default">Standaard</string>
+    <string name="delete_occasional_alarm_after_use_title">Wekker verwijderen na uitzetten</string>
+    <string name="alarm_alert_dismiss_and_delete_text">Uitzetten &amp; Verwijderen</string>
+    <string name="alarm_alert_off_and_deleted_text">Wekker uit en verwijderd</string>
+    <string name="timer_volume_buttons_action_title">Verlopen kookwekkers terugzetten met volumeknoppen</string>
+    <string name="timer_buttons_action_summary">Werkt alleen op een vergrendeld scherm</string>
+    <string name="alarm_notification_reminder_4_hours">4 uur van te voren</string>
+    <string name="alarm_notification_reminder_6_hours">6 uur van te voren</string>
+    <string name="alarm_notification_reminder_10_hours">10 uur van te voren</string>
+    <string name="alarm_notification_reminder_12_hours">12 uur van te voren</string>
+    <string name="backup_restore_dialog_message">Wil je een back-up maken, of app-data herstellen uit een bestand?</string>
+    <string name="backup_button_title">Back-up</string>
+    <string name="restore_button_title">Herstel</string>
+    <string name="alarm_notification_reminder_8_hours">8 uur van te voren</string>
+    <string name="snooze_button_color">Kleur sluimerknop</string>
+    <string name="minute_color_title">Kleur minuten</string>
+    <string name="next_alarm_no_upcoming_alarm_titles_default_color">Standaardkleur voor titels \"Volgende wekker\" en \"Geen volgende wekker\"</string>
+    <string name="denied_permission_label">Toestemming geweigerd</string>
+    <string name="sort_timer_title">Kookwekkers sorteren</string>
+    <string name="next_alarm_widget_text">Volgende wekker</string>
+    <string name="next_alarm_widget_title_no_alarm">Geen volgende wekker</string>
+    <string name="widget_max_font_size_title">Maximum lettergrootte widget</string>
+    <string name="snooze_duration_none">Geen</string>
+    <string name="sort_timer_ascending_duration">Op duur (oplopende volgorde)</string>
+    <string name="sort_timer_descending_duration">Op duur (aflopende volgorde)</string>
+    <string name="sort_name">Op labelnaam</string>
+    <string name="alarm_title_font_size">Lettergrootte wekkerlabel</string>
+    <string name="alarm_clock_font_size">Lettergrootte wekkerklok</string>
+    <string name="indigo_accent_color">Indigo</string>
+    <string name="orange_accent_color">Oranje</string>
+    <string name="pink_accent_color">Roze</string>
+    <string name="green_accent_color">Groen</string>
+    <string name="transparent_background_for_expired_timer_title">Transparante achtergrond als kookwekker verloopt</string>
+    <string name="widgets_settings_summary">Stijl, kleur en lettergrootte van widgets aanpassen</string>
+    <string name="whats_new_dialog_message">Ondek wat er nieuw is:\n\n%s</string>
+    <string name="github_dialog_message">Bekijk het project op GitHub:\n\n%s</string>
+    <string name="license_dialog_message">Lees de licentie:\n\n%s</string>
+    <string name="second_hand_color_title">Kleur secondewijzer</string>
+    <string name="system_theme">Systeem</string>
+    <string name="light_theme">Licht</string>
+    <string name="dark_theme">Donker</string>
+    <string name="alarm_notification_reminder_30_minutes">30 minuten van te voren</string>
+    <string name="alarm_title_default_color">Standaardkleur voor wekkerlabel</string>
+    <string name="next_alarm_no_upcoming_alarm_titles_color">Kleur titels \"Volgende wekker\" en \"Geen volgende wekker\"</string>
+    <string name="hour_color_title">Kleur uren</string>
+    <string name="minute_default_color_title">Standaardkleur voor minuten</string>
+    <string name="hour_default_color_title">Standaardkleur voor uren</string>
+    <string name="occasional_alarm_alert_predismiss_title">Aankomende gelegenheidswekker</string>
+    <string name="vertical_digital_widget">Verticale digitale klok</string>
+    <string name="alarm_notification_reminder_1_hour">1 uur van te voren</string>
+    <string name="alarm_notification_reminder_2_hours">2 uur van te voren</string>
+    <string name="description_direction_both_for_occasional_alarm">Veeg naar links om te sluimeren of naar rechts om wekker uit te zetten en te verwijderen</string>
+    <string name="description_direction_both_for_occasional_non_repeatable_alarm">Veeg naar links of rechts om wekker uit te zetten en te verwijderen</string>
+    <string name="occasional_alarm_deleted">Gelegenheidswekker <xliff:g example="14:20" id="alarm_time">%s</xliff:g> verwijderd</string>
+    <string name="material_you_vertical_digital_widget">Verticale digitale klok Material You</string>
+    <string name="standard_category_title">Standaard</string>
+    <string name="material_you_category_title">Material You</string>
+    <string name="settings_tab_indicator_title">Tabbladindicator in het onderste navigatiemenu weergeven</string>
+    <string name="widgets_settings">Widgets</string>
+    <string name="material_you_next_alarm_widget">Volgende wekker Material You</string>
+    <string name="settings_fade_transitions_title">Vervagingsovergangen bij het wisselen van scherm</string>
+    <string name="next_alarm_widget">Volgende wekker</string>
+    <string name="backup_restore_summary">Back-up of herstel instellingen behalve aangepaste geluiden</string>
+    <string name="backup_restore_title">Back-up &amp; Herstel</string>
+    <string name="toast_message_for_backup">Backup voltooid</string>
+    <string name="toast_message_for_restore">Herstel voltooid</string>
+    <string name="timer_flip_action_title">Apparaat omdraaien om kookwekker uit te zetten</string>
+    <string name="timer_shake_action_title">Apparaat schudden om kookwekker uit te zetten</string>
+    <string name="alarm_title_color">Kleur wekkerlabel</string>
+    <string name="auto_night_accent_color_title">Accentkleur op donkere modus toepassen</string>
+    <string name="night_accent_color_title">Accentkleur voor donkere modus</string>
+    <string name="blue_gray_accent_color">Blauwgrijs</string>
+    <string name="brown_accent_color">Bruin</string>
+    <string name="red_accent_color">Rood</string>
+    <string name="amoled_dark_theme_mode">AMOLED</string>
+    <string name="enable_delete_occasional_alarm_by_default_setting_title">Standaard gelegenheidswekkers verwijderen</string>
+    <string name="alarm_settings_general_summary">Deze instelling kan per wekker aangepast worden in het uitvouwmenu</string>
+    <string name="alarm_display_customization_title">Wekkeruiterlijk aanpassen</string>
+    <string name="dismiss_button_color">Kleur uitzetknop</string>
+    <string name="alarm_button_color">Kleur wekkerknop</string>
+    <string name="sort_manually">Handmatig (door te slepen)</string>
+    <string name="timer_power_button_action_title">Verlopen kookwekkers terugzetten met de aan/uit-knop</string>
+    <string name="sw_settings_summary">Actie voor volumeknoppen instellen</string>
+    <string name="sw_volume_up_action_title">Volume omhoog</string>
+    <string name="sw_long_press_volume_up_action_title">Volume omhoog (lang indrukken)</string>
+    <string name="sw_long_press_volume_down_action_title">Volume omlaag (lang indrukken)</string>
+    <string name="sw_start_pause_action">Start / Pauze</string>
+    <string name="sw_volume_down_action_title">Volume omlaag</string>
+    <string name="purple_accent_color">Paars</string>
+    <string name="black_accent_color">Zwart</string>
+    <string name="yellow_accent_color">Geel</string>
+    <string name="day_accent_color_title">Accentkleur voor dagmodus</string>
+    <string name="warning_dialog_message">Weet je zeker dat je de \"%s\" kookwekker wilt verwijderen?</string>
+    <string name="display_warning_before_deleting_timer_title">Waarschuwing weergeven voor het verwijderen van een kookwekker</string>
+    <string name="display_ringtone_title">Naam van geluid weergeven</string>
+    <string name="warning_dialog_title">Kookwekker verwijderen</string>
+    <string name="enable_snoozed_or_dismissed_alarm_vibrations_title">Trillen als wekker wordt gesluimerd of uitgezet</string>
+    <string name="enable_snoozed_or_dismissed_alarm_vibrations_summary">Dubbel trillen als wekker wordt gesluimerd en één keer trillen als wekker wordt uitgezet</string>
+    <string name="turn_on_back_flash_for_triggered_alarm_title">Zaklamp aanzetten als wekker gaat</string>
+    <string name="alarm_flash">Zaklamp</string>
+    <string name="about_translate_link">Vertaal op Codeberg</string>
+    <string name="translate_dialog_message">Bezoek de Codeberg-pagina:\n\n%s</string>
+    <string name="shake_intensity_title">Schud-intensiteit</string>
+    <string name="settings_language_title">Taal</string>
+    <string name="settings_language_system">Systeemtaal</string>
+    <string name="settings_language_french">Frans</string>
+    <string name="settings_language_german">Duits</string>
+    <string name="settings_language_estonian">Ests</string>
+    <string name="settings_language_italian">Italiaans</string>
+    <string name="settings_language_polish">Pools</string>
+    <string name="settings_language_portuguese">Portugees</string>
+    <string name="settings_language_serbian">Servisch</string>
+    <string name="settings_language_spanish">Spaans</string>
+    <string name="settings_language_ukrainian">Oekraïens</string>
+    <string name="settings_language_chinese_simplified_cn">Chinees (Vereenvoudigd, PRC)</string>
+    <string name="settings_language_english_us">Engels (VS)</string>
+    <string name="permission_info_title">Enkel voor Xiaomi toestellen</string>
+    <string name="show_lockscreen_dialog_title">Tonen op vergrendelscherm</string>
+    <string name="show_lockscreen_permission_title">TONEN OP VERGRENDELSCHERM</string>
+    <string name="show_lockscreen_dialog_text">Bij Xiami toestellen, moet de \"Toon op vergrendelscherm\" toestemming manueel geactiveerd worden in de instellingen zodat de applicatie normaal kan werken.</string>
+    <string name="clock_style_analog_material">Analoog (Material)</string>
+    <string name="clock_style_spinner">Carrousel</string>
+    <string name="settings_language_dutch">Nederlands</string>
+    <string name="settings_language_russian">Russisch</string>
+    <string name="settings_tab_to_display">Tabblad openen bij start</string>
+    <string name="timer_button_time_minutes_warning_box_text">Voer een waarde in tussen 0 en 60 minuten</string>
+    <string name="last_tab_used_title">Laatst gebruikt</string>
+    <string name="timer_time_warning_box_title">Onjuiste waarde ingevoerd</string>
+    <string name="settings_language_turkish">Turks</string>
+    <string name="reset_settings_title">Instellingen opnieuw instellen</string>
+    <string name="reset_settings_message">Weet je zeker dat je alle instellingen opnieuw wilt instellen?\n\nLet op: aangepaste geluiden worden niet teruggezet.</string>
+    <string name="blue_accent_color">Blauw</string>
+    <string name="toast_message_for_reset">Terugzetten voltooid</string>
+    <string name="settings_language_korean">Koreaans</string>
+    <string name="display_date_title">Datum op widget weergeven</string>
+    <string name="settings_language_czech">Tsjechisch</string>
+    <string name="settings_toolbar_title">Titel in navigatiemenu weergeven</string>
+    <string name="settings_tab_title_visibility_title">Titels van tabbladen weergeven</string>
+    <string name="tab_title_visibility_always">Altijd</string>
+    <string name="tab_title_visibility_when_selected">Wanneer geselecteerd</string>
+    <string name="settings_keep_screen_on_title">Scherm aanhouden</string>
+    <string name="settings_keep_screen_on_summary">Let op: Het scherm zal altijd aanblijven als een kookwekker of stopklok loopt en het overeenkomstige tabblad wordt weergegeven, ongeacht deze instelling</string>
+    <string name="slide_zone_color_title">Kleur veeggebied</string>
+    <string name="dismiss_title_color">Kleur uitzettitel</string>
+    <string name="ringtone_title_color">Kleur geluidtitel</string>
+    <string name="description_snooze_button">Tik om wekker te sluimeren</string>
+    <string name="description_dismiss_button">Tik om wekker uit te zetten</string>
+    <string name="display_next_alarm_title">Volgende wekker op widget weergeven</string>
+    <string name="snooze_title_color">Kleur sluimertitel</string>
+    <string name="description_dismiss_button_for_occasional_alarm">Tik om wekker uit te zetten en te verwijderen</string>
+    <string name="settings_language_chinese_traditional_tw">Chinees (traditioneel, Taiwan)</string>
+    <string name="alarm_is_dismissed_and_deleted"><xliff:g example="14:20" id="alarm_time">%s</xliff:g> wekker uitgezet en verwijderd</string>
+    <string name="date_picker_style_calendar">Kalender</string>
+    <string name="date_picker_style_title">Datumkiezer</string>
+    <string name="alarm_scheduled_for">Ingeroosterd voor %s</string>
+    <string name="schedule_alarm_title">Wekker inroosteren</string>
+    <string name="random_ringtone_title">Willekeurig geluid</string>
+    <string name="add_new_sound_subtitle">Lang tikken om een map te selecteren</string>
+    <string name="date_picker_style_text">Tekst</string>
+    <string name="warning">Waarschuwing</string>
+    <string name="timer_add_custom_time_with_seconds_for_notification">%1$s min. %2$s sec. toevoegen</string>
+    <string name="label_minutes">Minuten</string>
+    <string name="label_seconds">Seconden</string>
+    <string name="timer_button_time_seconds_warning_box_text">Voer een waarde in tussen 0 en 59 seconden</string>
+    <string name="timer_add_custom_time_with_seconds_description">%1$s Minuten %2$s Seconden toevoegen</string>
+    <string name="label_hours">Uren</string>
+    <string name="timer_minutes_warning_box_text">Voer een waarde in tussen 0 en 59 minuten</string>
+    <string name="timer_time_box_title">Nieuwe duur voor kookwekker</string>
+    <string name="timer_hours_warning_box_text">Voer een waarde in tussen 0 en 24 uur</string>
+    <string name="timer_seconds_warning_box_text">Voer een waarde in tussen 0 en 59 seconden</string>
+    <string name="auto_routing_to_bluetooth_device_title">Geluiden automatisch omleiden naar Bluetooth-apparaten</string>
+    <string name="timer_creation_view_style_keypad">Toetsenbord</string>
+    <string name="timer_creation_view_style_title">Weergavestijl voor kookwekker maken</string>
+    <string name="advanced_audio_playback_summary">Verbetert Bluetooth-compatibiliteit en voorkomt geluidsonderbrekingen tijdens herhalen\n\nLet op: sommige geluiden kunnen lichte audiostoringen hebben</string>
+    <string name="advanced_audio_playback_title">Geavanceerde audioweergave gebruiken</string>
+    <string name="hide_clock_am_pm_pref">AM/PM-tekst verbergen</string>
+    <string name="system_media_volume_title">Mediavolume van systeem gebruiken</string>
+    <string name="system_media_volume_summary">Werkt alleen als een Bluetooth-apparaat verbonden is</string>
+    <string name="bluetooth_volume_title">Wekkervolume voor Bluetooth-apparaten</string>
+    <string name="connect_bluetooth_device_title">Maak verbinding met een Bluetooth-apparaat om toegang te krijgen tot deze instelling</string>
+    <string name="disconnect_bluetooth_device_title">Verbreek verbinding met het Bluetooth-apparaat om toegang te krijgen tot deze instelling</string>
+    <string name="widget_apply_horizontal_padding_title">Ruimte toepassen op widgetranden</string>
+    <string name="enable_per_alarm_volume_title">Aangepast volume voor iedere wekker</string>
+    <string name="delay_picker_dialog_title">Alarm in…</string>
+    <string name="colors_category_title">Kleuren</string>
+    <string name="clock_second_hand_title">Secondewijzer</string>
+    <string name="clock_second_hand_vintage">Antiek</string>
+    <string name="clock_dial_title">Wijzerplaat</string>
+    <string name="clock_dial_sun">Zon</string>
+    <string name="clock_dial_flower">Bloem</string>
+    <string name="dial_color_title">Kleur wijzerplaat</string>
+    <string name="dial_default_color_title">Standaardkleur voor wijzerplaat</string>
+    <string name="hour_hand_color_title">Kleur uurwijzer</string>
+    <string name="hour_hand_default_color_title">Standaardkleur voor uurwijzer</string>
+    <string name="minute_hand_color_title">Kleur minutenwijzer</string>
+    <string name="minute_hand_default_color_title">Standaardkleur voor minutenwijzer</string>
+    <string name="background_default_color_title">Standaardkleur voor achtergrond</string>
+    <string name="clock_dial_with_numbers">Met getallen</string>
+    <string name="clock_dial_without_numbers">Zonder getallen</string>
+    <string name="second_hand_default_color_title">Standaardkleur voor secondewijzer</string>
+    <string name="sort_alarm_title">Wekkers sorteren</string>
+    <string name="sort_alarm_time">Op wekkertijd</string>
+    <string name="sort_next_alarm_time">Op volgende wekkertijd</string>
+    <string name="display_enabled_alarms_first_title">Ingeschakelde wekkers eerst weergeven</string>
+    <string name="sort_cities_title">Steden sorteren</string>
+    <string name="enable_city_note_title">Persoonlijke notities aan steden toevoegen</string>
+    <string name="enable_city_note_summary">Tik op een stad om een persoonlijke notitie toe te voegen of te bewerken</string>
+    <string name="city_note_dialog_title">Notitie voor %s</string>
+    <string name="sort_cities_ascending_time_zone">Op tijdzone (oplopende volgorde)</string>
+    <string name="sort_cities_descending_time_zone">Op tijdzone (aflopende volgorde)</string>
+    <string name="city_search_hint">Stad zoeken</string>
+    <string name="sort_descending_creation_order">Op aanmaakdatum (oudste laatst)</string>
+    <string name="sort_ascending_creation_order">Op aanmaakdatum (oudste eerst)</string>
+    <string name="enable_alarm_fab_long_press_title">Lang drukken op de actieknop inschakelen om wekkers met uitstel te maken</string>
+    <string name="enable_alarm_fab_long_press_summary">Uitgeschakeld: twee knoppen om wekkers te maken worden weergegeven</string>
+    <string name="vibration_pattern_title">Trillingspatroon</string>
+    <string name="vibration_pattern_soft">Zacht</string>
+    <string name="vibration_pattern_strong">Sterk</string>
+    <string name="vibration_pattern_heartbeat">Hartslag</string>
+    <string name="vibration_pattern_escalating">Toenemend</string>
+    <string name="vibration_pattern_tick_tock">Tik-Tok</string>
+    <string name="vibration_start_delay_title">Vertraging voordat trilling begint</string>
+    <string name="vibration_start_delay_none">Geen</string>
+    <string name="vibration_start_delay_warning_box_text">Voer een waarde in tussen 0 en 10 minuten</string>
+    <string name="confirm_action_prompt">\n\nWil je doorgaan?</string>
+    <string name="enable_per_alarm_snooze_duration_title">Gebruik een aangepaste sluimerduur voor iedere wekker</string>
+    <string name="enable_per_alarm_snooze_duration_dialog_message">Aangepaste sluimerduren zullen worden teruggezet.%s</string>
+    <string name="enable_per_alarm_volume_dialog_message">Aangepaste wekkervolumes zullen worden teruggezet.%s</string>
+    <string name="display_dismiss_button_title">Uitzetknop weergeven zodra wekker is ingeschakeld</string>
+    <string name="display_dismiss_button_summary">Als deze optie is uitgeschakeld, wordt de knop tegelijk met de herinneringsmelding weergegeven</string>
+    <string name="enable_per_alarm_missed_repeat_limit_title">Gebruik een aangepast aantal gemiste wekkerherhalingen voor iedere wekker</string>
+    <string name="enable_per_alarm_crescendo_duration_title">Gebruik een aangepaste volumeverhogingsduur voor iedere wekker</string>
+    <string name="enable_per_alarm_crescendo_duration_dialog_message">Aangepaste volumeverhogingsduren zullen worden teruggezet.%s</string>
+    <string name="enable_per_alarm_auto_silence_title">Gebruik een aangepaste eindtijd voor iedere wekker</string>
+    <string name="enable_per_alarm_auto_silence_dialog_message">Aangepaste eindtijden zullen worden teruggezet.%s</string>
+    <string name="features_dialog_message">Bekijk de pagina met de belangrijkste kenmerken:\n\n%s</string>
+    <string name="enable_per_alarm_missed_repeat_limit_dialog_message">Aangepast aantal wekkerherhalingen zullen worden teruggezet.%s</string>
+    <string name="missed_alarm_repeat_limit_title">Gemiste wekkers herhalen</string>
+    <string name="missed_alarm_repeat_limit_1_time">1 keer</string>
+    <string name="missed_alarm_repeat_limit_3_times">3 keer</string>
+    <string name="missed_alarm_repeat_limit_5_times">5 keer</string>
+    <string name="missed_alarm_repeat_limit_10_times">10 keer</string>
+    <string name="repetitive_alarm_is_dismissed">Wekker uitgezet. <xliff:g example="Next alarm Monday." id="alarm_day">Opnieuw ingeroosterd op %s.</xliff:g></string>
+    <string name="blur_intensity_title">Vervagingssterkte</string>
+    <string name="background_image_title">Achtergrondafbeelding selecteren</string>
+    <string name="background_image_toast_message_selected">Afbeelding succesvol geselecteerd</string>
+    <string name="enable_blur_effect_title">Vervagingseffect toepassen op afbeelding</string>
+    <string name="display_text_shadow_title">Tekstschaduw weergeven</string>
+    <string name="shadow_color_title">Kleur schaduw</string>
+    <string name="shadow_offset_title">Afstand schaduw</string>
+    <string name="customize_background_corner_radius_title">Hoekradius van achtergrond aanpassen</string>
+    <string name="customize_background_corner_radius_summary">Hiermee kun je de hoeken van widgets afronden als het startscherm dit niet ondersteunt</string>
+    <string name="background_corner_radius_title">Hoekradius achtergrond</string>
+    <string name="display_timer_state_indicator_title">Statusaanwijzer kookwekker weergeven</string>
+    <string name="running_timer_indicator_color_title">Kleur aanwijzer van lopende kookwekker</string>
+    <string name="paused_timer_indicator_color_title">Kleur aanwijzer van gepauzeerde kookwekker</string>
+    <string name="expired_timer_indicator_color_title">Kleur aanwijzer van verlopen kookwekker</string>
+    <string name="progress_ringtones">Geluiden toevoegen… (%1$d/%2$d)</string>
+    <string name="display_text_uppercase_title">Tekst in hoofdletters weergeven</string>
+    <string name="label_new_image">Nieuwe afbeelding</string>
+    <string name="background_image_title_variant">Achtergrondafbeelding selecteren of verwijderen</string>
+    <string name="background_image_dialog_title">Achtergrondafbeelding</string>
+    <string name="background_image_toast_message_deleted">Afbeelding succesvol verwijderd</string>
+</resources>

@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2016 The Android Open Source Project
+    modified
+    SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
+--><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="6674495003718166674">"Часы"</string>
+    <string name="default_label" msgid="5590025289805630372">"Будильник"</string>
+    <string name="alarm_vibrate" msgid="3476686921490362230">"Вибросигнал"</string>
+    <string name="time_picker_dialog_title">Выбор времени</string>
+    <string name="date_picker_dialog_title">Выберите дату</string>
+    <string name="delete" msgid="5732434972457000541">"Удалить"</string>
+    <string name="default_alarm_ringtone_title" msgid="2916376768509623643">"Звуковой сигнал по умолчанию"</string>
+    <string name="alarm_sound" msgid="8754499591391638405">"Сигнал будильника"</string>
+    <string name="timer_sound" msgid="896163086604894735">"Сигнал таймера"</string>
+    <string name="add_new_sound" msgid="2546936797351540244">"Добавить"</string>
+    <string name="remove_sound" msgid="2064643204455734239">"Удалить"</string>
+    <string name="confirm_remove_custom_ringtone" msgid="1724111242265208553">"Будильники и таймеры, для которых выбран этот сигнал, будут воспроизводить звук, настроенный по умолчанию."</string>
+    <string name="your_sounds" msgid="1672779351352629681">"Ваши звуковые сигналы"</string>
+    <string name="device_sounds" msgid="1584894148222639823">"Звуковые сигналы устройства"</string>
+    <string name="custom_ringtone_lost_permissions" msgid="3406310054255354331">"У приложения нет доступа к звуковым сигналам."</string>
+    <string name="default_timer_ringtone_title" msgid="1370799536406862317">"Время истекло"</string>
+    <string name="alarm_tomorrow" msgid="131356848787643420">"Завтра"</string>
+    <string name="alarm_today" msgid="7873594221106531654">"Сегодня"</string>
+    <string name="alarm_alert_dismiss_text" msgid="4942914605480888820">"Выключить"</string>
+    <string name="alarm_missed_title" msgid="3828345099754063392">"Пропущенный будильник"</string>
+    <string name="alarm_missed_text" msgid="6585658367289194023">"<xliff:g id="ALARM_TIME">%1$s</xliff:g> – <xliff:g id="ALARM_LABEL">%2$s</xliff:g>"</string>
+    <string name="alarm_alert_snoozed_text" msgid="7064642998528766113">"Отложено"</string>
+    <plurals name="alarm_alert_snooze_duration" formatted="false" msgid="7844300009062867865">
+        <item quantity="one">на <xliff:g id="NUMBER">%d</xliff:g> минуту</item>
+        <item quantity="few">на <xliff:g id="NUMBER">%d</xliff:g> минуты</item>
+        <item quantity="many">на <xliff:g id="NUMBER">%d</xliff:g> минут</item>
+        <item quantity="other">на <xliff:g id="NUMBER">%d</xliff:g> минуты</item>
+    </plurals>
+    <string name="alarm_alert_off_text" msgid="4472073417593915002">"Выключено"</string>
+    <string name="alarm_alert_snooze_text" msgid="1774416052207651584">"Отложить"</string>
+    <plurals name="alarm_alert_snooze_set" formatted="false" msgid="3212729193036041768">
+        <item quantity="one">Повтор через <xliff:g id="MINUTES">%d</xliff:g> минуту.</item>
+        <item quantity="few">Повтор через <xliff:g id="MINUTES">%d</xliff:g> минуты.</item>
+        <item quantity="many">Повтор через <xliff:g id="MINUTES">%d</xliff:g> минут.</item>
+        <item quantity="other">Повтор через <xliff:g id="MINUTES">%d</xliff:g> минут.</item>
+    </plurals>
+    <string name="alarm_alert_snooze_until" msgid="6958013659168344550">"Повтор в <xliff:g id="TIME">%s</xliff:g>"</string>
+    <string name="alarm_alert_predismiss_title" msgid="5723945586913705445">"Следующий будильник"</string>
+    <string name="missed_alarm_has_been_deleted" msgid="5295473204045979335">"Пропущенный будильник был удален"</string>
+    <string name="timer_notifications_less_min" msgid="5481375048976427255">"Осталось: меньше минуты"</string>
+    <string name="timer_notifications_hours" msgid="1613266446037145138">"<xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g>"</string>
+    <string name="timer_notifications_minutes" msgid="8543138714519498893">"<xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g>"</string>
+    <string name="timer_notifications_hours_minutes" msgid="4788475350933275505">"Осталось: <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g>"</string>
+    <string name="timer_notifications_seconds" msgid="122102514929728907">"<xliff:g id="REMAINING"> %3$s</xliff:g>: <xliff:g id="SECONDS">%4$s</xliff:g>"</string>
+    <string name="timer_notifications_minutes_seconds" msgid="7059651926379491350">"<xliff:g id="REMAINING"> %3$s</xliff:g>: <xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g>"</string>
+    <string name="timer_notifications_hours_seconds" msgid="8168090805113197804">"<xliff:g id="REMAINING"> %3$s</xliff:g>: <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g>"</string>
+    <string name="timer_notifications_hours_minutes_seconds" msgid="4666176878038730417">"<xliff:g id="REMAINING"> %3$s</xliff:g>: <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g>"</string>
+    <string name="timer_accessibility_custom_time_added" msgid="6096646178998456004">"К таймеру добавлена %1$s минута, <xliff:g id="TIME">%2$s</xliff:g>"</string>
+    <string name="timer_remaining_single" msgid="6782851171906765864">Осталось</string>
+    <string name="timer_remaining_multiple" msgid="6052775962092160851">Осталось</string>
+    <string name="alarm_confirmation_toast_1">"Будильник зазвонит менее чем через минуту."</string>
+    <string name="alarm_confirmation_toast_2">Будильник зазвонит через <xliff:g id="DAYS">%1$s</xliff:g>.</string>
+    <string name="alarm_confirmation_toast_3">Будильник зазвонит через <xliff:g id="HOURS">%2$s</xliff:g>.</string>
+    <string name="alarm_confirmation_toast_4">Будильник зазвонит через <xliff:g id="DAYS">%1$s</xliff:g> и <xliff:g id="HOURS">%2$s</xliff:g>.</string>
+    <string name="alarm_confirmation_toast_5">Будильник зазвонит через <xliff:g id="MINUTES">%3$s</xliff:g>.</string>
+    <string name="alarm_confirmation_toast_6">Будильник зазвонит через <xliff:g id="DAYS">%1$s</xliff:g> и <xliff:g id="MINUTES">%3$s</xliff:g>.</string>
+    <string name="alarm_confirmation_toast_7">Будильник зазвонит через <xliff:g id="HOURS">%2$s</xliff:g> и <xliff:g id="MINUTES">%3$s</xliff:g>.</string>
+    <string name="alarm_confirmation_toast_8">Будильник зазвонит через <xliff:g id="DAYS">%1$s</xliff:g>, <xliff:g id="HOURS">%2$s</xliff:g> и <xliff:g id="MINUTES">%3$s</xliff:g>.</string>
+    <plurals name="days" formatted="false" msgid="3706846447285206235">
+        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> день</item>
+        <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> дня</item>
+        <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> дней</item>
+        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> дня</item>
+    </plurals>
+    <plurals name="hours" formatted="false" msgid="3871283109767171655">
+        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> час</item>
+        <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> часа</item>
+        <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> часов</item>
+        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> часа</item>
+    </plurals>
+    <plurals name="hours_short" formatted="false" msgid="3709250715691092925">
+        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> час</item>
+        <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> часа</item>
+        <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> часов</item>
+        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> часа</item>
+    </plurals>
+    <plurals name="minutes" formatted="false" msgid="5484431721696058697">
+        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> минута</item>
+        <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> минуты</item>
+        <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> минут</item>
+        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> минут</item>
+    </plurals>
+    <plurals name="minutes_short" formatted="false" msgid="6397328304369080233">
+        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> минута</item>
+        <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> минуты</item>
+        <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> минут</item>
+        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> минуты</item>
+    </plurals>
+    <plurals name="seconds" formatted="false" msgid="670343577734266047">
+        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> секунда</item>
+        <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> секунды</item>
+        <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> секунд</item>
+        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> секунд</item>
+    </plurals>
+    <string name="every_day" msgid="4100909974923444602">"Каждый день"</string>
+    <string name="day_concat" msgid="971998564991636532">", "</string>
+    <string name="loading_widget" msgid="5306242862476796500">"Загрузка…"</string>
+    <string name="analog_widget" msgid="1670505720837152766">Аналог. часы</string>
+    <string name="digital_widget" msgid="2326954556720571358">Цифровые часы</string>
+    <string name="settings" msgid="5849739030579520686">"Настройки"</string>
+    <string name="snooze_duration_title" msgid="1097309861110780483">"Интервал повтора сигнала"</string>
+    <string name="crescendo_duration_title" msgid="8606408542726189528">"Постепенно увеличивать громкость"</string>
+    <string name="auto_silence_title" msgid="2012754009554434544">"Автовыключение"</string>
+    <string name="label_never" msgid="4821982647348750809">"Никогда"</string>
+    <string name="label_off">Выкл.</string>
+    <string name="week_start_title" msgid="4268917518596832096">"Начало недели"</string>
+    <string name="week_start_saturday">суббота</string>
+    <string name="week_start_sunday">воскресенье</string>
+    <string name="week_start_monday">понедельник</string>
+    <string name="alarm_volume_title" msgid="8506245173912428522">"Громкость будильника"</string>
+    <string name="silent_ringtone_title" msgid="6177287302898634765">"Без звука"</string>
+    <string name="unknown_ringtone_title" msgid="6637522029614550112">"Неизвестно"</string>
+    <string name="alarm_volume_muted" msgid="6658289289695673569">"Звук будильника отключен"</string>
+    <string name="unmute_alarm_volume" msgid="2655009276035357497">"Включить звук"</string>
+    <string name="silent_default_alarm_ringtone" msgid="6012855475009670997">"Сигнал будильника по умолчанию – без звука"</string>
+    <string name="change_setting_action" msgid="1224356633832430160">"Изменить"</string>
+    <string name="alarms_blocked_by_dnd" msgid="6089433757505898969">"Включен режим \"Полная тишина\""</string>
+    <string name="volume_button_setting_title" msgid="6937131248843413357">"Кнопки громкости"</string>
+    <string name="button_action_snooze">Отложить</string>
+    <string name="button_action_dismiss">Выключить</string>
+    <string name="button_action_control_volume">Изменить громкость</string>
+    <string name="button_action_nothing">Ничего</string>
+    <string name="label_description" msgid="8736179296142915727">"Ярлык"</string>
+    <string name="ringtone_description" msgid="7580922112921069925">"Рингтон"</string>
+    <string name="menu_alarm" msgid="4772010125376647519">"Будильник"</string>
+    <string name="menu_timer" msgid="6459070074762877114">"Таймер"</string>
+    <string name="menu_clock" msgid="5612760670606829805">"Часы"</string>
+    <string name="menu_stopwatch" msgid="3396117705293574701">"Секундомер"</string>
+    <string name="button_alarms" msgid="3907838219512538763">"Добавить будильник"</string>
+    <string name="button_cities" msgid="4555761857494501363">"Города"</string>
+    <string name="standby_settings_title" msgid="2930695838866189483">"Заставка"</string>
+    <string name="menu_item_sort_by_gmt_offset" msgid="3120860422682721706">"Сортировать по времени"</string>
+    <string name="menu_item_sort_by_name" msgid="1762931290495104106">"Сортировать по названию"</string>
+    <string name="selected_cities_label" msgid="3607479399424246605">"Выбранные города"</string>
+    <string name="sw_resume_button" msgid="2569360966002022248">"Продолжить"</string>
+    <string name="reset" msgid="6616804728322906117">"Сбросить"</string>
+    <string name="sw_start_button" msgid="8373422516681242270">"Старт"</string>
+    <string name="sw_pause_button" msgid="2422084453454138042">"Приостановить"</string>
+    <string name="sw_lap_button" msgid="6992264696039004233">"Круг"</string>
+    <string name="sw_share_button" msgid="4478648110382859382">"Отправить"</string>
+    <string name="hours_label" msgid="3393478155635368097">"ч."</string>
+    <string name="minutes_label" msgid="3568098128251438588">"м."</string>
+    <string name="seconds_label" msgid="124655952824003246">"с."</string>
+    <string name="timer_setup_description" msgid="2488277921227564704">"<xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g>"</string>
+    <string name="lap_number_single_digit" msgid="1051159504304610877">"<xliff:g id="LAPNUMBER">%d</xliff:g>"</string>
+    <string name="lap_number_double_digit" msgid="2138536756534362037">"<xliff:g id="LAPNUMBER">%02d</xliff:g>"</string>
+    <string name="sw_share_main" msgid="7703563468204234405">"Мое время: <xliff:g id="TIME">%s</xliff:g>"</string>
+    <string name="sw_share_laps" msgid="614390674795945007">Время круга:</string>
+    <string name="sw_notification_lap_number" msgid="3535420316052647126">"Круг <xliff:g id="NUMBER">%d</xliff:g>"</string>
+    <string name="timer_add_timer" msgid="862733633862574752">"Добавить таймер"</string>
+    <string name="timer_start" msgid="6158486445614356442">"Старт"</string>
+    <string name="timer_descriptive_delete" msgid="8794915342760383536">"Удалить <xliff:g id="NUMBER_STRING">%s</xliff:g>"</string>
+    <string name="timer_add_custom_time_description" msgid="6631211310420106116">"Добавить %s минуту"</string>
+    <string name="timer_add_custom_time_for_notification" msgid="8645224089494875062">Добавить %s мин</string>
+    <string name="timer_stop" msgid="3361154678667736722">"Стоп"</string>
+    <string name="timer_stop_all" msgid="9080780442843034376">"Остановить все таймеры"</string>
+    <string name="timer_canceled" msgid="7327923392567128060">"Таймер удален"</string>
+    <string name="timer_times_up" msgid="9190440395938519009">"Время вышло"</string>
+    <string name="timer_multi_times_up" msgid="1239104626836080409">"Завершено таймеров: <xliff:g id="NUM_TIMERS">%d</xliff:g>"</string>
+    <string name="timer_multi_missed" msgid="9085073572920385362">"Пропущено таймеров: <xliff:g id="NUMBER">%d</xliff:g>"</string>
+    <string name="timer_notification_label" msgid="4933184831583137249">"Таймер"</string>
+    <string name="missed_named_timer_notification_label" msgid="665604640028289175">"Пропущенный таймер: <xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="timer_pause" msgid="3748323712728398743">"Приостановить"</string>
+    <string name="timer_reset_all" msgid="7530633132757866087">"Сбросить все"</string>
+    <string name="hours_minutes_seconds" msgid="5680088738059791288">"<xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g>"</string>
+    <string name="minutes_seconds" msgid="6189446107009577914">"<xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g>"</string>
+    <string name="jocular_content_message_1">Да вы просто Шумахер.</string>
+    <string name="jocular_content_message_2">Наслаждайтесь плодами своего труда.</string>
+    <string name="jocular_content_message_3">"Вы даже быстрее, чем Android!"</string>
+    <string name="jocular_content_message_4">Уф.</string>
+    <string name="jocular_content_message_5">L33t раз(а).</string>
+    <string name="jocular_content_message_6">Вот это скорость.</string>
+    <string name="jocular_content_message_7">Повторим искажение времени.</string>
+    <string name="jocular_content_message_8">Прыжок влево.</string>
+    <string name="jocular_content_message_9">Вы времени даром не теряете.</string>
+    <string name="jocular_content_message_10">Быстрее света.</string>
+    <string name="home_label" msgid="4436139365695453870">"Дома"</string>
+    <string name="cities_activity_title" msgid="8552462751129256730">"Города"</string>
+    <string name="clock_settings" msgid="8317286807280600391">"Часы"</string>
+    <string name="clock_style" msgid="2265011060429742344">"Стиль"</string>
+    <string name="display_clock_seconds_pref" msgid="691506643469501643">"Показывать секунды"</string>
+    <string name="open_date_settings" msgid="7712226973337806152">"Изменить дату и время"</string>
+    <string name="clock_style_analog">Стрелки</string>
+    <string name="clock_style_digital">Цифры</string>
+    <string name="automatic_home_clock" msgid="6274174710735449252">"Показывать время дома"</string>
+    <string name="automatic_home_clock_summary" msgid="6020476321040807273">"Показывать на отдельных часах, сколько времени дома, когда я нахожусь в другом часовом поясе"</string>
+    <string name="home_time_zone" msgid="9199730676287974501">"Мой часовой пояс"</string>
+    <string name="city_checked" msgid="616847871968019">"<xliff:g id="CITY_NAME">%s</xliff:g>, выбрано"</string>
+    <string name="city_unchecked" msgid="710212932781145918">"<xliff:g id="CITY_NAME">%s</xliff:g>, выбор отменен"</string>
+    <string-array name="timezone_labels">
+        <item msgid="5495601234086197399">"Маршалловы Острова"</item>
+        <item msgid="4196408495909011020">"Остров Мидуэй"</item>
+        <item msgid="1414384194857730006">"Гавайи"</item>
+        <item msgid="2687091371581931926">"Аляска"</item>
+        <item msgid="1922100269679049660">"Тихоокеанское время"</item>
+        <item msgid="7156402158716866161">"Тихуана"</item>
+        <item msgid="1144117502254612241">"Аризона"</item>
+        <item msgid="101284182011722637">"Чиуауа"</item>
+        <item msgid="689121094232986897">"Горное время (США)"</item>
+        <item msgid="5445331923942302756">"Центральноамер. время"</item>
+        <item msgid="2749806434052452351">"Центральное время"</item>
+        <item msgid="3997138870229703753">"Мехико"</item>
+        <item msgid="5425567073027744888">"Саскачеван"</item>
+        <item msgid="2877342865396629368">"Богота"</item>
+        <item msgid="568682398893899670">"Восточное время"</item>
+        <item msgid="668135984541863866">"Венесуэла"</item>
+        <item msgid="3737474220861486223">"Атлант. время (Барбадос)"</item>
+        <item msgid="6279116051273436870">"Атлант. время (Канада)"</item>
+        <item msgid="8513382867172014244">"Манаус"</item>
+        <item msgid="7776299003105932407">"Сантьяго"</item>
+        <item msgid="8636989494746218677">"Ньюфаундленд"</item>
+        <item msgid="4402541016410147505">"Бразилиа"</item>
+        <item msgid="2251184440733164084">"Буэнос-Айрес"</item>
+        <item msgid="6202926618569004969">"Гренландия"</item>
+        <item msgid="2355275037115290628">"Монтевидео"</item>
+        <item msgid="1377549694711708945">"Центральноатлант. время"</item>
+        <item msgid="3457671272126347981">"Азорские острова"</item>
+        <item msgid="3659315141063710840">"Кабо-Верде"</item>
+        <item msgid="1260941741802367635">"Касабланка"</item>
+        <item msgid="8275203689687954762">"Лондон, Дублин"</item>
+        <item msgid="5970179539479320905">"Амстердам, Берлин"</item>
+        <item msgid="5396319478750517962">"Белград"</item>
+        <item msgid="8688787475056663004">"Брюссель"</item>
+        <item msgid="3415827874921681622">"Сараево"</item>
+        <item msgid="402008965928320066">"Виндхук"</item>
+        <item msgid="6436942724959275569">"Западноафриканское время"</item>
+        <item msgid="954536568417204026">"Амман"</item>
+        <item msgid="8932745482008902551">"Афины, Стамбул"</item>
+        <item msgid="320025725949024510">"Бейрут, Ливан"</item>
+        <item msgid="7242083112551905970">"Каир"</item>
+        <item msgid="7241520146011450419">"Хельсинки"</item>
+        <item msgid="2717065017510546526">"Иерусалим"</item>
+        <item msgid="8698556287741466553">"Минск"</item>
+        <item msgid="1797598357342084506">"Хараре"</item>
+        <item msgid="5169119919905066998">"Багдад"</item>
+        <item msgid="2615788116201065182">"Москва"</item>
+        <item msgid="9084354867885584646">"Кувейт"</item>
+        <item msgid="1351570519986178268">"Найроби"</item>
+        <item msgid="7094569580635877460">"Тегеран"</item>
+        <item msgid="3953138772617909704">"Баку"</item>
+        <item msgid="2868893113598800752">"Тбилиси"</item>
+        <item msgid="7088581865802476373">"Ереван"</item>
+        <item msgid="1941122257623887992">"Дубай"</item>
+        <item msgid="9194797225058249720">"Кабул"</item>
+        <item msgid="6486569254364577332">"Исламабад, Карачи"</item>
+        <item msgid="5487724896895412089">"Уральск"</item>
+        <item msgid="364906869710826982">"Екатеринбург"</item>
+        <item msgid="2106505051751383358">"Калькутта"</item>
+        <item msgid="6851586621581501447">"Шри-Ланка"</item>
+        <item msgid="800438544128213134">"Катманду"</item>
+        <item msgid="6173621471007643021">"Астана"</item>
+        <item msgid="8645125891971581128">"Янгон"</item>
+        <item msgid="2886407505119737794">"Красноярск"</item>
+        <item msgid="3408222398188107090">"Бангкок"</item>
+        <item msgid="4441612937172851228">"Пекин"</item>
+        <item msgid="4936715789028996930">"Гонконг"</item>
+        <item msgid="4261031143777385525">"Иркутск"</item>
+        <item msgid="3538060959338191835">"Куала-Лумпур"</item>
+        <item msgid="1438847562643099201">"Перт"</item>
+        <item msgid="3063913827688244383">"Тайбэй"</item>
+        <item msgid="3502757135046564209">"Сеул"</item>
+        <item msgid="6107588684519111669">"Токио, Осака"</item>
+        <item msgid="4350769099755608471">"Якутск"</item>
+        <item msgid="2422707004533526462">"Аделаида"</item>
+        <item msgid="1292192084554134339">"Дарвин"</item>
+        <item msgid="1320883699470001716">"Брисбен"</item>
+        <item msgid="5137198806146386527">"Хобарт"</item>
+        <item msgid="5920063686933941174">"Сидней, Канберра"</item>
+        <item msgid="615906039696009425">"Владивосток"</item>
+        <item msgid="7738680449356275374">"Гуам"</item>
+        <item msgid="2882915026380778227">"Магадан"</item>
+        <item msgid="8255615641810148152">"Окленд"</item>
+        <item msgid="3027153773466391728">"Фиджи"</item>
+        <item msgid="5911600083231840181">"Тонга"</item>
+        <item msgid="5176858645450908751">"Джакарта"</item>
+        <item>"Эр-Рияд"</item>
+        <item>"Рейкьявик"</item>
+    </string-array>
+    <string name="shortcut_new_alarm_short" msgid="3490418929139725538">"Новый будильник"</string>
+    <string name="shortcut_new_alarm_long" msgid="4778064830147981089">"Установить будильник"</string>
+    <string name="shortcut_new_timer_short" msgid="3793414543219297884">"Новый таймер"</string>
+    <string name="shortcut_new_timer_long" msgid="5194092459678096067">"Установить таймер"</string>
+    <string name="shortcut_start_stopwatch_short" msgid="5469715764277476796">"Старт"</string>
+    <string name="shortcut_start_stopwatch_long" msgid="9183061797046030376">"Запустить секундомер"</string>
+    <string name="shortcut_pause_stopwatch_short" msgid="4022667323693785830">"Пауза"</string>
+    <string name="shortcut_pause_stopwatch_long" msgid="435026905074898334">"Приостановить секундомер"</string>
+    <string name="shortcut_start_standby_short" msgid="3414762073311954753">"Заставка"</string>
+    <string name="shortcut_start_standby_long" msgid="6134275671119484907">"Включить заставку"</string>
+    <string name="alarm_settings" msgid="2947147071388290814">"Будильник"</string>
+    <string name="timer_service_desc" msgid="2256002649882602433">"Обрабатывает действия из уведомлений таймера."</string>
+    <string name="stopwatch_service_desc" msgid="9220132827343760767">"Обрабатывает действия из уведомлений секундомера."</string>
+    <string name="swn_paused" msgid="6364358842808263589">"Приостановлено"</string>
+    <string name="description_direction_both" msgid="1841309486023845685">"Проведите влево, чтобы отложить сигнал, или вправо, чтобы отменить его"</string>
+    <string name="timer_settings" msgid="7955522143086154795">"Таймеры"</string>
+    <string name="timer_vibrate_title" msgid="7788920024785587518">"Вибросигнал таймера"</string>
+    <string name="timer_paused" msgid="5941160896040771462">"Таймер приостановлен"</string>
+    <string name="timers_in_use" msgid="5570729467344408506">"Таймеров: <xliff:g id="NUMBER">%d</xliff:g>"</string>
+    <string name="expand_alarm" msgid="7392616528943305020">"Развернуть"</string>
+    <string name="collapse_alarm" msgid="3561772046433483980">"Свернуть"</string>
+    <string name="alarm_deleted" msgid="6131529309389084785">"Будильник удален"</string>
+    <string name="world_day_of_week_label" msgid="5911196322328341288">/ <xliff:g id="метка">%s</xliff:g></string>
+    <string name="world_time_ahead" msgid="625559988238637652">"На <xliff:g id="TIME">%1$s</xliff:g> позже"</string>
+    <string name="world_time_behind" msgid="5395771290726167865">"На <xliff:g id="TIME">%1$s</xliff:g> раньше"</string>
+    <string name="world_hours_minutes_ahead" msgid="5132012793021696377">"На <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g> позже"</string>
+    <string name="world_hours_minutes_behind" msgid="8978567362140923698">"На <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g> раньше"</string>
+    <string name="world_hours_tomorrow" msgid="2504465609269004794">"Завтра, <xliff:g id="TIME">%1$s</xliff:g>"</string>
+    <string name="world_hours_yesterday" msgid="4425086322610882745">"Вчера, <xliff:g id="TIME">%1$s</xliff:g>"</string>
+    <string name="next_alarm_description" msgid="2650244835760747046">"Следующий будильник: <xliff:g id="ALARM_TIME">%s</xliff:g>"</string>
+    <string name="no_alarms" msgid="6429431324842022917">"Нет будильников"</string>
+    <string name="invalid_time" msgid="2782334750243998633">"Время (<xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g>) указано неверно"</string>
+    <string name="no_alarm_at" msgid="8140632482969193119">"На <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g> не установлено ни одного будильника"</string>
+    <string name="no_scheduled_alarms" msgid="2115420148192753534">"Будильники не установлены"</string>
+    <string name="no_label_specified" msgid="2008482054428460626">"Ярлык не выбран"</string>
+    <string name="no_alarms_with_label" msgid="6250998794542941665">"Нет будильников с ярлыками"</string>
+    <string name="no_alarm_scheduled_for_this_time" msgid="4463069177414482818">"На это время не установлено ни одного будильника"</string>
+    <string name="alarm_is_dismissed" msgid="5509897230565826642">"Будильник на <xliff:g id="ALARM_TIME">%s</xliff:g> отключен"</string>
+    <string name="alarm_is_set" msgid="5503226382620011088">"Будильник зазвонит в <xliff:g id="ALARM_TIME">%s</xliff:g>"</string>
+    <string name="timer_created" msgid="4381027137335885547">"Таймер создан"</string>
+    <plurals name="expired_timers_dismissed" formatted="false" msgid="1294953410988488149">
+        <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> таймер выключен</item>
+        <item quantity="few"><xliff:g id="NUMBER">%d</xliff:g> таймера выключено</item>
+        <item quantity="many"><xliff:g id="NUMBER">%d</xliff:g> таймеров выключено</item>
+        <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> таймера выключено</item>
+    </plurals>
+    <string name="invalid_timer_length" msgid="3104567893212932487">"Недопустимая длительность таймера"</string>
+    <string name="invalid_timer" msgid="900957020728335675">"Выбран недопустимый таймер"</string>
+    <string name="no_expired_timers" msgid="4624192298397846876">"Нет завершенных таймеров"</string>
+    <string name="alarm_cant_be_dismissed_still_more_than_24_hours_away" msgid="8810520940995307437">Будильник на <xliff:g id="ALARM_TIME">%s</xliff:g> нельзя отключить. Он зазвонит более чем через 24 часа</string>
+    <string name="dismiss_alarm" msgid="7204593078688533541">Отключить будильник</string>
+    <string name="pick_alarm_to_dismiss" msgid="5408769235866082896">"Выберите будильник, который нужно отключить"</string>
+    <string name="no_firing_alarms" msgid="4986161963178722289">"Нет активных будильников"</string>
+    <string name="alarm_is_snoozed" msgid="7044644119744928846">"Будильник на <xliff:g id="ALARM_TIME">%s</xliff:g> отложен на 10 минут"</string>
+    <string name="flip_action_title">Действие при повороте устройства</string>
+    <string name="shake_action_title">Действие при встряхивании устройства</string>
+    <string name="firing_alarms_timers_channel">Важные сигналы и таймеры</string>
+    <string name="alarm_missed_channel">Пропущенные будильники</string>
+    <string name="alarm_snooze_channel">Отложенные будильники</string>
+    <string name="alarm_upcoming_channel">Следующие будильники</string>
+    <string name="stopwatch_channel">Секундомер</string>
+    <string name="timer_channel">Таймер</string>
+    <string name="font_category_title">Шрифт</string>
+    <string name="alarm_notification_reminder_title">Уведомление напоминания</string>
+    <string name="enable_alarm_vibrations_by_default_setting_title">Включить вибрации во время создания будильников</string>
+    <string name="auto_silence_end_of_ringtone">Конец рингтона</string>
+    <string name="standby_brightness_title">Яркость</string>
+    <string name="preview_title">Предпросмотр</string>
+    <string name="widget_background_title">Отображать задний фон</string>
+    <string name="background_color_title">Цвет заднего фона</string>
+    <string name="city_clock_default_color_title">Использовать цвет по умолчанию для городских часов</string>
+    <string name="city_name_default_color_title">Использовать цвет по умолчанию для названия города</string>
+    <string name="digital_widget_message_summary">\"Показывать города на виджете\" должно быть отключено, чтобы получить доступ к этой настройке</string>
+    <string name="permission_management_summary">Показывать разрешения необходимые для правильной работы приложения</string>
+    <string name="ignore_battery_optimizations_title">ИГНОРИРОВАТЬ ОПТИМИЗАЦИИ БАТАРЕИ</string>
+    <string name="permission_management_settings">Управление разрешениями</string>
+    <string name="FSN_dialog_text">С Android 14, чтобы позволить будильнику сработать с выключенным экраном, необходимо, чтобы разрешение \"Полноэкранных уведомлений\" было включено.</string>
+    <string name="style_category_title">Стиль</string>
+    <string name="alarm_settings_summary">Выбрать стиль, стандартный рингтон, звук, действия для отключения или откладывания будильников, первый день недели и время напоминания в уведомлениях</string>
+    <string name="gnu_gpl">Общая публичная лицензия GNU версии 3.0</string>
+    <string name="clock_color_title">Цвет часов</string>
+    <string name="analog_widget_material_you">Аналоговые часы Material You</string>
+    <string name="timer_add_custom_time">+ %s</string>
+    <string name="clock_settings_summary">Выбрать стиль, часовой пояс и изменить дату и время девайса</string>
+    <string name="next_alarm_color_title">Следующий цвет будильника</string>
+    <string name="alarm_created">Будильник создан</string>
+    <string name="first_launch_important_info_message">Чтобы убедиться в правильной работе приложения, &lt;b&gt;некоторые настройки вашего девайса должны быть изменены:&lt;/b&gt; &lt;br&gt; &lt;br&gt; • &lt;b&gt;ОПТИМИЗАЦИЯ БАТАРЕИ;&lt;/b&gt; &lt;br&gt; &lt;br&gt; • &lt;b&gt;УВЕДОМЛЕНИЯ;&lt;/b&gt; &lt;br&gt; &lt;br&gt; %s &lt;i&gt;В зависимости от версии Android вашего девайса, некоторые из этих настроек уже оптимизированы (такие как уведомления).&lt;/i&gt; &lt;br&gt; &lt;br&gt; Вы можете изменить их сейчас или позже в настройках управления разрешениями:</string>
+    <string name="first_launch_dialog_message">Вы уверены, что вы хотите покинуть приложение?</string>
+    <string name="display_city_title">Отображать города на виджете</string>
+    <string name="next_alarm_default_color_title">Использовать цвет по умолчанию для следующего будильника</string>
+    <string name="selected">Выбор</string>
+    <string name="more_options">Больше опций</string>
+    <string name="FSN_dialog_title">Полноэкранные Уведомления</string>
+    <string name="duplicate">Дубликат</string>
+    <string name="material_you_digital_widget">Цифровые часы Material You</string>
+    <string name="settings_permission_summary">Нажмите здесь, чтобы отобразить экран \"Управление разрешениями\".</string>
+    <string name="settings_vibration_title">Включить вибрации</string>
+    <string name="miscellaneous_category_title">Разное</string>
+    <string name="ringtone_category_title">Рингтон</string>
+    <string name="interface_customization_settings">Интерфейс</string>
+    <string name="swipe_action_title">Смахивание для выключения или откладывания будильников</string>
+    <string name="app_slogan">100% FOSS Часы, основанные на AOSP</string>
+    <string name="version">Версия</string>
+    <string name="whats_new_title">Что нового</string>
+    <string name="features_title">Основные функции</string>
+    <string name="about_github_link">Посмотреть на Github</string>
+    <string name="license">Лицензия открытого кода</string>
+    <string name="description_direction_both_for_non_repeatable_alarm">Смахните влево или вправо, чтобы отключить</string>
+    <string name="timer_settings_summary">Установить рингтон, громкость и сортировку по умолчанию для таймеров</string>
+    <string name="date_color_title">Цвет даты</string>
+    <string name="first_launch_version">Версия %s</string>
+    <string name="first_launch_main_feature_title">ОСНОВНЫЕ ФУНКЦИИ</string>
+    <string name="first_launch_button_now">Сейчас</string>
+    <string name="first_launch_button_later">Позже</string>
+    <string name="clock_default_color_title">Использовать цвет по умолчанию для основных часов</string>
+    <string name="date_default_color_title">Использовать цвет по умолчанию для даты</string>
+    <string name="max_clock_font_size_title">Максимальный размер шрифта основных часов</string>
+    <string name="ignore_battery_optimizations_dialog_title">Оптимизации Батареи</string>
+    <string name="notifications_permission_title">ВКЛЮЧИТЬ УВЕДОМЛЕНИЯ</string>
+    <string name="notifications_dialog_title">Уведомления</string>
+    <string name="FSN_permission_title">ВКЛЮЧИТЬ ПОЛНОЭКРАННЫЕ УВЕДОМЛЕНИЯ</string>
+    <string name="first_launch_dialog_title">Выйти</string>
+    <string name="first_launch_main_feature_link">… и ещё больше!</string>
+    <string name="first_launch_important_info_title">ВАЖНАЯ ИНФОРМАЦИЯ</string>
+    <string name="permission_status_title">Статус: </string>
+    <string name="version_text">Версия <xliff:g id="VERSION_NUMBER" example="1.0">%1$s</xliff:g></string>
+    <string name="settings_vibration_summary">Только для некоторых кнопок интерфейса (таких как кнопки пуск/пауза таймера или переключатели)</string>
+    <string name="dialog_close">Закрыть</string>
+    <string name="settings_permission_message">Отказано в одном или нескольких важных разрешениях. Их непредоставление может привести к сбоям в работе.</string>
+    <string name="about_title">О приложении</string>
+    <string name="title_theme">Тема</string>
+    <string name="title_accent_color">Цвет акцента</string>
+    <string name="title_dark_theme_mode">Режим тёмной темы</string>
+    <string name="standby_daydream_settings_summary">Открывает настройки заставки Андроид</string>
+    <string name="standby_italic_next_alarm_title">Курсивный шрифт следующего будильника</string>
+    <string name="city_clock_color_title">Пользовательский цвет городских часов</string>
+    <string name="city_name_color_title">Пользовательский цвет названия города</string>
+    <string name="revoke_permission_dialog_message">Вы уверены что хотите отозвать это разрешение?</string>
+    <string name="notifications_dialog_text">В дополнение к настройке будильников, это приложение также имеет функции таймера и секундомера. \n \nЧтобы уведомления отображались правильно для всех функций и особенно правильного срабатывания будильника, мы рекомендуем включить уведомления для этого приложения.</string>
+    <string name="display_card_background_title">Отображать фон карточек</string>
+    <string name="display_background_border_title">Отображать границы фона</string>
+    <string name="power_button_title">Кнопка питания</string>
+    <string name="interface_customization_summary">Установите стиль и цвет, применяемые к приложению</string>
+    <string name="add_label">Добавить описание</string>
+    <string name="material_time_picker_style_title">Стиль выбора времени</string>
+    <string name="standby_italic_date_title">Курсивный шрифт даты</string>
+    <string name="first_launch_main_feature_message">► Светлая, тёмная или системная темы; &lt;br&gt; &lt;br&gt; ► Настраиваемая заставка-скринсейвер; &lt;br&gt; &lt;br&gt; ► Настраиваемые виджеты; &lt;br&gt; &lt;br&gt; ► Поддержка плиток в быстрых настройках (для Android 7+); &lt;br&gt; &lt;br&gt; ► Резервная копия и восстановление данных приложения (кроме пользовательский рингтонов); &lt;br&gt; &lt;br&gt; ► Material дизайн и динамические цвета; &lt;br&gt; &lt;br&gt; ► Установка будильника на определённую дату; &lt;br&gt; &lt;br&gt; ► Смахнуть чтобы удалить будильник; &lt;br&gt; &lt;br&gt; ► Дублирование будильника; &lt;br&gt; &lt;br&gt; ► Перевернуть или встряхнуть устройство чтобы выключить/отложить будильник; &lt;br&gt; &lt;br&gt; ► Выключить/отложить будильник нажав на кнопки питания или громкости; &lt;br&gt; &lt;br&gt; ► %s</string>
+    <string name="timer_label_box_title">Метка таймера</string>
+    <string name="timer_button_time_box_title">Минуты для добавления к таймеру</string>
+    <string name="default_time_to_add_to_timer_title">Время по умолчанию для добавления в таймер</string>
+    <string name="standby_clock_dynamic_colors_title">Динамические цвета часов</string>
+    <string name="standby_bold_digital_clock_title">Жирный шрифт часов</string>
+    <string name="standby_italic_digital_clock_title">Курсивный шрифт часов</string>
+    <string name="standby_bold_date_title">Жирный шрифт даты</string>
+    <string name="standby_bold_next_alarm_title">Жирный шрифт следующего будильника</string>
+    <string name="ignore_battery_optimizations_dialog_text">По умолчанию, система Android настраивает все пользовательские приложения на оптимизацию расхода заряда батареи.
+\n
+\nИ хотя это приемлимо для многих приложений, это приложение — будильник и часто может работать неправильно если оно настроено на оптимизацию заряда батареи. Когда включена оптимизация, While this is acceptable for many apps, this app is an alarm app and often causes issues if configured to optimize battery. Once enabled, the Android system can kill the app at any time and/or cancel alarms it has scheduled, which would adversely affect the app\'s operation.
+\n
+\nWe recommend whitelisting this app from battery optimizations.</string>
+    <string name="permission_dialog_revoke_title">Отозвать доступ</string>
+    <string name="permission_requirement_title">Требование: </string>
+    <string name="display_card_background_summary">Отображать фон для некоторых элементов приложения (будильники, города, таймер и т. д.)</string>
+    <string name="standby_preview_summary">Запустить заставку сейчас</string>
+    <string name="standby_daydream_settings">Выбрать/включить заставку</string>
+    <string name="standby_settings_summary">Установите стиль, цвет и шрифт заставки</string>
+    <string name="display_background_border_summary">Отображать границы фона для некоторых элементов приложения (будильники, города, таймеры и т. д.)</string>
+    <string name="alarm_label_box_title">Метка будильника</string>
+    <string name="permission_denied">Отказано</string>
+    <string name="permission_highly_recommended">Сильно рекомендуется</string>
+    <string name="actions_category_title">Действия</string>
+    <string name="first_launch_important_info_message_for_SDK34">• &lt;b&gt;ПОЛНОЭКРАННЫЕ УВЕДОМЛЕНИЯ;&lt;/b&gt; &lt;br&gt; &lt;br&gt;</string>
+    <string name="permission_granted">Выдано</string>
+    <string name="alarm_display_customization_title">Изменить отображение будильников</string>
+    <string name="alarm_title_color">Цвет заголовка будильника</string>
+    <string name="snooze_button_color">Цвет кнопки \"Отложить\"</string>
+    <string name="alarm_clock_font_size">Размер шрифта часов будильника</string>
+    <string name="alarm_title_font_size">Размер шрифта плитки будильника</string>
+    <string name="transparent_background_for_expired_timer_title">Прозрачный фон по истечению таймеров</string>
+    <string name="whats_new_dialog_message">Узнайте что нового:
+\n
+\n%s</string>
+    <string name="github_dialog_message">Посетите страницу GitHub:
+\n
+\n%s</string>
+    <string name="license_dialog_message">Прочтайте лицензию:
+\n
+\n%s</string>
+    <string name="material_you_category_title">Material You</string>
+    <string name="vertical_digital_widget">Вертикальные цифровые часы</string>
+    <string name="material_you_vertical_digital_widget">Вертикальные цифровые часы Material You</string>
+    <string name="standard_category_title">Стандартные</string>
+    <string name="settings_tab_indicator_title">Показывать индикатор вкладки в нижнем меню навигации</string>
+    <string name="widgets_settings">Виджеты</string>
+    <string name="material_you_next_alarm_widget">Следующий будильник Material You</string>
+    <string name="settings_fade_transitions_title">Включить затихающие переходы при переключении между экранами</string>
+    <string name="dismiss_button_color">Цвет кнопки \"Отклонить\"</string>
+    <string name="alarm_button_color">Цвет кнопки будильника</string>
+    <string name="alarm_title_default_color">Использовать стандартный цвет для плитки будильников</string>
+    <string name="next_alarm_no_upcoming_alarm_titles_default_color">Использовать стандартный цвет для плиток \"Следующий будильник\" и \"Нет будильников\"</string>
+    <string name="minute_default_color_title">Использовать стандартные цвета для минут</string>
+    <string name="minute_color_title">Пользовательские цвета минут</string>
+    <string name="widget_max_font_size_title">Максимальный размер шрифта виджета</string>
+    <string name="next_alarm_widget_text">Следующий будильник</string>
+    <string name="next_alarm_widget_title_no_alarm">Нет следующих будильников</string>
+    <string name="second_hand_color_title">Цвет второй стрелки</string>
+    <string name="hour_color_title">Пользовательские цвета часов</string>
+    <string name="next_alarm_widget">Следующий будильник</string>
+    <string name="widgets_settings_summary">Установите стиль, цвета и размер шрифта для виджетов</string>
+    <string name="hour_default_color_title">Использовать стандартные цвета для часов</string>
+    <string name="next_alarm_no_upcoming_alarm_titles_color">Пользовательский цвет для плиток \"Следующий будильник\" и \"Нет будильников\"</string>
+    <string name="label_default">По умолчанию</string>
+    <string name="alarm_flash">Вспышка</string>
+    <string name="delete_occasional_alarm_after_use_title">Удалить будильник после отмены</string>
+    <string name="alarm_alert_dismiss_and_delete_text">Отменить &amp; Удалить</string>
+    <string name="alarm_alert_off_and_deleted_text">Будильник отключен и удален</string>
+    <string name="amoled_dark_theme_mode">AMOLED</string>
+    <string name="settings_language_title">Язык</string>
+    <string name="settings_language_system">Системный язык</string>
+    <string name="settings_language_french">Французский</string>
+    <string name="settings_language_german">Немецкий</string>
+    <string name="settings_language_estonian">Эстонский</string>
+    <string name="settings_language_italian">Итальянский</string>
+    <string name="settings_language_polish">Польский</string>
+    <string name="settings_language_portuguese">Португальский</string>
+    <string name="settings_language_serbian">Сербский</string>
+    <string name="settings_language_spanish">Испанский</string>
+    <string name="settings_language_ukrainian">Украинский</string>
+    <string name="alarm_notification_reminder_2_hours">За 2 часа</string>
+    <string name="settings_language_dutch">Датский</string>
+    <string name="alarm_notification_reminder_6_hours">За 6 часов</string>
+    <string name="alarm_notification_reminder_8_hours">За 8 часов</string>
+    <string name="alarm_notification_reminder_10_hours">За 10 часов</string>
+    <string name="alarm_notification_reminder_12_hours">За 12 часов</string>
+    <string name="turn_on_back_flash_for_triggered_alarm_title">Включить задний фонарик, если будильник сработал</string>
+    <string name="enable_delete_occasional_alarm_by_default_setting_title">Включить автоматическое удаление случайных будильников по умолчанию</string>
+    <string name="alarm_notification_reminder_4_hours">За 4 часа</string>
+    <string name="settings_language_chinese_simplified_cn">Китайский (упрощённый, КНР)</string>
+    <string name="alarm_settings_general_summary">Эта настройка может быть изменена для каждого будильника индивидуально в расширеном просмотре будильника</string>
+    <string name="purple_accent_color">Фиолетовый</string>
+    <string name="black_accent_color">Чёрный</string>
+    <string name="alarm_notification_reminder_30_minutes">За 30 минут</string>
+    <string name="alarm_notification_reminder_1_hour">За 1 час</string>
+    <string name="day_accent_color_title">Акцентный цвет для дневной темы</string>
+    <string name="yellow_accent_color">Жёлтый</string>
+    <string name="red_accent_color">Красный</string>
+    <string name="enable_snoozed_or_dismissed_alarm_vibrations_title">Включить вибрации даже если будильник отложен или выключен</string>
+    <string name="enable_snoozed_or_dismissed_alarm_vibrations_summary">Двойная вибрация, если будильник отложен и единичная вибрация, если будильник выключен</string>
+    <string name="occasional_alarm_alert_predismiss_title">Предстоящий случайный будильник</string>
+    <string name="night_accent_color_title">Акцентный цвет для ночной темы</string>
+    <string name="pink_accent_color">Розовый</string>
+    <string name="auto_night_accent_color_title">Применять акцентный цвет к ночной теме</string>
+    <string name="system_theme">Системная</string>
+    <string name="light_theme">Светлая</string>
+    <string name="dark_theme">Тёмная</string>
+    <string name="brown_accent_color">Коричневый</string>
+    <string name="green_accent_color">Зелёный</string>
+    <string name="indigo_accent_color">Индиго</string>
+    <string name="orange_accent_color">Оранжевый</string>
+    <string name="display_ringtone_title">Показывать название ригнтона</string>
+    <string name="blue_gray_accent_color">Сине-серый</string>
+    <string name="settings_language_english_us">Английский (США)</string>
+    <string name="timer_power_button_action_title">Сбрасывать просроченые таймеры с помощью кнопки питания</string>
+    <string name="timer_volume_buttons_action_title">Сбрасывать просроченые таймеры с помощью кнопок громкости</string>
+    <string name="clock_style_analog_material">Аналоговый (Material)</string>
+    <string name="clock_style_spinner">Спиннер</string>
+    <string name="description_direction_both_for_occasional_non_repeatable_alarm">Провести влево или вправо чтобы выключить и удалить будильник</string>
+    <string name="timer_flip_action_title">Перевернуть устройство чтобы остановить будильник</string>
+    <string name="sort_name">По названию</string>
+    <string name="show_lockscreen_permission_title">ПОКАЗЫВАТЬ НА ЭКРАНЕ БЛОКИРОВКИ</string>
+    <string name="sw_settings_summary">Установить действия на кнопки громкости</string>
+    <string name="denied_permission_label">Доступ запрещён</string>
+    <string name="sort_timer_title">Сортировать таймеры</string>
+    <string name="backup_button_title">Резервная копия</string>
+    <string name="restore_button_title">Восстановление</string>
+    <string name="timer_buttons_action_summary">Работает только на заблокированном экране</string>
+    <string name="sort_timer_ascending_duration">По длительности (возрастание)</string>
+    <string name="shake_intensity_title">Интенсивность тряски</string>
+    <string name="backup_restore_summary">Сделать резервную копию или восстановление настроек кроме рингтонов</string>
+    <string name="toast_message_for_restore">Восстановление выполнено</string>
+    <string name="description_direction_both_for_occasional_alarm">Провести влево чтобы отложить или вправо чтобы выключить и удалить будильник</string>
+    <string name="show_lockscreen_dialog_title">Показывать на экране блокировки</string>
+    <string name="backup_restore_dialog_message">Вы хотите создать резервную копию или восстановление данных приложения?</string>
+    <string name="show_lockscreen_dialog_text">На устройствах Xiaomi вы должны вручную включить разрешение \"Показывать на экране блокировки\" из настроек устройства для правильной работы приложения.</string>
+    <string name="sw_start_pause_action">Старт / Пауза</string>
+    <string name="sw_volume_up_action_title">Громкость +</string>
+    <string name="sw_long_press_volume_up_action_title">Громкость + (после долгого нажатия)</string>
+    <string name="sw_volume_down_action_title">Громкость -</string>
+    <string name="sw_long_press_volume_down_action_title">Громкость - (после долгого нажатия)</string>
+    <string name="timer_shake_action_title">Потрясти устройство чтобы выключить будильник</string>
+    <string name="snooze_duration_none">Нет</string>
+    <string name="toast_message_for_backup">Резервное копирование выполнено</string>
+    <string name="display_warning_before_deleting_timer_title">Показывать предупреждение перед удалением таймера</string>
+    <string name="warning_dialog_title">Удалить таймер</string>
+    <string name="warning_dialog_message">Вы уверены что хотите удалить таймер \"%s\"?</string>
+    <string name="sort_manually">Вручную (перетаскиванием)</string>
+    <string name="about_translate_link">Перевести на Codeberg</string>
+    <string name="translate_dialog_message">Посетить страницу на Codeberg:\n\n%s</string>
+    <string name="sort_timer_descending_duration">По длительности (убывание)</string>
+    <string name="backup_restore_title">Резервное копирование и восстановление</string>
+    <string name="permission_info_title">Только для устройств Xiaomi</string>
+    <string name="settings_language_turkish">Турецкий</string>
+    <string name="reset_settings_title">Сбросить настройки</string>
+    <string name="reset_settings_message">Вы уверены, что вы хотите сбросить все настройки приложения? \n\nВнимание: пользовательские рингтоны не будут сброшены.</string>
+    <string name="blue_accent_color">Синий</string>
+    <string name="toast_message_for_reset">Сброс выполнен</string>
+    <string name="settings_language_korean">Корейский</string>
+    <string name="timer_button_time_minutes_warning_box_text">Введите значение между 0 и 60 минутами</string>
+    <string name="timer_time_warning_box_title">Неверное значение введено</string>
+    <string name="settings_language_russian">Русский</string>
+    <string name="display_date_title">Показывать дату на виджете</string>
+    <string name="settings_tab_to_display">Вкладка для отображения при открытии приложения</string>
+    <string name="last_tab_used_title">Последняя использованная вкладка</string>
+    <string name="settings_toolbar_title">Показывать заголовок в панели инструментов</string>
+    <string name="settings_tab_title_visibility_title">Показывать названия вкладок</string>
+    <string name="tab_title_visibility_always">Всегда</string>
+    <string name="tab_title_visibility_when_selected">Когда выбран</string>
+    <string name="settings_language_czech">Чешский</string>
+    <string name="settings_keep_screen_on_title">Держать экран включенным</string>
+    <string name="settings_keep_screen_on_summary">Заметьте: Экран будет всегда включён если таймер или секундомер запущены и открыта соответствующая вкладка, независимо от этой настройки</string>
+    <string name="display_next_alarm_title">Показывать следующий будильник на виджете</string>
+    <string name="ringtone_title_color">Цвет заголовка рингтона</string>
+    <string name="description_snooze_button">Нажмите, чтобы отложить будильник</string>
+    <string name="description_dismiss_button">Нажмите, чтобы отклонить будильник</string>
+    <string name="description_dismiss_button_for_occasional_alarm">Нажмите чтобы отклонить и удалить будильник</string>
+    <string name="settings_language_chinese_traditional_tw">Китайский (традиционный, Тайвань)</string>
+    <string name="slide_zone_color_title">Цвет зоны скольжения</string>
+    <string name="snooze_title_color">Цвет заголовка \"Отложить\"</string>
+    <string name="dismiss_title_color">Цвет заголовка \"Отклонить\"</string>
+    <string name="occasional_alarm_deleted">Случайный <xliff:g example="14:20" id="alarm_time">%s</xliff:g> будильник удалён</string>
+    <string name="date_picker_style_calendar">Календарь</string>
+    <string name="timer_add_custom_time_with_seconds_for_notification">Добавить %1$s мин %2$s с</string>
+    <string name="alarm_is_dismissed_and_deleted"><xliff:g example="14:20" id="alarm_time">%s</xliff:g> будильник выключен и удалён</string>
+    <string name="label_minutes">Минуты</string>
+    <string name="label_seconds">Секунды</string>
+    <string name="warning">Предупреждение</string>
+    <string name="alarm_scheduled_for">Отложено на %s</string>
+    <string name="timer_add_custom_time_with_seconds_description">Добавить %1$s минут %2$s секунд</string>
+    <string name="schedule_alarm_title">Отложить будильник</string>
+    <string name="date_picker_style_title">Стиль диалога выбора даты</string>
+    <string name="date_picker_style_text">Текст</string>
+    <string name="timer_button_time_seconds_warning_box_text">Введите значение от 0 до 59 секунд</string>
+    <string name="random_ringtone_title">Случайный рингтон</string>
+    <string name="add_new_sound_subtitle">Удерживайте чтобы выбрать папку</string>
+    <string name="advanced_audio_playback_title">Расширенные возможности воспроизведения аудио</string>
+    <string name="label_hours">Часы</string>
+    <string name="timer_creation_view_style_title">Стиль окна создания таймера</string>
+    <string name="timer_creation_view_style_keypad">Клавиатура</string>
+    <string name="timer_time_box_title">Новая продолжительность таймера</string>
+    <string name="timer_hours_warning_box_text">Введите значение от 0 до 24 часов</string>
+    <string name="timer_minutes_warning_box_text">Введите значение от 0 до 59 минут</string>
+    <string name="hide_clock_am_pm_pref">Скрыть отметку AM/PM</string>
+    <string name="auto_routing_to_bluetooth_device_title">Включить автоматическую маршрутизацию мелодий на устройстве Bluetooth</string>
+    <string name="timer_seconds_warning_box_text">Введите значение от 0 до 59 секунд</string>
+    <string name="advanced_audio_playback_summary">Улучшение совместимости с Bluetooth и предотвращение прерывания звука при повторении.\n\nНекоторые мелодии могут иметь незначительные звуковые сбои</string>
+    <string name="system_media_volume_title">Использовать системную громкость медиа</string>
+    <string name="system_media_volume_summary">Работает при подключении устройства Bluetooth</string>
+    <string name="bluetooth_volume_title">Громкость будильника для устройств Bluetooth</string>
+    <string name="connect_bluetooth_device_title">Для доступа к этой настройке подключите устройство Bluetooth</string>
+    <string name="disconnect_bluetooth_device_title">Для доступа к этой настройке отключите устройство Bluetooth</string>
+    <string name="widget_apply_horizontal_padding_title">Применить отступы к сторонам виджетов</string>
+    <string name="enable_per_alarm_volume_title">Разная громкость будильников</string>
+</resources>
